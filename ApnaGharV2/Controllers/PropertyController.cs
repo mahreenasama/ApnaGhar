@@ -55,14 +55,15 @@ namespace ApnaGharV2.Controllers
         }
 
         //partial view return for ajax
-        [HttpGet]
-        public PartialViewResult GetSubCategories(string id)
+        string[] subCategories = null;
+
+        [HttpPost]
+        public void GetSubCategories(string id)
         {
             Console.WriteLine(id);
-            string[] subCategories = null;
             if (id == "homes")
             {
-                subCategories =new string[]{ "House","Flat","Upper Portion","Lower Portion","Room","Farm House","Pent House"};
+                subCategories = new string[] { "House", "Flat", "Upper Portion", "Lower Portion", "Room", "Farm House", "Pent House" };
             }
             else if (id == "plots")
             {
@@ -72,6 +73,11 @@ namespace ApnaGharV2.Controllers
             {
                 subCategories = new string[] { "Office", "Shop", "Warehouse", "Factory", "Building", "Other" };
             }
+        }
+
+        [HttpGet]
+        public PartialViewResult GetSubCategories()
+        {
             return PartialView("_HomeSubCategories", subCategories);
         }
     }

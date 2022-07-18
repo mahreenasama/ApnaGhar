@@ -19,10 +19,11 @@ $('.sub-type').on('change', function () {
 $(document).ready(function () {
 	$('.type').click(function () {
 		var id = $(this).attr('id');
-		alert(id);
-		$.post('/Home/GetSubCategories', id, function (result) {
+		//alert(id);
+		$.post('/Property/GetSubCategories', id);
+		$.get('/Property/GetSubCategories', function (result) {
 			$('#sub-categories').html(result);
-        });
+		});
     })
 });
 
