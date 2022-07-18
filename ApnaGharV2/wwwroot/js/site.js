@@ -3,7 +3,31 @@
 
 // Write your JavaScript code.
 
+//---------------------------Add property page----------------
 
+//limit only one checkbox to be selected at a time
+$('.purpose').on('change', function () {
+	$('.purpose').not(this).prop('checked', false);
+});
+$('.type').on('change', function () {
+	$('.type').not(this).prop('checked', false);
+});
+$('.sub-type').on('change', function () {
+	$('.sub-type').not(this).prop('checked', false);
+});
+//display in respective divs
+$(document).ready(function () {
+	$('.type').click(function () {
+		var id = $(this).attr('id');
+		alert(id);
+		$.post('/Home/GetSubCategories', id, function (result) {
+			$('#sub-categories').html(result);
+        });
+    })
+});
+
+
+//javascript
 function existingMember() {
     let str = '<partial name="ExistingMemberAddProperty" />';
     documemt.getElementById("memberCheck").innerHTML = str;
@@ -31,9 +55,9 @@ function sendmail() {
 
 	Email.send({
 		Host: "smtp.gmail.com",
-		Username: "arhammubeen2004@gmail.com",
-		Password: "arhammian1406",
-		To: 'arhammubeen2004@gmail.com',
+		Username: "mahreenmehar202@gmail.com",
+		Password: "MEHAR2002",
+		To: 'mahreenmehar202@gmail.com',
 		From: email,
 		Subject: "New message on contact from " + name,
 		Body: message

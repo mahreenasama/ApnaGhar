@@ -53,5 +53,26 @@ namespace ApnaGharV2.Controllers
         {
             return View();
         }
+
+        //partial view return for ajax
+        [HttpGet]
+        public PartialViewResult GetSubCategories(string id)
+        {
+            Console.WriteLine(id);
+            string[] subCategories = null;
+            if (id == "homes")
+            {
+                subCategories =new string[]{ "House","Flat","Upper Portion","Lower Portion","Room","Farm House","Pent House"};
+            }
+            else if (id == "plots")
+            {
+                subCategories = new string[] { "Residential Plot", "Commercial Plot", "Agricultural Land", "Industrial Land" };
+            }
+            else if (id == "commercial")
+            {
+                subCategories = new string[] { "Office", "Shop", "Warehouse", "Factory", "Building", "Other" };
+            }
+            return PartialView("_HomeSubCategories", subCategories);
+        }
     }
 }

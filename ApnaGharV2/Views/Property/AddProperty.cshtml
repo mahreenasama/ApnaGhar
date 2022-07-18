@@ -10,9 +10,9 @@
     <partial name="NavBar2" />
 }
 
+@*---------------------add property page starts----------------------- *@
 
 <div style="background-color:#E7E7E7;">
-
 <div class="container" id="container-addproperty" style="background-color:white;">
 
 <form asp-action="AddProperty" asp-controller="User">
@@ -26,7 +26,6 @@
             PROPERTY TYPE AND LOCATION
         </div>
 
-    
     <div class="row justify-content-center p-1">
         <label class="col-2">
             Purpose: <span style="color: red;">*</span>
@@ -47,17 +46,24 @@
         </label>
             <div class=" col-5 btn-group btn-group-toggle" data-toggle="buttons" required>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="checkbox" autocomplete="off" class="type"> Homes
+                <input type="checkbox" autocomplete="off" class="type" id="homes"> Homes
               </label>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="checkbox" autocomplete="off" class="type"> Plots
+                <input type="checkbox" autocomplete="off" class="type" id="plots"> Plots
               </label>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="checkbox" autocomplete="off" class="type"> Commercial
+                <input type="checkbox" autocomplete="off" class="type" id="commercial"> Commercial
               </label>
             </div>
      </div>
+     @*homes subcategories (added through ajax)*@
+     <div id="sub-categories"></div>
+     @*plots subcategories*@
+     <div id="homes-categories"></div>
+     @*commercial subcategories*@
+     <div id="homes-categories"></div>
 
+     @*cities*@
      <div class="row justify-content-center p-1">
         <label for="type" class="col-2">
              City: <span style="color: red;">*</span>
@@ -235,19 +241,4 @@
 </div>
 </div>
 
-<script>
-
-    function existingMember(){
-    String str = '<partial name="ExistingMemberAddProperty" />';
-    documemt.getElementById("memberCheck").innerHTML = str;
-    alert("helllo");
-}
-
-function newMember() {
-    String str = '<partial name="NewMemberAddProperty" />';
-    documemt.getElementById("memberCheck").innerHTML = str;
-    alert("helllo");
-
-}   
-</script>
 
