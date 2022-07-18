@@ -1,0 +1,253 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model ApnaGharV2.Models.PropertyBO
+
+@section NavBar2{
+    <partial name="NavBar2" />
+}
+
+
+<div style="background-color:#E7E7E7;">
+
+<div class="container" id="container-addproperty" style="background-color:white;">
+
+<form asp-action="AddProperty" asp-controller="User">
+
+    <h4 class="fw-bold">Add a Property</h4>
+    <span style="color: red;">*</span>
+    <span> = Required Fields</span>
+
+    @*portion 1*@
+        <div class="add-property-legend">
+            PROPERTY TYPE AND LOCATION
+        </div>
+
+    
+    <div class="row justify-content-center p-1">
+        <label class="col-2">
+            Purpose: <span style="color: red;">*</span>
+        </label>
+        <div class=" col-5 btn-group btn-group-toggle" data-toggle="buttons" required>
+            <label class="btn btn-light btn-outline-secondary">
+                <input type="checkbox" autocomplete="off" class="purpose"> For Sale
+              </label>
+              <label class="btn btn-light btn-outline-secondary">
+                <input type="checkbox" autocomplete="off" class="purpose"> Rent
+              </label>
+        </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+        <label for="type" class="col-2">
+            Property Type: <span style="color: red;">*</span>
+        </label>
+            <div class=" col-5 btn-group btn-group-toggle" data-toggle="buttons" required>
+              <label class="btn btn-light btn-outline-secondary">
+                <input type="checkbox" autocomplete="off" class="type"> Homes
+              </label>
+              <label class="btn btn-light btn-outline-secondary">
+                <input type="checkbox" autocomplete="off" class="type"> Plots
+              </label>
+              <label class="btn btn-light btn-outline-secondary">
+                <input type="checkbox" autocomplete="off" class="type"> Commercial
+              </label>
+            </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+        <label for="type" class="col-2">
+             City: <span style="color: red;">*</span>
+        </label>
+            <div class="col-5">
+              <select class="form-select" aria-label="Default select example" required>
+              <option selected>Select City</option>
+              <option value="1">Lahore</option>
+              <option value="2">Karachi</option>
+              <option value="3">Sialkot</option>
+            </select>
+            </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+        <label for="type" class="col-2">
+            Location: <span style="color: red;">*</span>
+        </label>
+            <div class=" col-5">
+            <input type="text" required placeholder="Enter location here" class="form-control"/>
+            </div>
+     </div>
+
+    @*portion 2*@
+
+    <div class="add-property-legend">
+        PROPERTY DETAILS
+    </div>
+
+    <div class="row justify-content-center p-1">
+        <label class="col-2">
+            Property Title: <span style="color: red;">*</span>
+        </label>
+        <div class=" col-5" required>
+            <input type="text" required class="form-control"/>
+        </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+        <label for="type" class="col-2">
+            Description: <span style="color: red;">*</span>
+        </label>
+            <div class=" col-5" required>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+        <label for="type" class="col-2">
+             Price(PKR): <span style="color: red;">*</span>
+        </label>
+            <div class="col-5">
+              <input type="text" required class="form-control"/>
+            </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+        <label for="type" class="col-2">
+            Land Area: <span style="color: red;">*</span>
+        </label>
+            <span class=" col-2">
+                <input type="text" required class="form-control"/>
+            </span>
+        @*<label for="type" class="col-auto">
+            Unit: 
+        </label>*@
+        <div class=" col-3">
+            <select class="form-select" aria-label="Default select example" required>
+              <option selected value="1">Square Feet</option>
+              <option value="2">Square Yard</option>
+              <option value="3">Square Meters</option>
+              <option value="4">Marla</option>
+              <option value="5">Kanal</option>
+              </select>
+            </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+          <label for="type" class="col-2">
+            Bedrooms: <span style="color: red;">*</span>
+        </label>
+        <div class=" col-5">
+            <select class="form-select" aria-label="Default select example" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">2</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="morethan10">10+</option>
+              </select>
+            </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+          <label for="type" class="col-2">
+            Bathrooms: <span style="color: red;">*</span>
+        </label>
+        <div class=" col-5">
+            <select class="form-select" aria-label="Default select example" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">2</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              </select>
+            </div>
+     </div>
+
+     <div class="row justify-content-center p-1">
+          <label for="type" class="col-2">
+            Expires After: <span style="color: red;">*</span>
+        </label>
+        <div class=" col-5">
+            <select class="form-select" aria-label="Default select example" required>
+              <option value="1month">1 Month</option>
+              <option value="3months">3 Months</option>
+              <option value="6months">6 Months</option>
+              </select>
+            </div>
+     </div>
+
+    @*portion 3*@
+
+    <div class="add-property-legend">
+        ADD IMAGES
+    </div>
+    <div class="row justify-content-center p-3">
+        <div class="col-5">
+        <input class="form-control" type="file" id="formFileMultiple" multiple>
+        </div>
+         @*<button id="add-images-btn"><i class="fa fa-plus"></i> Add Images</button>*@
+    </div>
+
+    @*portion 4*@
+
+    <div class="add-property-legend">
+        CONTACT DETAILS
+    </div>
+
+    <div class="row justify-content-center p-1">
+          <label for="type" class="col-3">
+            Membership Status: <span style="color: red;">*</span>
+        </label>
+        <div class="form-check form-check-inline col-2">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked onclick="existingMember()">
+          <label class="form-check-label" for="inlineRadio1">Existing Member</label>
+        </div>
+        <div class="form-check form-check-inline col-3">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onclick="newMember()">
+          <label class="form-check-label" for="inlineRadio2">New Member (Free)</label>
+        </div>
+     </div>
+
+     @*partial view*@
+
+     <div id="memberCheck">
+     <partial name="ExistingMemberAddProperty" />
+     </div>
+
+     <div class="row justify-content-center p-3">
+         <input type="submit" value="SUBMIT PROPERTY" class="btn btn-secondary col-3 fw-bold"/>
+    </div>
+</form>
+
+</div>
+</div>
+
+<script>
+
+    function existingMember(){
+    String str = '<partial name="ExistingMemberAddProperty" />';
+    documemt.getElementById("memberCheck").innerHTML = str;
+    alert("helllo");
+}
+
+function newMember() {
+    String str = '<partial name="NewMemberAddProperty" />';
+    documemt.getElementById("memberCheck").innerHTML = str;
+    alert("helllo");
+
+}   
+</script>
+

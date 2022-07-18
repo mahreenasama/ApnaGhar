@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+@*<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>*@
+
+
+<table class="d-table" style="border:2px solid black;">
+    <tr space="row">
+        <td>
+            <div>
+                <div style="position:relative; top:20px; left:30px; z-index:1; border:2px solid black; border-radius:50%; display:inline-block; background-color:white;">
+                    <img src="~/images/active.png" height="50px" width="50px" style=""/>
+                </div>
+                <div class="card mb-3 pt-4">
+                  <div class="row g-0">
+                      <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a data-bs-toggle="modal" data-bs-target="#detail" style="color:#3b5998; display:block; cursor:pointer; text-decoration:none;" class="fw-bold">
+                        See more
+                        </a>  
+                    </div>
+                    </div>
+                    <div class="col-md-4" style="overflow: hidden;">
+                <img src="~/images/about-us-block.png" class="img-fluid rounded-end" id="policy-img" style="border-radius:50%; max-width:300px; overflow:hidden;"/>
+
+                    </div>
+                    
+                  </div>
+                </div>
+                @*<div style=" border:1px solid black; overflow:auto;" class="ps-5 pt-5">
+                <img src="~/images/about-us-block.png" height="250px" width="250px" style="float:right; margin-left:30px;"/>
+
+                    <h5 class="fw-bold">Who We Share Your Personal Information With</h5>
+                    <span style="margin-left:10px;">
+                        Your information will allow us to provide you with access to the particular 
+                        parts of the Platform relevant to you and allow us to supply the Services you 
+                        require.We will use your information for the purpose of informing you of special 
+                        offers and providing other marketing information to you which we think you may 
+                        find of interest, undertaking services or customer research/development.
+                    </span>
+                    <a data-bs-toggle="modal" data-bs-target="#detail" style="color:#3b5998; display:block; cursor:pointer; text-decoration:none;" class="fw-bold">
+                        See more
+                    </a>
+                </div>*@
+                
+            </div>
+        </td>
+
+        <td>
+            <div>
+                <div style="position:relative; top:20px; left:30px; z-index:1;">
+                    <img src="~/images/active.png" height="50px" width="50px"/>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                      <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a data-bs-toggle="modal" data-bs-target="#detail" style="color:#3b5998; display:block; cursor:pointer; text-decoration:none;" class="fw-bold">
+                        See more
+                        </a>   
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                <img src="~/images/about-us-block.png" class="img-fluid rounded-end" />
+
+                    </div>
+                    
+                  </div>
+                </div>
+                @*<div style="border:1px solid black; overflow:auto;" class="ps-5 pt-5">
+                <img src="~/images/about-us-block.png" height="250px" width="250px" style="float:right;margin-left:30px; "/>
+
+                    <h5 class="fw-bold">Who We Share Your Personal Information With</h5>
+
+                    Your information will allow us to provide you with access to the particular 
+                    parts of the Platform relevant to you and allow us to supply the Services you 
+                    require.We will use your information for the purpose of informing you of special 
+                    offers and providing other marketing information to you which we think you may 
+                    find of interest, undertaking services or customer research/development.
+                    
+                </div>*@
+            </div>
+        </td>
+    </tr>
+    
+
+</table>
+
+
+
+<div class="modal fade" id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header fw-bold fs-5">
+                    <img src="~/images/active.png" height="50px" width="50px" />
+                    Who We Share Your Personal Information With
+      </div>
+      <div class="modal-body">
+       Your information will allow us to provide you with access to the particular 
+                    parts of the Platform relevant to you and allow us to supply the Services you 
+                    require.We will use your information for the purpose of informing you of special 
+                    offers and providing other marketing information to you which we think you may 
+                    find of interest, undertaking services or customer research/development.
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

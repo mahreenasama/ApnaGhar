@@ -1,0 +1,127 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Sign Up Page";
+}
+@model ApnaGharV2.User
+
+@section NavBar2{
+    <partial name="NavBar2" />
+}
+@section SectionTop{
+    @*<div style="position: relative; text-align: center; color: white;">*@
+<img src="~/images/hellium2.jpg" asp-append-version="true" class="img-fluid" alt="hellium baloon" style="z-index: -1; margin-top:-30px;">
+   @*<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Become a Free Member</div>
+</div>*@
+
+}
+
+<div class="container justify-content-center">
+    <div class="row">
+        <div class="col">  
+                Post your properties on ApnaGahr.com and directly expose them to thousands of potential investors, tenants, buyers, agents & brokers and other interested parties.
+                <br><br>
+                Save your favourite properties in your members panel to view them later at your convenience.
+                <br><br>
+                Use ApnaGhar.com's integrated e-mail facility to track your potential buying & rental leads.
+                <br><br>
+                Set-up property email alerts providing you latest listings of properties instantly as they appear on ApnaGhar.com.
+                <br><br>
+                Search the exact kind of property you are looking for, including hundreds of developments, residential & commercial properties, homes, villas, apartments, plots, shops, offices, complete buildings & floors, warehouses, factories and labour camps.
+            </p>
+        </div>
+        <div class="col-5 px-5 py-5" style="margin-top: -25%; background-color: whitesmoke;">
+            <form asp-controller="user" asp-action="signup" method="post">
+                <div class="mb-3">
+                    <button type="button" class="btn btn-primary" style="width: 100%; background-color: #3b5998;">
+                        <i class="fa fa-facebook"></i>   CONTINUE WITH FACEBOOK
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-light" style="width: 100%;">
+                        <i class="fa fa-google"></i>   CONTINUE WITH GOOGLE
+                    </button>
+                </div>
+                <div class="my-2 text-center">
+                    OR
+                </div>
+                <div class="mb-3">
+                    <p style="color:red; font-weight:bold;">@TempData["duplicate_email"]</p>
+
+                    <input asp-for="Email" class="form-control" placeholder="Email*">
+                    <p>This will be your login/username at ApnaGhar.com</p>
+                </div>
+                <div class="mb-3">
+                    <input asp-for="Password" class="form-control" placeholder="Password*">
+                </div>
+                <div class="mb-3">
+                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password*">
+                </div>
+                <div class="mb-3">
+                    <input asp-for="Name" class="form-control" placeholder="Name">
+                </div>
+                <div class="mb-3">
+                    +92
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="xxxxxxxxxx">
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Default select example" asp-for="Country">
+                        <option selected>Pakisatn</option>
+                        <option value="UAE">UAE</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Default select example" asp-for="City">
+                        <option selected>Lahore</option>
+                        <option value="Karachi">Karachi</option>
+                        <option value="Faisalabad">Faisalabad</option>
+                        <option value="Islamabad">Islamabad</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Default select example" aria-placeholder="Signing up as*" asp-for="Role">
+                        <option selected>Investor</option>
+                        <option value="Owner">Owner</option>
+                        <option value="Agent">Agent</option>
+                        <option value="Buyer">Buyer</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" id="agent?">
+                    <label for="agent?"> Are you Agent?</label>
+                </div>
+                <!-- security code valid-->
+                @*<input type="hidden" name="email_info" id="email_info" value="" />
+                <div class="captcha-outter column input-box">
+                     <label class="lbl">SECURITY CODE*</label>
+                     <input type="text" class="captcha_code" name="captcha_code" id="captcha_code" />
+                    <div class="captcha_code left">
+                        <img class="captcha" src="https://www.zameen.com/captcha" />
+                    </div>
+                    <div class="refresh left">
+                        <img class="refresh_captcha" src="https://www.zameen.com/zameen/images/refresh.png" alt="Refresh">
+                    </div>
+                </div>*@
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Security Code" style="width: 60%;">
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" id="agreed" checked>
+                    <label for="agreed"> I have read and I agree to the ApnaGhar.com Terms and Conditions</label>
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" id="notify" checked>
+                    <label for="notify"> I would like to receive notifications about promotions, newsletters and updates.</label>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-success" style="width: 100%;" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
