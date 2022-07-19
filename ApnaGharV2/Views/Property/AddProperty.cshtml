@@ -15,7 +15,7 @@
 <div style="background-color:#E7E7E7;">
 <div class="container" id="container-addproperty" style="background-color:white;">
 
-<form asp-action="AddProperty" asp-controller="User">
+<form asp-action="AddProperty" asp-controller="Property">
 
     <h4 class="fw-bold">Add a Property</h4>
     <span style="color: red;">*</span>
@@ -57,11 +57,7 @@
             </div>
      </div>
      @*homes subcategories (added through ajax)*@
-     <div id="sub-categories"></div>
-     @*plots subcategories*@
-     <div id="homes-categories"></div>
-     @*commercial subcategories*@
-     <div id="homes-categories"></div>
+     <div id="sub-categories" class="row"></div>
 
      @*cities*@
      <div class="row justify-content-center p-1">
@@ -69,11 +65,11 @@
              City: <span style="color: red;">*</span>
         </label>
             <div class="col-5">
-              <select class="form-select" aria-label="Default select example" required>
+              <select class="form-select" aria-label="Default select example" required disabled>
               <option selected>Select City</option>
               <option value="1">Lahore</option>
               <option value="2">Karachi</option>
-              <option value="3">Sialkot</option>
+              <option value="3">Islamabad</option>
             </select>
             </div>
      </div>

@@ -75,12 +75,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5ld01lbWJlckFkZFByb3BlcnR5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_HomesSubCategories.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ib21lc1N1YkNhdGVnb3JpZXMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_MakeProductCards.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NYWtlUHJvZHVjdENhcmRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_PropertySubCategories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9wZXJ0eVN1YkNhdGVnb3JpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_ValidationScriptsPartial.cshtml]

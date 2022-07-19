@@ -18,12 +18,10 @@ $('.sub-type').on('change', function () {
 //display in respective divs
 $(document).ready(function () {
 	$('.type').click(function () {
-		var id = $(this).attr('id');
-		//alert(id);
-		$.post('/Property/GetSubCategories', id);
-		$.get('/Property/GetSubCategories', function (result) {
+		var iid = $(this).attr('id');
+		$.get('/Property/GetSubCategories', {id: iid}, function (result) {
 			$('#sub-categories').html(result);
-		});
+        });
     })
 });
 

@@ -7,10 +7,10 @@ namespace ApnaGharV2.Controllers
 {
     public class PropertyController : Controller
     {
-        /*public IActionResult Index()
+        public IActionResult Index()
         {
             return View();
-        }*/
+        }
 
         [HttpGet]
         public ViewResult ViewProperty(int id)
@@ -55,30 +55,24 @@ namespace ApnaGharV2.Controllers
         }
 
         //partial view return for ajax
-        string[] subCategories = null;
 
-        [HttpPost]
-        public void GetSubCategories(string id)
+        //[HttpGet]
+        public PartialViewResult GetSubCategories(string id)
         {
-            Console.WriteLine(id);
-            if (id == "homes")
+            string[]? subCategories = null;
+            if (id.Equals("homes"))
             {
-                subCategories = new string[] { "House", "Flat", "Upper Portion", "Lower Portion", "Room", "Farm House", "Pent House" };
+                subCategories = new string[] { "House", "Flat", "Room", "Upper Portion", "Lower Portion", "Farm House", "Pent House", "Other" };
             }
-            else if (id == "plots")
+            else if (id.Equals("plots"))
             {
-                subCategories = new string[] { "Residential Plot", "Commercial Plot", "Agricultural Land", "Industrial Land" };
+                subCategories = new string[] { "Residential Plot", "Commercial Plot", "Agricultural Land", "Industrial Land", "Other" };
             }
-            else if (id == "commercial")
+            else if (id.Equals("commercial"))
             {
                 subCategories = new string[] { "Office", "Shop", "Warehouse", "Factory", "Building", "Other" };
             }
-        }
-
-        [HttpGet]
-        public PartialViewResult GetSubCategories()
-        {
-            return PartialView("_HomeSubCategories", subCategories);
+            return PartialView("_PropertySubCategories", subCategories);
         }
     }
 }
