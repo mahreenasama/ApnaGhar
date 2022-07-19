@@ -49,6 +49,7 @@ a {
     font-weight: bold;
     padding: 5px;
     margin: 10px;
+    border-radius: 5px;
 }
 
 .addpthings {

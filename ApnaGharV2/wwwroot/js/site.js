@@ -22,7 +22,9 @@ $(document).ready(function () {
 		$.get('/Property/GetSubCategories', {id: iid}, function (result) {
 			$('#sub-categories').html(result);
         });
-    })
+	})
+
+	
 });
 
 
