@@ -24,7 +24,13 @@ $(document).ready(function () {
         });
 	})
 
-	
+	$('.select-city').change(function () {
+		var cityy = $(this).val();
+		alert(city);
+		$.get('/Property/GetCityLocations', { city: cityy }, function (result) {
+			$('#sub-categories').html(result);
+		});
+    })
 });
 
 

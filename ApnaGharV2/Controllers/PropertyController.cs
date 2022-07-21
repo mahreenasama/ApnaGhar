@@ -62,11 +62,11 @@ namespace ApnaGharV2.Controllers
             string[]? subCategories = null;
             if (id.Equals("homes"))
             {
-                subCategories = new string[] { "House", "Flat", "Room", "Upper Portion", "Lower Portion", "Farm House", "Pent House", "Other" };
+                subCategories = new string[] { "House", "Flat", "Room", "Upper Portion", "Lower Portion", "Farm House", "Pent House" };
             }
             else if (id.Equals("plots"))
             {
-                subCategories = new string[] { "Residential Plot", "Commercial Plot", "Agricultural Land", "Industrial Land", "Other" };
+                subCategories = new string[] { "Residential Plot", "Commercial Plot", "Agricultural Land", "Industrial Land", "Plot File", "Plot Form" };
             }
             else if (id.Equals("commercial"))
             {

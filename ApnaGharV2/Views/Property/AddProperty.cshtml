@@ -65,8 +65,8 @@
              City: <span style="color: red;">*</span>
         </label>
             <div class="col-5">
-              <select class="form-select" aria-label="Default select example" required disabled>
-              <option selected>Select City</option>
+              <select class="form-select" aria-label="Default select example" required id="select-city">
+              <option disabled selected>Select City</option>
               <option value="1">Lahore</option>
               <option value="2">Karachi</option>
               <option value="3">Islamabad</option>
@@ -79,8 +79,17 @@
             Location: <span style="color: red;">*</span>
         </label>
             <div class=" col-5">
-            <input type="text" required placeholder="Enter location here" class="form-control" name="location"/>
-            <button id="map-it-btn">Map It!</button>    
+            <input type="text" class="form-control" name="location" list="citylocations" required placeholder="Enter location here"/>
+            </div>
+        <datalist id="citylocations"></datalist>
+     </div>
+
+     <div class="row justify-content-center p-1">
+        <label for="address" class="col-2">
+            Address: <span style="color: red;">*</span>
+        </label>
+            <div class="col-5">
+            <input type="text" required placeholder="Property Address" class="form-control" name="address"/>
             </div>
      </div>
 
@@ -110,10 +119,17 @@
 
      <div class="row justify-content-center p-1">
         <label for="type" class="col-2">
-             Price(PKR): <span style="color: red;">*</span>
+             Price (PKR): <span style="color: red;">*</span>
         </label>
-            <div class="col-5">
-              <input type="text" required class="form-control"/>
+            <div class="col-2">
+              <input type="number" required class="form-control"/>
+            </div>
+            <div class=" col-3">
+            <select class="form-select" aria-label="Default select example" required>
+              <option selected value="1">Lakh</option>
+              <option value="2">Crore</option>
+              <option value="3">Thousand</option>
+              </select>
             </div>
      </div>
 
@@ -122,7 +138,7 @@
             Land Area: <span style="color: red;">*</span>
         </label>
             <span class=" col-2">
-                <input type="text" required class="form-control"/>
+                <input type="number" required class="form-control"/>
             </span>
         @*<label for="type" class="col-auto">
             Unit: 
@@ -134,6 +150,7 @@
               <option value="3">Square Meters</option>
               <option value="4">Marla</option>
               <option value="5">Kanal</option>
+              <option value="6">Acre</option>
               </select>
             </div>
      </div>
@@ -175,25 +192,22 @@
               <option value="8">8</option>
               <option value="9">9</option>
               <option value="10">10</option>
+              <option value="morethan10">10+</option>
               </select>
             </div>
      </div>
-
-     <div class="row justify-content-center p-1">
-          <label for="type" class="col-2">
-            Expires After: <span style="color: red;">*</span>
+     @*<div class="row justify-content-center p-1">
+        <label for="fearures" class="col-2">
+            Features:
         </label>
-        <div class=" col-5">
-            <select class="form-select" aria-label="Default select example" required>
-              <option value="1month">1 Month</option>
-              <option value="3months">3 Months</option>
-              <option value="6months">6 Months</option>
-              </select>
+            <div class=" col-5">
+                <button class="btn btn-primary" style="background-color:blue;">Add Features</button>
             </div>
      </div>
+    @*added by ajax*@
+     @*<div id="property-features"></div>*@
 
     @*portion 3*@
-
     <div class="add-property-legend">
         ADD IMAGES
     </div>
@@ -204,33 +218,8 @@
          @*<button id="add-images-btn"><i class="fa fa-plus"></i> Add Images</button>*@
     </div>
 
-    @*portion 4*@
-
-    <div class="add-property-legend">
-        CONTACT DETAILS
-    </div>
-
-    <div class="row justify-content-center p-1">
-          <label for="type" class="col-3">
-            Membership Status: <span style="color: red;">*</span>
-        </label>
-        <div class="form-check form-check-inline col-2">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked onclick="existingMember()">
-          <label class="form-check-label" for="inlineRadio1">Existing Member</label>
-        </div>
-        <div class="form-check form-check-inline col-3">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onclick="newMember()">
-          <label class="form-check-label" for="inlineRadio2">New Member (Free)</label>
-        </div>
-     </div>
-
-     @*partial view*@
-
-     <div id="memberCheck">
-     <partial name="ExistingMemberAddProperty" />
-     </div>
-
-     <div class="row justify-content-center p-3">
+    @*submit button*@
+    <div class="row justify-content-center p-3">
          <input type="submit" value="SUBMIT PROPERTY" class="btn btn-secondary col-3 fw-bold"/>
     </div>
 </form>
