@@ -4,7 +4,7 @@ using ApnaGharV2.Models;
 using System.Collections.Generic;
 
 namespace ApnaGharV2.Controllers
-{
+{ 
     public class PropertyController : Controller
     {
         public IActionResult Index()
@@ -73,6 +73,72 @@ namespace ApnaGharV2.Controllers
                 subCategories = new string[] { "Office", "Shop", "Warehouse", "Factory", "Building", "Other" };
             }
             return PartialView("_PropertySubCategories", subCategories);
+        }
+
+        //locations of a particular city
+
+        //[HttpGet]
+        public List<string> GetCityLocations(string city)
+        {
+            List<string>? locations = null;
+            if (city == "Lahore")
+            {
+                locations= new List<string>();
+                locations.Add("Allama Iqbal Town");
+                locations.Add("Bahria Town");
+                locations.Add("DHA");
+                locations.Add("DHA Phase 1");
+                locations.Add("DHA Phase 2");
+                locations.Add("DHA Phase 3");
+                locations.Add("DHA Phase 4");
+                locations.Add("DHA Phase 5");
+                locations.Add("DHA Phase 6");
+                locations.Add("DHA Phase 7");
+                locations.Add("DHA Phase 8");
+                locations.Add("Faisal Town");
+                locations.Add("Garden Town");
+                locations.Add("Gulberg");
+                locations.Add("Johar Town");
+                locations.Add("Lahore Cantt");
+                locations.Add("Model Town");
+                locations.Add("Shahdara Town");
+                locations.Add("Wapda Town");
+                locations.Add("Other");
+            }
+            else if (city == "Karachi")
+            {
+                locations = new List<string>();
+                locations.Add("Bahria Town");
+                locations.Add("Garden East");
+                locations.Add("Jahangir Town");
+                locations.Add("DHA Defence");
+                locations.Add("DHA Clifton");
+                locations.Add("Gulshan-e-Iqbal");
+                locations.Add("Nazimabad");
+                locations.Add("Other");
+            }
+            else if (city == "Islamabad")
+            {
+                locations = new List<string>();
+                locations.Add("Bahria Town");
+                locations.Add("DHA");
+                locations.Add("DHA Phase 1");
+                locations.Add("DHA Phase 2");
+                locations.Add("DHA Phase 3");
+                locations.Add("DHA Phase 4");
+                locations.Add("DHA Phase 5");
+                locations.Add("Gulberg");
+                locations.Add("Shalimar Town");
+                locations.Add("Wapda Town");
+                locations.Add("Iqbal Town");
+                locations.Add("Pakistan Town");
+                locations.Add("Madina Town");
+                locations.Add("Bani Gala");
+                locations.Add("Media Town");
+                locations.Add("Shalimar Town");
+                locations.Add("Other");
+            }
+            return locations;
         }
     }
 }

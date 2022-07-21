@@ -23,15 +23,23 @@ $(document).ready(function () {
 			$('#sub-categories').html(result);
         });
 	})
-
-	$('.select-city').change(function () {
-		var cityy = $(this).val();
-		alert(city);
-		$.get('/Property/GetCityLocations', { city: cityy }, function (result) {
-			$('#sub-categories').html(result);
-		});
-    })
 });
+$(document).ready(function () {
+	$('#select-city').change(function () {
+		var cityy = $(this).val();
+		//alert(cityy);
+		$.get('/Property/GetCityLocations', { city: cityy }, function (result) {
+			let str = "";
+			let prevHtml = $('#citylocations').html();
+			for (let i = 0; i < result.length; i++) {
+				//str += `<option value="${result[i]}">`
+				str += "<option>" + result[i] + "</option>";
+			}
+			//alert(str);
+			$('#citylocations').html(prevHtml+str);
+		});
+	})
+})
 
 
 //javascript
