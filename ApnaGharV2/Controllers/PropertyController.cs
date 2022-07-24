@@ -80,10 +80,9 @@ namespace ApnaGharV2.Controllers
         //[HttpGet]
         public List<string> GetCityLocations(string city)
         {
-            List<string>? locations = null;
+            List<string>? locations = new List<string>();
             if (city == "Lahore")
             {
-                locations= new List<string>();
                 locations.Add("Allama Iqbal Town");
                 locations.Add("Bahria Town");
                 locations.Add("DHA");
@@ -107,7 +106,6 @@ namespace ApnaGharV2.Controllers
             }
             else if (city == "Karachi")
             {
-                locations = new List<string>();
                 locations.Add("Bahria Town");
                 locations.Add("Garden East");
                 locations.Add("Jahangir Town");
@@ -119,7 +117,6 @@ namespace ApnaGharV2.Controllers
             }
             else if (city == "Islamabad")
             {
-                locations = new List<string>();
                 locations.Add("Bahria Town");
                 locations.Add("DHA");
                 locations.Add("DHA Phase 1");

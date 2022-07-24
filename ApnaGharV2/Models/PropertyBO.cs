@@ -12,23 +12,25 @@
 
         public string City { get; set; } //in which city this property reside
 
-        public string Location { get; set; } //full map location
+        public string Area { get; set; } //where property is located
+        public string Address { get; set; } //full address
 
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         public string Description { get; set; }
 
-        public int Price { get; set; }
+        public string Price { get; set; }   //save as 45 Lakh
+
+        public string Size { get; set; }    //save as 12 Sqft
 
         public int Bedrooms { get; set; }
 
         public int Bathrooms { get; set; }
 
-        public int ExpiresAfter { get; set; }
 
         public string Image { get; set; }
 
-        /*public string owner { get; set; }*/
+        public int OwnerId { get; set; }
 
     }
 }
