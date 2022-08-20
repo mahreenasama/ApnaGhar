@@ -15,7 +15,7 @@
 <div style="background-color:#E7E7E7;">
 <div class="container" id="container-addproperty" style="background-color:white;">
 
-<form asp-action="AddProperty" asp-controller="Property">
+<form asp-action="AddProperty" asp-controller="Property" enctype="multipart/form-data">
 
     <h4 class="fw-bold">Add a Property</h4>
     <span style="color: red;">*</span>
@@ -81,6 +81,7 @@
             <div class=" col-5">
                 <select id="citylocations" class="form-control" required name="area">
                     <option disabled selected>Select Area</option>
+                    <option disabled >Select City first</option>
                 </select>
             </div>
      </div>
@@ -114,7 +115,7 @@
             Description: <span style="color: red;">*</span>
         </label>
             <div class=" col-5" required>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
             </div>
      </div>
 
@@ -123,7 +124,7 @@
              Price (PKR): <span style="color: red;">*</span>
         </label>
             <div class="col-2">
-              <input type="number" required class="form-control"/>
+              <input type="number" required class="form-control" min="0"/>
             </div>
             <div class=" col-3">
             <select class="form-select" aria-label="Default select example" required>
@@ -139,7 +140,7 @@
             Land Area: <span style="color: red;">*</span>
         </label>
             <span class=" col-2">
-                <input type="number" required class="form-control"/>
+                <input type="number" required class="form-control" min="0"/>
             </span>
         @*<label for="type" class="col-auto">
             Unit: 
@@ -161,7 +162,8 @@
             Bedrooms: <span style="color: red;">*</span>
         </label>
         <div class=" col-5">
-            <select class="form-select" aria-label="Default select example" required>
+            <input type="number" required class="form-control" min="0"/>
+            @*<select class="form-select" aria-label="Default select example" required>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">2</option>
@@ -173,7 +175,7 @@
               <option value="9">9</option>
               <option value="10">10</option>
               <option value="morethan10">10+</option>
-              </select>
+              </select>*@
             </div>
      </div>
 
@@ -182,7 +184,8 @@
             Bathrooms: <span style="color: red;">*</span>
         </label>
         <div class=" col-5">
-            <select class="form-select" aria-label="Default select example" required>
+            <input type="number" required class="form-control" min="0"/>
+            @*<select class="form-select" aria-label="Default select example" required>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">2</option>
@@ -194,7 +197,7 @@
               <option value="9">9</option>
               <option value="10">10</option>
               <option value="morethan10">10+</option>
-              </select>
+              </select>*@
             </div>
      </div>
      @*<div class="row justify-content-center p-1">
@@ -211,9 +214,9 @@
 
      <div class="row justify-content-center p-1">
 
-     <button type="button" style="background-color:blue;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#amenitiesmodal">
+     @*<button type="button" style="background-color:blue;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#amenitiesmodal">
         <i class="fa fa-plus"></i> Add Features
-    </button>
+    </button>*@
 </div>
 
     @*portion 3*@
@@ -222,9 +225,8 @@
     </div>
     <div class="row justify-content-center p-3">
         <div class="col-5">
-        <input class="form-control" type="file" id="formFileMultiple" multiple>
+        <input class="form-control" type="file" multiple asp-for="images" required>
         </div>
-         @*<button id="add-images-btn"><i class="fa fa-plus"></i> Add Images</button>*@
     </div>
 
     @*submit button*@
@@ -251,7 +253,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="row">
+
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -7,7 +7,7 @@
 @section NavBar2{
     <partial name="NavBar2" />
 }
-@model List<ApnaGharV2.User>
+@model List<ApnaGharV2.Models.User>
 
 <div class="text-center">
     <table class="table">
@@ -18,13 +18,12 @@
                 <th scope="col">Password</th>
                 <th scope="col">Name</th>
                 <th scope="col">PhoneNumber</th>
-                <th scope="col">Country</th>
                 <th scope="col">City</th>
                 <th scope="col">Role</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(ApnaGharV2.User user in Model)
+            @foreach(ApnaGharV2.Models.User user in Model)
             {
                 <tr>
                     <th scope="row">@user.Id</th>
@@ -32,9 +31,8 @@
                     <td>@user.Password</td>
                     <td>@user.Name</td>
                     <td>@user.PhoneNumber</td>
-                    <td>@user.Country</td>
                     <td>@user.City</td>
-                    <td>@user.Role</td>
+                    <td>@user.RegisterAs</td>
                 </tr>
             }
         </tbody>

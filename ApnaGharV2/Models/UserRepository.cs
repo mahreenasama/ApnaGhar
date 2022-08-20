@@ -15,7 +15,7 @@ namespace ApnaGharV2.Models
 
         public static bool SaveUser(User user)
         {
-            var context = new ApnaGharV2_DBContext();
+            /*var context = new ApnaGharV2_DBContext();
             context.Users.Add(user);
             int n = context.SaveChanges();
             if (n > 0)
@@ -25,11 +25,12 @@ namespace ApnaGharV2.Models
             else
             {
                 return false;
-            }
+            }*/
+            return false;
         }
         public static bool LoginUser(User user)
         {
-            var context = new ApnaGharV2_DBContext();
+            /*var context = new ApnaGharV2_DBContext();
 
             Func<User,bool> func=(u) =>{
                 if(u.Email==user.Email && u.Password == user.Password)
@@ -47,11 +48,13 @@ namespace ApnaGharV2.Models
             else
             {
                 return false;
-            }
+            }*/
+            return false;
+
         }
         public static bool UserAlreadyExist(User user)
         {
-            var context = new ApnaGharV2_DBContext();
+            /*var context = new ApnaGharV2_DBContext();
 
             var query = context.Users.Where(u => u.Email == user.Email);
 
@@ -63,13 +66,14 @@ namespace ApnaGharV2.Models
             else
             {
                 return false;
-            }
+            }*/
+            return false;
+
         }
         public static List<User> GetAllUsers()
         {
-            var context = new ApnaGharV2_DBContext();
+            /*var context = new ApnaGharV2_DBContext();
 
-            users = new List<User>();
 
             var query = context.Users;      //get all
             foreach(var user in query)
@@ -87,9 +91,12 @@ namespace ApnaGharV2.Models
                 u.Role = user.Role;
 
                 users.Add(u);
-            }
+            }*/
             
+            users = new List<User>();
+
             return users;
+
         }
     }
 }

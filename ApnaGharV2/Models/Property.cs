@@ -14,18 +14,26 @@
 
         public string Area { get; set; } //where property is located
         public string Address { get; set; } //full address
-        public string Bedrooms { get; set; } //full address
-        public string Bathrooms { get; set; } //full address
+        
 
         public string Title { get; set; }
 
         public string Description { get; set; }
 
-        public string Price { get; set; }   //save as 45 Lakh
+        public int Price { get; set; }   //save as 45 
+        public string PriceUnit { get; set; }   //save as 45 lack 
 
-        public string Size { get; set; }    //save as 12 Sqft
 
-        public string Image { get; set; }
+        public int Size { get; set; }    //save as 12 Sqft
+        public string SizeUnit { get; set; }    //save as 12 Sqft
+
+        public int Bedrooms { get; set; } //full address
+        public int Bathrooms { get; set; } //full address
+
+
+        public List<IFormFile> images {get; set;}
+
+        public string ImagesPath { get; set; }
 
         public int OwnerId { get; set; }
 

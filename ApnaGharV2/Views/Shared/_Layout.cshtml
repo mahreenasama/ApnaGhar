@@ -114,7 +114,8 @@
         <!-- another navigation bar -->
         @RenderSection("NavBar2",false)
     </header>
-    <!-- Modal login---------------->
+    
+   <!-- Modal login---------------->
         <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -135,12 +136,12 @@
                         <div class="my-2 text-center">
                             OR
                         </div>
-                    <form asp-controller="User" asp-action="SignIn" method="post">
+                    <form asp-controller="User" asp-action="Login" method="post">
                         <div class="mb-3">
                             <input type="Email" name="Email" class="form-control" placeholder="Email*">
                         </div>
                         <div class="mb-3">
-                            <input type="password" name="Password" class="form-control" placeholder="Password*">
+                            <input type="Password" name="Password" class="form-control" placeholder="Password*">
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-success" style="width: 100%;">LOGIN</button>
@@ -156,7 +157,7 @@
                         
                     </div>
                     <div class="modal-footer">
-                        <a type="button" class="btn btn-outline-success" style="width: 100%;" asp-controller="user" asp-action="signup">BECOME A FREE MEMBER</a>
+                        <a type="button" class="btn btn-outline-success" style="width: 100%;" asp-controller="user" asp-action="Register">BECOME A FREE MEMBER</a>
                     </div>
                 </div>
             </div>

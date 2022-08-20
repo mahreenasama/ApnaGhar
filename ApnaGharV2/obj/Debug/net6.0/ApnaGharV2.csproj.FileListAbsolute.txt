@@ -7,6 +7,9 @@ C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\ApnaG
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\ApnaGharV2.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\ApnaGharV2.pdb
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Humanizer.dll
+C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -14,6 +17,8 @@ C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Micro
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
@@ -59,12 +64,3 @@ C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\obj\Debug\net6.0\refin
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\obj\Debug\net6.0\ApnaGharV2.pdb
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\obj\Debug\net6.0\ApnaGharV2.genruntimeconfig.cache
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\obj\Debug\net6.0\ref\ApnaGharV2.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\System.Web.Razor.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.Web.Helpers.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\System.Web.Helpers.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\System.Web.WebPages.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\WebMatrix.Data.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\WebMatrix.WebData.dll
-C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

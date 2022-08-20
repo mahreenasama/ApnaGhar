@@ -12,9 +12,11 @@ $('.purpose').on('change', function () {
 $('.type').on('change', function () {
 	$('.type').not(this).prop('checked', false);
 });
-$('.sub-type').on('change', function () {
+function SubtypeChange() {
+	/*alert('subtype');*/
 	$('.sub-type').not(this).prop('checked', false);
-});
+}
+
 //display in respective divs
 $(document).ready(function () {
 	$('.type').click(function () {
