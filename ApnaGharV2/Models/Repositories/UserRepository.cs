@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using ApnaGharV2.Models.Interfaces;
 
 namespace ApnaGharV2.Models
 {
-    public class UserRepository
+    public class UserRepository:IUserRepository
     {
         public static List<User>? users;
 
@@ -92,7 +93,7 @@ namespace ApnaGharV2.Models
 
                 users.Add(u);
             }*/
-            
+
             users = new List<User>();
 
             return users;

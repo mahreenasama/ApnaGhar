@@ -1,8 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
+using ApnaGharV2.Models.Interfaces;
 
 namespace ApnaGharV2.Models
 {
-    public class PropertyRepository
+    public class PropertyRepository:IPropertyRepository
     {
         static string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ApnaGharDB_Final;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 

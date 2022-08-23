@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApnaGharV2.Models;
+using ApnaGharV2.Models.Repositories;
+using ApnaGharV2.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace ApnaGharV2.Controllers
@@ -12,12 +14,16 @@ namespace ApnaGharV2.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly IUserRepository userRepo;    //reference of interface at class level
 
-        public UserController(UserManager<ApplicationUser> uManager,
-                                 SignInManager<ApplicationUser> sManager)
+
+        public UserController(UserManager<ApplicationUser> userManager,
+                                 SignInManager<ApplicationUser> signInManager,
+                                 IUserRepository userRepo)
         {
-            userManager = uManager;     //manages user add,delete
-            signInManager = sManager;   //manages signin, signout
+            this.userManager = userManager;     //manages user add,delete
+            this.signInManager = signInManager;   //manages signin, signout
+            this.userRepo = userRepo;       //refernce of interface at class level
         }
 
         //---------------------- sign up------------------------

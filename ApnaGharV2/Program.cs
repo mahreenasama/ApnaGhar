@@ -1,11 +1,19 @@
 using ApnaGharV2.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ApnaGharV2.Models.Interfaces;
+using ApnaGharV2.Models.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// injecting objects
+builder.Services.AddSingleton<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IPropertyRepository, PropertyRepository>();
+builder.Services.AddSingleton<IEnquiryRepository, EnquiryRepository>();
+builder.Services.AddSingleton<IAgencyRepository, AgencyRepository>();
+
 
 //------------------------------- Identity----------------------------
 

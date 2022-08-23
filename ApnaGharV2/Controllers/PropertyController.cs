@@ -4,14 +4,20 @@ using ApnaGharV2.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 
+using ApnaGharV2.Models.Interfaces;
+using ApnaGharV2.Models.Repositories;
+
 namespace ApnaGharV2.Controllers
 { 
     public class PropertyController : Controller
     {
         private IWebHostEnvironment Environment;
-        public PropertyController(IWebHostEnvironment _e)
+        private readonly IPropertyRepository propertyRepo;    //reference of interface at class level
+
+        public PropertyController(IWebHostEnvironment _e, IPropertyRepository propertyRepo)
         {
             Environment = _e;       //inject service using constructor
+            this.propertyRepo = propertyRepo;
         }
 
         //--------------------------methods---------------
