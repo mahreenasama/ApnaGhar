@@ -5,71 +5,126 @@ namespace ApnaGharV2.Models
 {
     public class PropertyRepository:IPropertyRepository
     {
-        static string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ApnaGharDB_Final;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //static string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ApnaGharDB_Final;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public bool AddProperty(Property p)
+        public bool AddProperty(PropertyInfo p)
         {
-            SqlConnection conn = new SqlConnection(connStr);
+            var context = new ApnaGharV2_DBContext();
 
-            //---------- saving images -----------
+            p.CreatedBy = 1;
+            p.CreatedDate = System.DateTime.Now;                //adding additive information
+            p.ModifiedBy = 1;
+            p.ModifiedDate = System.DateTime.Now;
 
-
-            //--------getting logged-in user id ?------------
-
-            int OwnerID = 1;
-            string query = $"insert into Properties values ({p.Purpose},{p.Type},{p.SubType},{p.City},{p.Area},{p.Address},{p.Title},{p.Description},{p.Price}{p.PriceUnit},{p.Size},{p.SizeUnit}{p.Bathrooms},{p.ImagesPath},{OwnerID})";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            conn.Open();
-
-            int n = cmd.ExecuteNonQuery();
-
-
+            context.Properties.Add(p);
+            int n = context.SaveChanges();
             if (n > 0)
             {
-                conn.Close();
-
                 return true;
             }
-            conn.Close();
-
-            return false;
-        }
-
-        public static List<Property> ViewAllProperties()
-        {
-            List<Property> ps = new List<Property>();
-
-            SqlConnection conn = new SqlConnection(connStr);
-            string query = "select * from Properties";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            conn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
+            else
             {
-                Property p = new Property();
-
-                p.Id = (int)dr[0];
-                p.Purpose = (string)dr[1];
-                p.Type = (string)dr[2];
-                p.SubType = (string)dr[3];
-                p.City = (string)dr[4];
-                p.Area = (string)dr[5];
-                p.Address = (string)dr[6];
-                p.Title = (string)dr[7];
-                p.Description = (string)dr[8];
-                p.Price = (int)dr[9];
-                p.PriceUnit = (string)dr[10];
-                p.Size = (int)dr[11];
-                p.SizeUnit = (string)dr[12];
-                p.Bedrooms = (int)dr[13];
-                p.Bathrooms = (int)dr[14];
-                p.ImagesPath = (string)dr[15];
-                p.OwnerId = (int)dr[16];
-
-                ps.Add(p);
+                return false;
             }
-            conn.Close();
-            return ps;
+        }
+        public bool UpdateProperty(int id, PropertyInfo newData)
+        {
+            var context = new ApnaGharV2_DBContext();
+
+            var property = (PropertyInfo)context.Properties.Where(p => p.PropertyID == id);
+
+            property.PropertyID = newData.PropertyID;
+            property.Purpose = newData.Purpose;
+            property.Type = newData.Type;
+            property.SubType = newData.SubType;
+            property.City = newData.City;
+            property.Area = newData.Area;
+            property.Address = newData.Address;
+            property.Title = newData.Title;
+            property.Description = newData.Description;
+            property.Price = newData.Price;
+            property.PriceUnit = newData.PriceUnit;
+            property.Size = newData.Size;
+            property.SizeUnit = newData.SizeUnit;
+            property.Bedrooms = newData.Bedrooms;
+            property.Bathrooms = newData.Bathrooms;
+            property.ImagesPath = newData.ImagesPath;
+
+            property.ModifiedBy = 1;
+            property.ModifiedDate = System.DateTime.Now;
+
+            int n = context.SaveChanges();
+            if (n > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool DeleteProperty(int id)
+        {
+            var context = new ApnaGharV2_DBContext();
+
+            var property = context.Properties.Where(p => p.PropertyID == id);  //getting the property
+
+            context.Properties.Remove((PropertyInfo)property);
+
+            int n = context.SaveChanges();
+            if (n > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public PropertyInfo SearchProperty(int id)
+        {
+            var context = new ApnaGharV2_DBContext();
+
+            var property = context.Properties.Where(p => p.PropertyID == id);  //getting the property
+
+            if (property.Count() > 0)     //means property found
+            {
+                return (PropertyInfo)property;  //returning by converting into property
+            }
+            return null;
+        }
+        public List<PropertyInfo> ViewAllProperties()
+        {
+            List<PropertyInfo> propList = new List<PropertyInfo>();
+
+            var context = new ApnaGharV2_DBContext();
+
+            var query = context.Properties;      //get all
+            foreach (var property in query)
+            {
+                PropertyInfo p = new PropertyInfo();
+
+                p.PropertyID = property.PropertyID;
+                p.Purpose = property.Purpose;
+                p.Type = property.Type;
+                p.SubType = property.SubType;
+                p.City = property.City;
+                p.Area = property.Area;
+                p.Address = property.Address;
+                p.Title = property.Title;
+                p.Description = property.Description;
+                p.Price = property.Price;
+                p.PriceUnit = property.PriceUnit;
+                p.Size = property.Size;
+                p.SizeUnit = property.SizeUnit;
+                p.Bedrooms = property.Bedrooms;
+                p.Bathrooms = property.Bathrooms;
+                p.ImagesPath = property.ImagesPath;
+                p.UserID = property.UserID;
+
+                propList.Add(p);
+            }
+            return propList;
         }
 
     }

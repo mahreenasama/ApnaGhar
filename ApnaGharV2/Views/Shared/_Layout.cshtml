@@ -1,5 +1,4 @@
-﻿@*@model ApnaGharV2.Models.UserBO*@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,7 +135,7 @@
                         <div class="my-2 text-center">
                             OR
                         </div>
-                    <form asp-controller="User" asp-action="Login" method="post">
+                    <form asp-controller="Account" asp-action="Login" method="post">
                         <div class="mb-3">
                             <input type="Email" name="Email" class="form-control" placeholder="Email*">
                         </div>
@@ -157,7 +156,7 @@
                         
                     </div>
                     <div class="modal-footer">
-                        <a type="button" class="btn btn-outline-success" style="width: 100%;" asp-controller="user" asp-action="Register">BECOME A FREE MEMBER</a>
+                        <a type="button" class="btn btn-outline-success" style="width: 100%;" asp-controller="Account" asp-action="Register">BECOME A FREE MEMBER</a>
                     </div>
                 </div>
             </div>

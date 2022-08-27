@@ -23,12 +23,12 @@ string connString = builder.Configuration.GetConnectionString("DefaultConnection
 var migrationAssembly = typeof(Program).Assembly.GetName().Name;
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options =>
+/*builder.Services.AddDbContext<AppDbContext>(options =>
            options.UseSqlServer(connString, sql => sql.MigrationsAssembly(migrationAssembly)));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
-
+*/
 
 
 var app = builder.Build();
