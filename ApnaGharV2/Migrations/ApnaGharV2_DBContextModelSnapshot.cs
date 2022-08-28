@@ -49,10 +49,10 @@ namespace ApnaGharV2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ModifiedBy")
+                    b.Property<int?>("ModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ModifiedDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -92,10 +92,10 @@ namespace ApnaGharV2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ModifiedBy")
+                    b.Property<int?>("ModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ModifiedDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -179,10 +179,10 @@ namespace ApnaGharV2.Migrations
                     b.Property<bool?>("MaintenanceStaff")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ModifiedBy")
+                    b.Property<int?>("ModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ModifiedDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("NearbyHospitals")
@@ -270,17 +270,17 @@ namespace ApnaGharV2.Migrations
 
                     b.Property<string>("Area")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<int>("Bathrooms")
+                    b.Property<int?>("Bathrooms")
                         .HasColumnType("int");
 
-                    b.Property<int>("Bedrooms")
+                    b.Property<int?>("Bedrooms")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(10)");
 
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
@@ -296,10 +296,10 @@ namespace ApnaGharV2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ModifiedBy")
+                    b.Property<int?>("ModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ModifiedDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Price")
@@ -322,15 +322,16 @@ namespace ApnaGharV2.Migrations
 
                     b.Property<string>("SubType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(10)");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
@@ -378,10 +379,10 @@ namespace ApnaGharV2.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int>("ModifiedBy")
+                    b.Property<int?>("ModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ModifiedDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")

@@ -4,7 +4,7 @@
 @{
 }
 
-@model ApnaGharV2.Models.ViewModels.Property
+@model ApnaGharV2.Models.PropertyInfo
 
 @section NavBar2{
     <partial name="NavBar2" />
@@ -15,7 +15,7 @@
 <div style="background-color:#E7E7E7;">
 <div class="container" id="container-addproperty" style="background-color:white;">
 
-<form enctype="multipart/form-data" id="addPropertyForm" novalidate class="needs-validation">
+<form enctype="multipart/form-data" id="addPropertyForm" asp-controller="property" asp-action="AddProperty">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <h4 class="fw-bold">Add a Property</h4>
@@ -28,32 +28,32 @@
         </div>
 
     <div class="row justify-content-center p-1">
-        <label class="col-2">
+        <label class="col-2" asp-for="Purpose">
             Purpose: <span style="color: red;">*</span>
         </label>
         <div class="col-5 btn-group btn-group-toggle" data-toggle="buttons" required>
             <label class="btn btn-light btn-outline-secondary">
-                <input type="checkbox" class="purpose" id="sale" value="sale" asp-for="MyPropInfo.Purpose"> For Sale
+                <input type="checkbox" class="purpose" id="sale" value="sale" asp-for="Purpose"> For Sale
               </label>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="checkbox" class="purpose" id="rent" value="rent" asp-for="MyPropInfo.Purpose"> For Rent
+                <input type="checkbox" class="purpose" id="rent" value="rent" asp-for="Purpose"> For Rent
               </label>
         </div>
      </div>
 
      <div class="row justify-content-center p-1">
-        <label for="type" class="col-2">
+        <label asp-for="Type" class="col-2">
             Property Type: <span style="color: red;">*</span>
         </label>
             <div class=" col-5 btn-group btn-group-toggle" data-toggle="buttons" required>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="checkbox" class="type" id="homes" asp-for="MyPropInfo.Type" value="Homes"> Homes
+                <input type="checkbox" class="type" id="homes" asp-for="Type" value="Homes"> Homes
               </label>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="checkbox" class="type" id="plots" asp-for="MyPropInfo.Type" value="Plots"> Plots
+                <input type="checkbox" class="type" id="plots" asp-for="Type" value="Plots"> Plots
               </label>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="checkbox" class="type" id="commercial" asp-for="MyPropInfo.Type" value="Commercial"> Commercial
+                <input type="checkbox" class="type" id="commercial" asp-for="Type" value="Commercial"> Commercial
               </label>
             </div>
      </div>
@@ -62,39 +62,60 @@
 
      @*cities*@
      <div class="row justify-content-center p-1">
-        <label for="city" class="col-2">
+        <label asp-for="City" class="col-2">
              City: <span style="color: red;">*</span>
         </label>
             <div class="col-5">
-              <select class="form-select" required id="select-city" asp-for="MyPropInfo.City">
-              <option disabled selected>Select City</option>
-              <option value="Lahore">Lahore</option>
+              <select class="form-select" required id="select-city" asp-for="City">
+              <option value="Lahore" selected>Lahore</option>
               <option value="Karachi">Karachi</option>
               <option value="Islamabad">Islamabad</option>
             </select>
             </div>
+        <div asp-validation-for="City" class="text-danger"></div>
      </div>
 
      <div class="row justify-content-center p-1">
-        <label for="area" class="col-2">
+        <label asp-for="Area" class="col-2">
             Area: <span style="color: red;">*</span>
         </label>
             <div class=" col-5">
-                <select id="citylocations" class="form-control" required name="area" asp-for="MyPropInfo.Area">
+                <select id="citylocations" class="form-control" required name="area" asp-for="Area">
                     <option disabled selected>Select Area</option>
-                    <option disabled >Select City first</option>
+                    <option>Allama Iqbal Town</option>
+                    <option>Bahria Town</option>
+                    <option>DHA</option>
+                    <option>DHA Phase 1</option>
+                    <option>DHA Phase 2</option>
+                    <option>DHA Phase 3</option>
+                    <option>DHA Phase 4</option>
+                    <option>DHA Phase 5</option>
+                    <option>DHA Phase 6</option>
+                    <option>DHA Phase 7</option>
+                    <option>DHA Phase 8</option>
+                    <option>Faisal Town</option>
+                    <option>Garden Town</option>
+                    <option>Gulberg</option>
+                    <option>Johar Town</option>
+                    <option>Lahore Cantt</option>
+                    <option>Model Town</option>
+                    <option>Shahdara Town</option>
+                    <option>Wapda Town</option>
+                    <option>Other</option>
                 </select>
             </div>
      </div>
 
      <div class="row justify-content-center p-1">
-        <label for="address" class="col-2">
-            Address: <span style="color: red;">*</span>
+        <label asp-for="Address" class="col-2">
+             Address: <span style="color: red;">*</span>
         </label>
             <div class="col-5">
-            <input type="text" required placeholder="Property Address" class="form-control" asp-for="MyPropInfo.Address"/>
+            <input required placeholder="Property Address" class="form-control" asp-for="Address"/>
             </div>
+        <div asp-validation-for="Address" class="text-danger"></div>
      </div>
+     
 
     @*portion 2*@
 
@@ -103,51 +124,51 @@
     </div>
 
     <div class="row justify-content-center p-1">
-        <label class="col-2">
+        <label asp-for="Title" class="col-2">
             Property Title: <span style="color: red;">*</span>
         </label>
         <div class=" col-5" required>
-            <input type="text" required class="form-control" asp-for="MyPropInfo.Title"/>
+            <input type="text" required class="form-control" asp-for="Title"/>
         </div>
+        <div asp-validation-for="Title" class="text-danger"></div>
      </div>
 
      <div class="row justify-content-center p-1">
-        <label for="description" class="col-2">
+        <label asp-for="Description" class="col-2">
             Description: <span style="color: red;">*</span>
         </label>
-            <div class=" col-5" required>
-                <textarea class="form-control" id="description" rows="3" required asp-for="MyPropInfo.Description"></textarea>
+            <div class="col-5" required>
+                <textarea class="form-control" rows="3" required asp-for="Description"></textarea>
             </div>
+        <div asp-validation-for="Description" class="text-danger"></div>
      </div>
 
      <div class="row justify-content-center p-1">
-        <label for="type" class="col-2">
+        <label asp-for="Price" class="col-2">
              Price (PKR): <span style="color: red;">*</span>
         </label>
             <div class="col-2">
-              <input type="number" required class="form-control" min="0" asp-for="MyPropInfo.Price"/>
+              <input type="number" required class="form-control" min="0" asp-for="Price"/>
             </div>
             <div class=" col-3">
-            <select class="form-select" aria-label="Default select example" required asp-for="MyPropInfo.PriceUnit">
+            <select class="form-select" aria-label="Default select example" required asp-for="PriceUnit">
               <option selected value="Lakh">Lakh</option>
               <option value="Crore">Crore</option>
               <option value="Thousand">Thousand</option>
               </select>
             </div>
+        <div asp-validation-for="Price" class="text-danger"></div>
      </div>
 
      <div class="row justify-content-center p-1">
-        <label for="type" class="col-2">
+        <label asp-for="Size" class="col-2">
             Land Area: <span style="color: red;">*</span>
         </label>
             <span class=" col-2">
-                <input type="number" required class="form-control" min="0" asp-for="MyPropInfo.Size"/>
+                <input type="number" required class="form-control" min="0" asp-for="Size"/>
             </span>
-        @*<label for="type" class="col-auto">
-            Unit: 
-        </label>*@
         <div class=" col-3">
-            <select class="form-select" aria-label="Default select example" required asp-for="MyPropInfo.SizeUnit">
+            <select class="form-select" aria-label="Default select example" required asp-for="SizeUnit">
               <option selected value="Sqft">Square Feet</option>
               <option value="SqYd">Square Yard</option>
               <option value="SqM">Square Meters</option>
@@ -156,26 +177,27 @@
               <option value="Acre">Acre</option>
               </select>
             </div>
+        <div asp-validation-for="Size" class="text-danger"></div>
      </div>
 
      <div class="row justify-content-center p-1">
-          <label for="type" class="col-2">
+          <label asp-for="Bedrooms" class="col-2">
             Bedrooms: <span style="color: red;">*</span>
         </label>
         <div class=" col-5">
-            <input type="number" required class="form-control" min="0" asp-for="MyPropInfo.Bedrooms"/>
-            
+            <input type="number" required class="form-control" min="0" asp-for="Bedrooms"/>
             </div>
+        <div asp-validation-for="Bedrooms" class="text-danger"></div>
      </div>
 
      <div class="row justify-content-center p-1">
-          <label for="type" class="col-2">
+          <label asp-for="Bathrooms" class="col-2">
             Bathrooms: <span style="color: red;">*</span>
         </label>
-        <div class=" col-5">
-            <input type="number" required class="form-control" min="0" asp-for="MyPropInfo.Bathrooms"/>
-            
+        <div class="col-5">
+            <input type="number" required class="form-control" min="0" asp-for="Bathrooms"/>
             </div>
+        <div asp-validation-for="Bathrooms" class="text-danger"></div>
      </div>
 
 @*--------- Add amenities ----------------*@
@@ -196,9 +218,9 @@
             </tr>
             <tr>
                 <td>Built in Year</td>
-                <td><input type="number" class="form-control" asp-for="MyPropInfo.MyPropAmenities.BuiltYear"/></td>
+                <td><input type="number" class="form-control" asp-for="MyPropAmenities.BuiltYear"/></td>
                 <td>View</td>
-                <td><input type="text" class="form-control" asp-for="MyPropInfo.MyPropAmenities.View"/></td>
+                <td><input type="text" class="form-control" asp-for="MyPropAmenities.View"/></td>
             </tr>
         </table>
     </div>*@
@@ -208,7 +230,7 @@
     <div class="add-property-legend">
         ADD IMAGES
     </div>
-    <div class="row justify-content-center p-3">
+    <div class="form-group row justify-content-center p-3">
         <div class="col-5">
         <input class="form-control" type="file" multiple required asp-for="PropertyImages">
         </div>
@@ -216,7 +238,7 @@
 
     @*submit button*@
     <div class="form-group row justify-content-center p-3">
-                <button type="button" class="btn btn-secondary col-3 fw-bold" onclick="submitProperty()">SUBMIT PROPERTY</button>
+                <button type="submit" class="btn btn-secondary col-3 fw-bold">SUBMIT PROPERTY</button>
             </div>
     
 </form>

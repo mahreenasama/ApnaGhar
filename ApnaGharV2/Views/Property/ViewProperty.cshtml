@@ -4,7 +4,7 @@
 @{
 }
 
-@model int
+@model ApnaGharV2.Models.PropertyInfo
 
 
 @section NavBar2{
@@ -15,10 +15,12 @@
         <div class="row">
             <!-- upper bar -->
             <div class="col-9">
-                <h3>1-Kanal Brand New Modern Design Bungalow With Basement for Sale at Prime Location of DHA Lahore</h3>
+                <h3>@Model.Title</h3>
                 <p>DHA Phase 5, DHA Defence, Lahore, Punjab</p>
             </div>
             <div class="col-3">
+                <i class="fa fa-share"></i>
+                <i class="fa fa-favourite"></i>
                 //share icon //favourites icon
             </div>
 
@@ -28,8 +30,11 @@
                     <!-- home whole details here -->
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
+                            @{
+                                
+                            }
                           <div class="carousel-item active">
-                            <img src="..." class="d-block w-100" alt="...">
+                            <img src="~/images/properties/" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
                             <img src="..." class="d-block w-100" alt="...">
@@ -58,19 +63,19 @@
                                         <tbody>
                                           <tr>
                                             <th scope="row">Type</th>
-                                            <td>House</td>
+                                            <td>@Model.Type</td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Price</th>
-                                            <td>PKR 11 Crore</td>
+                                            <td>PKR @Model.Price @Model.PriceUnit</td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Location</th>
-                                            <td>Shahdara,Lahore,Punjab</td>
+                                            <td>@Model.Area,@Model.City</td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Bedrooms</th>
-                                            <td>3</td>
+                                            <td>@Model.Bedrooms</td>
                                           </tr>
                                         </tbody>
                                       </table>
@@ -80,15 +85,15 @@
                                         <tbody>
                                           <tr>
                                             <th scope="row">Area</th>
-                                            <td>House</td>
+                                            <td>@Model.Area</td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Purpose</th>
-                                            <td>PKR 11 Crore</td>
+                                            <td>@Model.Purpose</td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Bathrooms</th>
-                                            <td>Shahdara,Lahore,Punjab</td>
+                                            <td>@Model.Bathrooms</td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Added</th>
@@ -102,7 +107,7 @@
                         <hr>
                         <div id="description">
                             <h3>Description</h3>
-                            <p>Whole description here</p>
+                            <p>@Model.Description</p>
                         </div> 
                         <hr>
                         <div id="amenities">

@@ -5,9 +5,14 @@ namespace ApnaGharV2.Models
 {
     public class PropertyRepository:IPropertyRepository
     {
+        private IWebHostEnvironment Environment;
+        public PropertyRepository(IWebHostEnvironment _e)
+        {
+            Environment = _e;       //inject service using constructor
+        }
         //static string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ApnaGharDB_Final;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public bool AddProperty(PropertyInfo p)
+        public bool AddProperty(PropertyInfo p, List<IFormFile> PropertyImages)
         {
             var context = new ApnaGharV2_DBContext();
 
@@ -20,6 +25,60 @@ namespace ApnaGharV2.Models
             int n = context.SaveChanges();
             if (n > 0)
             {
+                //---------save images-----------
+                string wwwPath = this.Environment.WebRootPath;
+                string path = Path.Combine(wwwPath, "images");  //images folder
+                                                                //path = Path.Combine(path, "properties/for rent");    //properties folder
+                                                                //-----------purpose-----------
+                if (p.Purpose == "rent")
+                {
+                    path = Path.Combine(path, "properties/rent");    //properties folder
+                }
+                else if (p.Purpose == "sale")
+                {
+                    path = Path.Combine(path, "properties/sale");    //properties folder
+                }
+                //-----------Type-----------
+                if (p.Type == "Homes")
+                {
+                    path = Path.Combine(path, "homes");    //properties folder
+                }
+                else if (p.Type == "Plots")
+                {
+                    path = Path.Combine(path, "plots");    //properties folder
+                }
+                else if (p.Type == "Commercial")
+                {
+                    path = Path.Combine(path, "commercial");    //properties folder
+                }
+                //-----------check existance-----------
+                if (!Directory.Exists(path))
+                {
+                    //if folder already not exists, then create new folder
+                    Directory.CreateDirectory(path);
+                }
+                //now properties folder exist, now create one folder for each
+
+                var pId = (int)context.Properties.Max(p => p.PropertyID);  //maximum id , lastest property added
+
+                //from props in context.Properties
+                //      select max(props => props.PropertyID);
+
+                Console.WriteLine("pid : " + pId);
+                Console.WriteLine("list size : " + PropertyImages.Count);
+
+                int c = 0;
+                foreach (IFormFile file in PropertyImages)
+                {
+                    using (FileStream stream = new FileStream(
+                        Path.Combine(path, $"{pId}_{c}.jpg"), FileMode.CreateNew))
+                    {
+                        Console.WriteLine("file name : " + $"{pId}_{c}.jpg");
+
+                        file.CopyTo(stream);
+                    }
+                    c += 1;
+                }
                 return true;
             }
             else
@@ -81,7 +140,7 @@ namespace ApnaGharV2.Models
                 return false;
             }
         }
-        public PropertyInfo SearchProperty(int id)
+        public PropertyInfo ViewProperty(int id)
         {
             var context = new ApnaGharV2_DBContext();
 

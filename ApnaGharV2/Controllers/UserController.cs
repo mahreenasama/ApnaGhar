@@ -25,11 +25,46 @@ namespace ApnaGharV2.Controllers
             this.userRepo = userRepo;       //refernce of interface at class level
         }
 
-        
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
 
-        
+        [HttpPost]
+        public IActionResult Register(User u)
+        {
+            Console.WriteLine("in method");
+            if (ModelState.IsValid)   //if all input is correct
+            {
+                Console.WriteLine("model state valid");
 
-        
+                if (userRepo.UserAlreadyExist(u))
+                {
+                    Console.WriteLine("user already exist");
+
+                    TempData["duplicate_email"] = "This email already exists";
+                    return View("Register");
+                }
+                else
+                {
+                    Console.WriteLine("user adding");
+
+                    TempData["duplicate_email"] = string.Empty;
+                    userRepo.AddUser(u);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                Console.WriteLine("model state not valid");
+                return View();
+            }
+        }
+
+
+
+
 
         //---------------------- view users ------------------------
 

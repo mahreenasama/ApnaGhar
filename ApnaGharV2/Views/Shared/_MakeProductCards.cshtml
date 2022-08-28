@@ -7,10 +7,17 @@
 @model ApnaGharV2.Models.PropertyInfo
 <div class="row m-2">
 
+    <a asp-controller="property" asp-action="ViewProperty" asp-route-id="@Model.PropertyID">
+
     <div class="col-5">
 
                     <div class="card h-100 w-100">
-                      <img src="~/images//zahida.jpg" class="card-img-top" alt="...">
+                @{
+                    string srcc = "~/images/properties/sale/homes/3032_0/.jpg";
+                    Console.WriteLine(srcc);
+                }
+                
+                      <img src=@srcc class="card-img-top" alt="...">
 
                       <div class="card-body">
                         <h5 class="card-title fw-bold">@Model.Title</h5>
@@ -19,6 +26,7 @@
                       </div>
                     </div>
                   </div>
+    </a>
                       
 
 <div class="col-5 mt-5">
@@ -32,7 +40,7 @@
                         <button class="btn w-50" style="background-color:#3b5998;">EMAIL</button>
                         </a>
                         <a href="mailto: mahreenmehar202@gmail.com">
-                        <button class="btn btn-light btn-outline-dark" style="width:48%;">CALL</button>
+                        <button class="btn btn-light btn-outline-secondary" style="width:48%;">CALL</button>
                         </a>
                         </div>
 

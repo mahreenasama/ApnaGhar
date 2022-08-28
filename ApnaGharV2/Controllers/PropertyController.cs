@@ -36,55 +36,15 @@ namespace ApnaGharV2.Controllers
         [HttpPost]
         public ViewResult AddProperty(PropertyInfo property, List<IFormFile> PropertyImages)
         {
-            //---------save images-----------
-            string wwwPath = this.Environment.WebRootPath;
-            string path = Path.Combine(wwwPath, "images");  //images folder
-            //path = Path.Combine(path, "properties/for rent");    //properties folder
-            //-----------purpose-----------
-            if (property.Purpose == "rent")
-            {
-                path = Path.Combine(path, "properties/for rent");    //properties folder
-            }
-            else if (property.Purpose == "sale")
-            {
-                path = Path.Combine(path, "properties/for sale");    //properties folder
-            }
-            //-----------Type-----------
-            if (property.Type == "Homes")
-            {
-                path = Path.Combine(path, "homes");    //properties folder
-            }
-            else if (property.Type == "Plots")
-            {
-                path = Path.Combine(path, "plots");    //properties folder
-            }
-            else if (property.Type == "Commercial")
-            {
-                path = Path.Combine(path, "commercial");    //properties folder
-            }
-            //-----------check existance-----------
-            if (!Directory.Exists(path))
-            {
-                //if folder already not exists, then create new folder
-                Directory.CreateDirectory(path);
-            }
-            //now properties folder exist, now create one folder for each
-            int c = 0;
-            foreach(IFormFile file in PropertyImages)
-            {
-                using (FileStream stream = new FileStream(
-                    Path.Combine(path, $"{property.PropertyID}_{c}.jpg"), FileMode.Create))
-                {
-                    file.CopyTo(stream);
-                }
-                c += 1;
-            }
-            Console.WriteLine("---------------------"+path);
-
+            
             property.ImagesPath = "path";             //assign path to db property
 
             //PropertyRepository pr = new PropertyRepository();
-            if (propertyRepo.AddProperty(property))
+            /*property.Address = "this is address";
+            property.City = "ancity";
+            property.Area = "areahere";*/
+
+            if (propertyRepo.AddProperty(property, PropertyImages))
             {
                 Console.WriteLine("propety added");
             }
@@ -99,14 +59,16 @@ namespace ApnaGharV2.Controllers
         [HttpGet]
         public ViewResult ViewProperty(int id)
         {
-            return View();
+            PropertyInfo p = propertyRepo.ViewProperty(id);
+            return View(p);
         }
 
         [HttpGet]
         public ViewResult ViewAllProperties()
         {
-            List<PropertyInfo> properties = new List<PropertyInfo>();
-            PropertyInfo obj1 = new PropertyInfo();
+            List<PropertyInfo> properties = propertyRepo.ViewAllProperties();
+
+            /*PropertyInfo obj1 = new PropertyInfo();
             obj1.Title = "5 Marla House";
             obj1.Description = "Five marla house located in shahdara town lahore.";
             //obj1.Image = "/images/zahida.jpg";
@@ -121,7 +83,7 @@ namespace ApnaGharV2.Controllers
             properties.Add(obj1);
             properties.Add(obj1);
             properties.Add(obj1);
-            properties.Add(obj1);
+            properties.Add(obj1);*/
 
             return View(properties);
         }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApnaGharV2.Models
@@ -72,5 +73,12 @@ namespace ApnaGharV2.Models
         public int UserID { get; set; } //foreign key
                                         //NOTE: code-first by defualt will take care of "foreign key" by 
                                         //matching "UserId" from User Table and "UserId" from Property table
+
+        //[Keyless]
+       // @Transient
+            [NotMapped]
+        public List<IFormFile> PropertyImages { get; set; }
+
+
     }
 }
