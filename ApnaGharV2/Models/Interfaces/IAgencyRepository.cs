@@ -8,5 +8,7 @@
         public Agency SearchAgency(int id);
         public List<Agency> GetAllAgencies();
 
+        public Agency SearchAgencyByUserId(int uId);
+
     }
 }

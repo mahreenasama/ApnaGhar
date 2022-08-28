@@ -110,96 +110,14 @@
                             <p>@Model.Description</p>
                         </div> 
                         <hr>
-                        <div id="amenities">
-                            <h3>Amenities</h3>
-                            <table class="table table-striped">
-                                <tbody>
-                                  <tr>
-                                    <table class="table">
-                                        <tr>
-                                            <th scope="row" rowspan="3" class="align-middle text-wrap" style="width: 100px;">Main Features</th>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                    </table>
-                                  </tr>
-                                  <tr>
-                                    <table class="table">
-                                        <tr>
-                                            <th scope="row" rowspan="3" class="align-middle text-wrap" style="width: 100px;">Rooms</th>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                    </table>
-                                  </tr>
-                                  <tr>
-                                    <table class="table">
-                                        <tr>
-                                            <th scope="row" rowspan="3" class="align-middle text-wrap" style="width: 100px;">Business and Communication</th>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        </table>
-                                  </tr>
-                                  <tr>
-                                    <table class="table">
-                                        <tr>
-                                            <th scope="row" rowspan="3" class="align-middle text-wrap" style="width: 100px;">Main Features</th>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Built in year</td>
-                                            <td>Parking Spasces</td>
-                                            <td>Double glazed windows</td>
-                                        </tr>
-                                    </table>
-                                  </tr>
-                                </tbody>
-                              </table>
+
+                        @*---------------------amenities VC will be rendered here---------*@
+                        <div id="amenities-vc-div">
+                            <vc:amenities-component property-id=@Model.PropertyID ></vc:amenities-component>
                         </div> 
                       </div>
-                      <div id="map">
 
+                      <div id="map">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14143126.223675642!2d60.322502487661815!3d30.
     068066135764635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38db52d2f8fd751f%3A0x46b7a1f7e614925c!2sPakistan!
     5e0!3m2!1sen!2sus!4v1653510766954!5m2!1sen!2sus" height="600" style="border:0; width:100%;" allowfullscreen="" 
@@ -219,11 +137,13 @@
                             <button type="button" class="btn btn-secondary text-light" onclick="SubmitEnquiry()">Send Email</button>
                         </form>
                     </div>
-                    <div id="agency-info-div" class="border border-secondary mt-5">
-                        <p>SYED BROTHERS (PVT) LTD (AIRPORT ROAD)</p>
-                        img here
-                        <button type="button" class="border-primary">Agency Profile</button>
-                    </div>
+
+                        @*---------------------agent VC will be rendered here---------*@
+               
+                        <div id="agency-vc-div">
+                            <vc:agency-component user-id=@Model.UserID></vc:agency-component>
+                        </div>
+                    
                 </div>
             </div>
         </div>

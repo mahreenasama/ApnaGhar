@@ -82,11 +82,24 @@ namespace ApnaGharV2.Models
         {
             var context = new ApnaGharV2_DBContext();
 
-            var user = context.Users.Where(u => u.UserID == id);  //getting the agency
+            var query = context.Users.Where(u => u.UserID == id);  //getting the agency
 
-            if (user.Count() > 0)     //means agency found
+            if (query.Count() > 0)     //means agency found
             {
-                return (User)user;  //returning by converting into agency
+                User u = new User();
+                foreach (var user in query)
+                {
+                    u.UserID = user.UserID;
+                    u.Email = user.Email;
+                    u.Password = user.Password;
+                    u.ConfirmPassword = user.ConfirmPassword;
+                    u.Name = user.Name;
+                    u.PhoneNumber = user.PhoneNumber;
+                    u.Country = user.Country;
+                    u.City = user.City;
+                    u.Role = user.Role;
+                }
+                    return u;  //returning by converting into agency
             }
             return null;
         }

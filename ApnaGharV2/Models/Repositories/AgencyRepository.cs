@@ -102,7 +102,32 @@ namespace ApnaGharV2.Models.Repositories
             }
             return agencies;
         }
+
+        public Agency SearchAgencyByUserId(int uId)
+        {
+            var context = new ApnaGharV2_DBContext();
+
+            var query = context.Agencies.Where(a => a.UserID == uId);  //getting the agency
+
+            if (query.Count() > 0)     //means agency found
+            {
+                Agency a = new Agency();
+                foreach (var agency in query)
+                {
+                    a.AgencyID = agency.AgencyID;
+                    a.Name = agency.Name;
+                    a.ServicesDescription = agency.ServicesDescription;
+                    a.CompanyPhone = agency.CompanyPhone;
+                    a.CompanyAddress = agency.CompanyAddress;
+                    a.CompanyEmail = agency.CompanyEmail;
+                    a.LogoPath = agency.LogoPath;
+                    a.UserID = agency.UserID;
+                }
+                return a;  //returning by converting into agency
+            }
+            return null;
+        }
     }
 
-    
+
 }
