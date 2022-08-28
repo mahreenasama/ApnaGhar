@@ -212,11 +212,11 @@
                         <h1>PKR 11 Crore</h1>
                         <button type="button" class="btn btn-primary text-light">Call</button>
                         <form id="enquiry-form">
-                            <input class="form-control" placeholder="Name*">
-                            <input class="form-control" placeholder="Email*" type="email">
-                            <input class="form-control" placeholder="Phone*">
-                            <textarea rows="3" class="form-control">I would like to inquire about your property Zameen - ID40406668. Please contact me at your earliest convenience.</textarea>
-                            <button type="button" class="btn btn-secondary text-light">Send Email</button>
+                            <input class="form-control" placeholder="Name*" name="Name">
+                            <input class="form-control" placeholder="Email*" type="email" name="Email">
+                            <input class="form-control" placeholder="Phone*" name="PhoneNumber">
+                            <textarea rows="3" class="form-control" name="Message">I would like to inquire about your property Zameen - ID40406668. Please contact me at your earliest convenience.</textarea>
+                            <button type="button" class="btn btn-secondary text-light" onclick="SubmitEnquiry()">Send Email</button>
                         </form>
                     </div>
                     <div id="agency-info-div" class="border border-secondary mt-5">

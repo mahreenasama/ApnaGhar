@@ -2,6 +2,6 @@
 {
     public interface IEnquiryRepository
     {
-
+        public bool SubmitEnquiry(Enquiry enquiry);
     }
 }

@@ -144,11 +144,33 @@ namespace ApnaGharV2.Models
         {
             var context = new ApnaGharV2_DBContext();
 
-            var property = context.Properties.Where(p => p.PropertyID == id);  //getting the property
+            var query = context.Properties.Where(p => p.PropertyID == id);  //getting the property
 
-            if (property.Count() > 0)     //means property found
+            if (query.Count() > 0)     //means property found
             {
-                return (PropertyInfo)property;  //returning by converting into property
+                PropertyInfo p = new PropertyInfo();
+
+                foreach (var property in query)
+                {
+                    p.PropertyID = property.PropertyID;
+                    p.Purpose = property.Purpose;
+                    p.Type = property.Type;
+                    p.SubType = property.SubType;
+                    p.City = property.City;
+                    p.Area = property.Area;
+                    p.Address = property.Address;
+                    p.Title = property.Title;
+                    p.Description = property.Description;
+                    p.Price = property.Price;
+                    p.PriceUnit = property.PriceUnit;
+                    p.Size = property.Size;
+                    p.SizeUnit = property.SizeUnit;
+                    p.Bedrooms = property.Bedrooms;
+                    p.Bathrooms = property.Bathrooms;
+                    p.ImagesPath = property.ImagesPath;
+                    p.UserID = property.UserID;
+                }
+                return p;  //returning by converting into property
             }
             return null;
         }

@@ -1,6 +1,6 @@
 ﻿using ApnaGharV2.Models.Interfaces;
 using ApnaGharV2.Models.Repositories;
-
+using ApnaGharV2.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApnaGharV2.Controllers
@@ -17,6 +17,16 @@ namespace ApnaGharV2.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+
+        public IActionResult SubmitEnquiry(Enquiry enquiry)
+        {
+            if (enquiryRepo.SubmitEnquiry(enquiry))
+            {
+                return RedirectToAction("ViewProperty", "Property");
+            }
+            return null;
         }
     }
 }

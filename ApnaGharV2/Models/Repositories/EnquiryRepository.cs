@@ -4,9 +4,9 @@ namespace ApnaGharV2.Models.Repositories
 {
     public class EnquiryRepository:IEnquiryRepository
     {
-        /*public static List<Enquiry>? agencies;
+        //public static List<Enquiry>? agencies;
 
-        public bool AddEnquiry(Enquiry enquiry)
+        public bool SubmitEnquiry(Enquiry enquiry)
         {
             var context = new ApnaGharV2_DBContext();
 
@@ -23,6 +23,6 @@ namespace ApnaGharV2.Models.Repositories
             {
                 return false;
             }
-        }*/
+        }
     }
 }
