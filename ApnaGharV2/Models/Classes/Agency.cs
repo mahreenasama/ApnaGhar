@@ -5,7 +5,7 @@ namespace ApnaGharV2.Models
     public class Agency:AdditiveInformation
     {
         [Key]
-        public int AgencyID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }    //name should be unique
         public string? ServicesDescription { get; set; }
         public string? CompanyPhone { get; set; }

@@ -13,7 +13,7 @@ namespace ApnaGharV2.Models
     public class PropertyInfo:AdditiveInformation
     {
         [Key]                   //for autoincrement
-        public int PropertyID { get; set; }
+        public int Id { get; set; }
 
 
         [Column(TypeName="varchar(10)")]

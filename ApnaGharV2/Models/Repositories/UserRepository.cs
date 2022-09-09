@@ -36,7 +36,7 @@ namespace ApnaGharV2.Models
         {
             var context = new ApnaGharV2_DBContext();
 
-            var user = (User)context.Users.Where(u => u.UserID == id);  //getting the user
+            var user = (User)context.Users.Where(u => u.Id == id);  //getting the user
 
             user.Email = newData.Email;
             user.Password = newData.Password;
@@ -64,7 +64,7 @@ namespace ApnaGharV2.Models
         {
             var context = new ApnaGharV2_DBContext();
 
-            var user = context.Users.Where(u => u.UserID == id);  //getting the agency
+            var user = context.Users.Where(u => u.Id == id);  //getting the agency
 
             context.Users.Remove((User)user);
 
@@ -82,14 +82,14 @@ namespace ApnaGharV2.Models
         {
             var context = new ApnaGharV2_DBContext();
 
-            var query = context.Users.Where(u => u.UserID == id);  //getting the agency
+            var query = context.Users.Where(u => u.Id == id);  //getting the agency
 
             if (query.Count() > 0)     //means agency found
             {
                 User u = new User();
                 foreach (var user in query)
                 {
-                    u.UserID = user.UserID;
+                    u.Id = user.Id;
                     u.Email = user.Email;
                     u.Password = user.Password;
                     u.ConfirmPassword = user.ConfirmPassword;
@@ -114,7 +114,7 @@ namespace ApnaGharV2.Models
             {
                 User u = new User();
 
-                u.UserID = user.UserID;
+                u.Id = user.Id;
                 u.Email = user.Email;
                 u.Password = user.Password;
                 u.ConfirmPassword = user.ConfirmPassword;

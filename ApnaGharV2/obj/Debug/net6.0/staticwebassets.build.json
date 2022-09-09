@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "a8cEoP9a2cfMolxmmVIuiU785OymoOVC1AC0MseJVj0=",
+  "Hash": "08iVnCqHgedWe6F4XhedkIqINJv6W0iL3+qRuS5ho0Q=",
   "Source": "ApnaGharV2",
   "BasePath": "_content/ApnaGharV2",
   "Mode": "Default",
@@ -627,6 +627,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\properties\\sale\\homes\\3032_2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Mahreen Asama\\source\\repos\\ApnaGharV2\\ApnaGharV2\\wwwroot\\images\\properties\\sale\\homes\\4004_0.jpg",
+      "SourceId": "ApnaGharV2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mahreen Asama\\source\\repos\\ApnaGharV2\\ApnaGharV2\\wwwroot\\",
+      "BasePath": "_content/ApnaGharV2",
+      "RelativePath": "images/properties/sale/homes/4004_0.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\properties\\sale\\homes\\4004_0.jpg"
     },
     {
       "Identity": "C:\\Users\\Mahreen Asama\\source\\repos\\ApnaGharV2\\ApnaGharV2\\wwwroot\\images\\RAD_Logo1.png",

@@ -59,7 +59,7 @@ namespace ApnaGharV2.Models
                 }
                 //now properties folder exist, now create one folder for each
 
-                var pId = (int)context.Properties.Max(p => p.PropertyID);  //maximum id , lastest property added
+                var pId = (int)context.Properties.Max(p => p.Id);  //maximum id , lastest property added
 
                 //from props in context.Properties
                 //      select max(props => props.PropertyID);
@@ -90,9 +90,9 @@ namespace ApnaGharV2.Models
         {
             var context = new ApnaGharV2_DBContext();
 
-            var property = (PropertyInfo)context.Properties.Where(p => p.PropertyID == id);
+            var property = (PropertyInfo)context.Properties.Where(p => p.Id == id);
 
-            property.PropertyID = newData.PropertyID;
+            property.Id = newData.Id;
             property.Purpose = newData.Purpose;
             property.Type = newData.Type;
             property.SubType = newData.SubType;
@@ -126,7 +126,7 @@ namespace ApnaGharV2.Models
         {
             var context = new ApnaGharV2_DBContext();
 
-            var property = context.Properties.Where(p => p.PropertyID == id);  //getting the property
+            var property = context.Properties.Where(p => p.Id == id);  //getting the property
 
             context.Properties.Remove((PropertyInfo)property);
 
@@ -144,7 +144,7 @@ namespace ApnaGharV2.Models
         {
             var context = new ApnaGharV2_DBContext();
 
-            var query = context.Properties.Where(p => p.PropertyID == id);  //getting the property
+            var query = context.Properties.Where(p => p.Id == id);  //getting the property
 
             if (query.Count() > 0)     //means property found
             {
@@ -152,7 +152,7 @@ namespace ApnaGharV2.Models
 
                 foreach (var property in query)
                 {
-                    p.PropertyID = property.PropertyID;
+                    p.Id = property.Id;
                     p.Purpose = property.Purpose;
                     p.Type = property.Type;
                     p.SubType = property.SubType;
@@ -185,7 +185,7 @@ namespace ApnaGharV2.Models
             {
                 PropertyInfo p = new PropertyInfo();
 
-                p.PropertyID = property.PropertyID;
+                p.Id = property.Id;
                 p.Purpose = property.Purpose;
                 p.Type = property.Type;
                 p.SubType = property.SubType;

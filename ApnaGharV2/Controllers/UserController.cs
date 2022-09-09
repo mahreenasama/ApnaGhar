@@ -17,8 +17,7 @@ namespace ApnaGharV2.Controllers
         private readonly IUserRepository userRepo;    //reference of interface at class level
 
 
-        public UserController(
-                                 IUserRepository userRepo)
+        public UserController(IUserRepository userRepo)
         {
             //this.userManager = userManager;     //manages user add,delete
             //this.signInManager = signInManager;   //manages signin, signout

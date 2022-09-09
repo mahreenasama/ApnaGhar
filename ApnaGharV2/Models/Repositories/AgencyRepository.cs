@@ -27,7 +27,7 @@ namespace ApnaGharV2.Models.Repositories
         {
             var context = new ApnaGharV2_DBContext();
 
-            var agency = (Agency)context.Agencies.Where(a => a.AgencyID == id);  //getting the agency
+            var agency = (Agency)context.Agencies.Where(a => a.Id == id);  //getting the agency
             
             agency.Name = newData.Name;
             agency.ServicesDescription = newData.ServicesDescription;
@@ -53,7 +53,7 @@ namespace ApnaGharV2.Models.Repositories
         {
             var context = new ApnaGharV2_DBContext();
 
-            var agency = context.Agencies.Where(a => a.AgencyID == id);  //getting the agency
+            var agency = context.Agencies.Where(a => a.Id == id);  //getting the agency
 
             context.Agencies.Remove((Agency)agency);
 
@@ -71,7 +71,7 @@ namespace ApnaGharV2.Models.Repositories
         {
             var context = new ApnaGharV2_DBContext();
 
-            var agency = context.Agencies.Where(a => a.AgencyID == id);  //getting the agency
+            var agency = context.Agencies.Where(a => a.Id == id);  //getting the agency
 
             if (agency.Count() > 0)     //means agency found
             {
@@ -89,7 +89,7 @@ namespace ApnaGharV2.Models.Repositories
             foreach(var agency in query)
             {
                 Agency a = new Agency();
-                a.AgencyID = agency.AgencyID;
+                a.Id = agency.Id;
                 a.Name = agency.Name;
                 a.ServicesDescription = agency.ServicesDescription;
                 a.CompanyPhone = agency.CompanyPhone;
@@ -114,7 +114,7 @@ namespace ApnaGharV2.Models.Repositories
                 Agency a = new Agency();
                 foreach (var agency in query)
                 {
-                    a.AgencyID = agency.AgencyID;
+                    a.Id = agency.Id;
                     a.Name = agency.Name;
                     a.ServicesDescription = agency.ServicesDescription;
                     a.CompanyPhone = agency.CompanyPhone;

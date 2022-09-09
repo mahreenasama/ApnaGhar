@@ -26,7 +26,7 @@ namespace ApnaGharV2.Models.Repositories
         {
             var context = new ApnaGharV2_DBContext();
 
-            var amenities = (PropertyAmenities)context.Amenities.Where(am => am.PropertyID == propertyId);  //getting the agency
+            var amenities = (PropertyAmenities)context.Amenities.Where(am => am.Id == propertyId);  //getting the agency
 
             /*agency.Name = newData.Name;
             agency.ServicesDescription = newData.ServicesDescription;
@@ -52,7 +52,7 @@ namespace ApnaGharV2.Models.Repositories
         {
             var context = new ApnaGharV2_DBContext();
 
-            var amenities = (PropertyAmenities)context.Amenities.Where(am => am.PropertyID == propertyId);  //getting the agency
+            var amenities = (PropertyAmenities)context.Amenities.Where(am => am.Id == propertyId);  //getting the agency
 
             context.Amenities.Remove((PropertyAmenities)amenities);
 

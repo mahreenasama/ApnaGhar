@@ -45,6 +45,15 @@ $(document).ready(function () {
 
 
 //---------------------------function to be called on property submit form----------------
+function SearchProperty() {
+	//alert("alert");
+	var id = $("#sbar").val();
+	$.get('/Property/ViewProperty', { id: iid }, function (result) {
+		$('#boddy').html(result);
+	});
+}
+
+
 function submitProperty() {
 	var data = $("#addPropertyForm").serialize();
 	console.log(data);

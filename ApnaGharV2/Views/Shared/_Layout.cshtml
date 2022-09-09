@@ -28,7 +28,7 @@
                             <i class="fa fa-home"></i>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">PROPERTIES</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="property" asp-action="ViewAllProperties">PROPERTIES</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
@@ -70,8 +70,8 @@
                         </li>
                     </ul>
                     <form class="d-flex" asp-area="" asp-controller="" asp-action="">
-                        <input class="form-control" type="search" placeholder="Property ID" required>
-                        <button class="btn btn-transparent text-white" type="submit"><i class="fa fa-search"></i></button>
+                        <input class="form-control" type="search" placeholder="Property ID" required id="sbar">
+                        <button class="btn btn-transparent text-white" type="button" onclick="SearchProperty()"><i class="fa fa-search"></i></button>
                     </form>
                     <!-- add prop btn -->
                     <a asp-controller="Property" asp-action="AddProperty">
@@ -186,7 +186,7 @@
         </div>
 
     @RenderSection("SectionTop", false)
-    <main role="main" class="pb-3" style="background-color: #E7E7E7;">
+    <main role="main" class="pb-3" style="background-color: #E7E7E7;" id='boddy'>
         @RenderBody()
     </main>
 

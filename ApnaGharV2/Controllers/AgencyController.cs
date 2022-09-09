@@ -18,5 +18,10 @@ namespace ApnaGharV2.Controllers
         {
             return View();
         }
+
+        public IActionResult ViewAgency()
+        {
+            return View();
+        }
     }
 }

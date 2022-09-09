@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cxzsxWmlE3C5fzkcDhTyPqusKXc/fdPS0TQ5U8AVCQa5/V9Gm1lK11yYXe0oKCCpq6+5/cqtTiPZvBLN0+/dKA==",
+  "dgSpecHash": "RoADGefgrb86K0ZnlG9ewmfSb2Q6qd0Y+pAcubvkKBMqUPsjZ8HvcWO78kc+YBcmMurXuKm+SgesdS8VS7MkJA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mahreen Asama\\source\\repos\\ApnaGharV2\\ApnaGharV2\\ApnaGharV2.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Users\\Mahreen Asama\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.8.0\\microsoft.identitymodel.protocols.openidconnect.6.8.0.nupkg.sha512",
     "C:\\Users\\Mahreen Asama\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "C:\\Users\\Mahreen Asama\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Mahreen Asama\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\Mahreen Asama\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Mahreen Asama\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Mahreen Asama\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",

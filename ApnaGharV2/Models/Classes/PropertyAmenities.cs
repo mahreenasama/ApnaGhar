@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApnaGharV2.Models
 {
     public class PropertyAmenities:AdditiveInformation
     {
-        [Key]
-        public int AmenitiesId { get; set; }
+        //primary, foreign key
+        [Key,ForeignKey("PropertyInfo")]
+        public int Id { get; set; }
 
         //Main Features
         public int? BuiltYear { get; set; }
@@ -58,8 +60,7 @@ namespace ApnaGharV2.Models
         public bool? FacilitiesForDisabled { get; set; }
         public bool? OtherFacilities { get; set; }
 
-        //foreign Key
-        public int PropertyID { get; set; }
 
+        public int PropertyID { get; set; }
     }
 }
