@@ -24,5 +24,28 @@ namespace ApnaGharV2.Models.Repositories
                 return false;
             }
         }
+
+        public List<Enquiry> GetAllEnquiries()
+        {
+            List<Enquiry> enquiries = new List<Enquiry>();
+
+            var context = new ApnaGharV2_DBContext();
+
+            var query = context.Enquiries;      //get all
+            foreach (var enquiry in query)
+            {
+                Enquiry e = new Enquiry();
+
+                e.Id = enquiry.Id;
+                e.Name = enquiry.Name;
+                e.Email = enquiry.Email;
+                e.PhoneNumber = enquiry.PhoneNumber;
+                e.Message = enquiry.Message;
+                e.PropertyId = enquiry.PropertyId;
+
+                enquiries.Add(e);
+            }
+            return enquiries;
+        }
     }
 }

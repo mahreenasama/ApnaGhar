@@ -21,48 +21,35 @@ namespace ApnaGharV2.Models
             p.ModifiedBy = 1;
             p.ModifiedDate = System.DateTime.Now;
 
+            //---------save images-----------
+            string wwwPath = this.Environment.WebRootPath;
+            string path = Path.Combine(wwwPath, "images");
+            //-----------Type-----------
+            if (p.Type == "Homes")
+            {
+                path = Path.Combine(path, "properties/homes");    //properties folder
+            }
+            else if (p.Type == "Plots")
+            {
+                path = Path.Combine(path, "properties/plots");    //properties folder
+            }
+            else if (p.Type == "Commercial")
+            {
+                path = Path.Combine(path, "properties/commercial");    //properties folder
+            }
+            p.ImagesPath = path;        //set path
+            //----------------------add in DB--------------
             context.Properties.Add(p);
             int n = context.SaveChanges();
+
             if (n > 0)
             {
-                //---------save images-----------
-                string wwwPath = this.Environment.WebRootPath;
-                string path = Path.Combine(wwwPath, "images");  //images folder
-                                                                //path = Path.Combine(path, "properties/for rent");    //properties folder
-                                                                //-----------purpose-----------
-                if (p.Purpose == "rent")
-                {
-                    path = Path.Combine(path, "properties/rent");    //properties folder
-                }
-                else if (p.Purpose == "sale")
-                {
-                    path = Path.Combine(path, "properties/sale");    //properties folder
-                }
-                //-----------Type-----------
-                if (p.Type == "Homes")
-                {
-                    path = Path.Combine(path, "homes");    //properties folder
-                }
-                else if (p.Type == "Plots")
-                {
-                    path = Path.Combine(path, "plots");    //properties folder
-                }
-                else if (p.Type == "Commercial")
-                {
-                    path = Path.Combine(path, "commercial");    //properties folder
-                }
                 //-----------check existance-----------
                 if (!Directory.Exists(path))
                 {
-                    //if folder already not exists, then create new folder
                     Directory.CreateDirectory(path);
                 }
-                //now properties folder exist, now create one folder for each
-
                 var pId = (int)context.Properties.Max(p => p.Id);  //maximum id , lastest property added
-
-                //from props in context.Properties
-                //      select max(props => props.PropertyID);
 
                 Console.WriteLine("pid : " + pId);
                 Console.WriteLine("list size : " + PropertyImages.Count);
@@ -168,7 +155,7 @@ namespace ApnaGharV2.Models
                     p.Bedrooms = property.Bedrooms;
                     p.Bathrooms = property.Bathrooms;
                     p.ImagesPath = property.ImagesPath;
-                    p.UserID = property.UserID;
+                    p.UserId = property.UserId;
                 }
                 return p;  //returning by converting into property
             }
@@ -201,7 +188,7 @@ namespace ApnaGharV2.Models
                 p.Bedrooms = property.Bedrooms;
                 p.Bathrooms = property.Bathrooms;
                 p.ImagesPath = property.ImagesPath;
-                p.UserID = property.UserID;
+                p.UserId = property.UserId;
 
                 propList.Add(p);
             }

@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutAdmin";
+}
+
+@model List<ApnaGharV2.Models.PropertyInfo>
+
+    <div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Size</th>
+                <th scope="col">Price</th>
+                <th scope="col">City</th>
+                <th scope="col">Area</th>
+                @*<th scope="col">Address</th>*@
+                <th scope="col">Category</th>
+                <th scope="col">Subcategory</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(ApnaGharV2.Models.PropertyInfo p in Model)
+            {
+                <tr>
+                    <th scope="row">@p.Id</th>
+                    <td>@p.Title</td>
+                    <td>@p.Size @p.SizeUnit</td>
+                    <td>@p.Price @p.PriceUnit</td>
+                    <td>@p.City</td>
+                    <td>@p.Area</td>
+                    @*<td>@p.Address</td>*@
+                    <td>@p.Type</td>
+                    <td>@p.SubType</td>
+                    <td class="btn-group" role="group">
+                        <a class="btn btn-info" asp-controller="Admin" asp-action="PropertyDetails" asp-route-id="@p.Id">Details</a>
+                        <a class="btn btn-warning" asp-controller="Admin" asp-action="EditProperty" asp-route-id="@p.Id">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Admin" asp-action="RemoveProperty" asp-route-id="@p.Id">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

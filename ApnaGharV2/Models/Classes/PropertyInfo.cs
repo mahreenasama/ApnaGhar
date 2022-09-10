@@ -70,7 +70,7 @@ namespace ApnaGharV2.Models
 
         public string ImagesPath { get; set; }
 
-        public int UserID { get; set; } //foreign key
+        public int UserId { get; set; } //foreign key
                                         //NOTE: code-first by defualt will take care of "foreign key" by 
                                         //matching "UserId" from User Table and "UserId" from Property table
 

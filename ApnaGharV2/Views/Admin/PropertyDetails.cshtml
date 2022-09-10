@@ -1,0 +1,146 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutAdmin";
+}
+
+@model ApnaGharV2.Models.PropertyInfo
+
+<div class="container">
+        <div class="row">
+            <!-- upper bar -->
+            <div class="col-9">
+                <h3>@Model.Title</h3>
+                <p>DHA Phase 5, DHA Defence, Lahore, Punjab</p>
+            </div>
+            <div class="col-3">
+                <i class="fa fa-share"></i>
+                <i class="fa fa-favourite"></i>
+                //share icon //favourites icon
+            </div>
+
+            <!-- rest whole page -->
+            <div class="row">
+                <div class="col-9">
+                    <!-- home whole details here -->
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @{
+                                
+                            }
+                          <div class="carousel-item active">
+                            <img src="~/images/properties/sale/homes/3032_0.jpg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="~/images/properties/sale/homes/3032_1.jpg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="~/images/properties/sale/homes/3032_2.jpg" class="d-block w-100" alt="...">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                      <div id="bed-bath-canal">@Model.Bedrooms Beds   @Model.Bathrooms Baths   @Model.Size @Model.SizeUnit</div>
+                      <div id="property-details">
+                        <h1>Property Overview</h1>
+                        <div id="details">
+                            <h3>Details</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">Type</th>
+                                            <td>@Model.Type</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Price</th>
+                                            <td>PKR @Model.Price @Model.PriceUnit</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Location</th>
+                                            <td>@Model.Area,@Model.City</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Bedrooms</th>
+                                            <td>@Model.Bedrooms</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+                                <div class="col-6">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">Area</th>
+                                            <td>@Model.Area</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Purpose</th>
+                                            <td>@Model.Purpose</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Bathrooms</th>
+                                            <td>@Model.Bathrooms</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Added</th>
+                                            <td>Mark</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="description">
+                            <h3>Description</h3>
+                            <p>@Model.Description</p>
+                        </div> 
+                        <hr>
+
+                        @*---------------------amenities VC will be rendered here---------*@
+                        <div id="amenities-vc-div">
+                            <vc:amenities-component property-id=@Model.Id ></vc:amenities-component>
+                        </div> 
+                      </div>
+
+                      <div id="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14143126.223675642!2d60.322502487661815!3d30.
+    068066135764635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38db52d2f8fd751f%3A0x46b7a1f7e614925c!2sPakistan!
+    5e0!3m2!1sen!2sus!4v1653510766954!5m2!1sen!2sus" height="600" style="border:0; width:100%;" allowfullscreen="" 
+    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+       </div>
+                </div>
+                <div class="col-3">
+                    <div id="enquiry div" class="border border-secondary">
+                        <h1>PKR 11 Crore</h1>
+                        <button type="button" class="btn btn-primary text-light">Call</button>
+                        <form id="enquiry-form">
+                            <input class="form-control" placeholder="Name*" name="Name">
+                            <input class="form-control" placeholder="Email*" type="email" name="Email">
+                            <input class="form-control" placeholder="Phone*" name="PhoneNumber">
+                            <textarea rows="3" class="form-control" name="Message">I would like to inquire about your property Zameen - ID40406668. Please contact me at your earliest convenience.</textarea>
+                            <button type="button" class="btn btn-secondary text-light" onclick="SubmitEnquiry()">Send Email</button>
+                        </form>
+                    </div>
+
+                        @*---------------------agent VC will be rendered here---------*@
+               
+                        <div id="agency-vc-div">
+                            <vc:agency-component user-id=@Model.UserId></vc:agency-component>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+</div>

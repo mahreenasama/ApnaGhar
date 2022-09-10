@@ -6,20 +6,21 @@
 //---------------------------Add property page----------------
 
 //limit only one checkbox to be selected at a time
-$('.purpose').on('change', function () {
+/*$('.purpose').on('change', function () {
 	$('.purpose').not(this).prop('checked', false);
 });
 $('.type').on('change', function () {
 	$('.type').not(this).prop('checked', false);
 });
 function SubtypeChange() {
-	/*alert('subtype');*/
+	*//*alert('subtype');*//*
 	//$('.sub-type').not(this).prop('checked', false);
-}
+}*/
 
 //display in respective divs
 $(document).ready(function () {
 	$('.type').click(function () {
+		//alert('type');
 		var iid = $(this).attr('id');
 		$.get('/Property/GetSubCategories', { id: iid }, function (result) {
 			$('#sub-categories').html(result);
@@ -39,9 +40,7 @@ $(document).ready(function () {
 		});
 	});
 });
-/*$(document).ready(function () {
-	
-})*/
+
 
 
 //---------------------------function to be called on property submit form----------------
@@ -54,13 +53,15 @@ function SearchProperty() {
 }
 
 
-function submitProperty() {
+function submitProperty(event) {
 	var data = $("#addPropertyForm").serialize();
+	var imgs = $("#pimgs").val();
+	alert(imgs)
 	console.log(data);
 	alert(data);
 	$.ajax({
 		type: 'POST',
-		url: '/Property/AddProperty',
+		url: '/Admin/AddProperty',
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		// when we use .serialize() 
 		// this generates the data in query string format. 

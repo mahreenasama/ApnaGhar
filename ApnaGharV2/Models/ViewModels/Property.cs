@@ -7,6 +7,6 @@ namespace ApnaGharV2.Models.ViewModels
         public PropertyInfo MyPropInfo { get; set; }
         public List<IFormFile> PropertyImages { get; set; }
 
-        //public PropertyAmenities? MyPropAmenities { get; set; }
+        public PropertyAmenities? MyPropAmenities { get; set; }
     }
 }

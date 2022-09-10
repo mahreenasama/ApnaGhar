@@ -9,11 +9,14 @@
     <label class="col-5">
         </label>
 <div class="justify-content-end p-1 col-6" style="display:inline-block;">
+            @*<div class=" col-5 btn-group ">*@
     
     @for(int i=0; i<Model.Length; i++)
     {
         <label class="btn btn-light btn-outline-secondary pe-5 m-1">
-         <input type="checkbox" class="sub-type" onchange="SubtypeChange()" value="@Model[i]" name="SubType"> @Model[i]
-              </label>
+        @*<label class="btn btn-light btn-outline-secondary">*@
+
+         <input type="radio" value="@Model[i]" name="SubType" required> @Model[i]
+        </label>
     }
     </div>

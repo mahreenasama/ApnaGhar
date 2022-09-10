@@ -37,13 +37,6 @@ namespace ApnaGharV2.Controllers
         public ViewResult AddProperty(PropertyInfo property, List<IFormFile> PropertyImages)
         {
             
-            property.ImagesPath = "path";             //assign path to db property
-
-            //PropertyRepository pr = new PropertyRepository();
-            /*property.Address = "this is address";
-            property.City = "ancity";
-            property.Area = "areahere";*/
-
             if (propertyRepo.AddProperty(property, PropertyImages))
             {
                 Console.WriteLine("propety added");

@@ -28,5 +28,10 @@ namespace ApnaGharV2.Controllers
             }
             return null;
         }
+
+        public void GetAllEnquiries(Enquiry enquiry)
+        {
+            
+        }
     }
 }

@@ -9,28 +9,76 @@ namespace ApnaGharV2.Controllers
     {
         private readonly IUserRepository userRepo;    //reference of interface at class level
         private readonly IAgencyRepository agencyRepo;    //reference of interface at class level
-        private readonly IPropertyRepository propRepo;    //reference of interface at class level
+        private readonly IPropertyRepository propertyRepo;    //reference of interface at class level
         private readonly IEnquiryRepository enquiryRepo;    //reference of interface at class level
 
         public AdminController(IUserRepository userRepo,
-            IAgencyRepository agencyRepo, IPropertyRepository propRepo, IEnquiryRepository enquiryRepo)
+            IAgencyRepository agencyRepo, IPropertyRepository propertyRepo, IEnquiryRepository enquiryRepo)
         {
             //this.userManager = userManager;     //manages user add,delete
             //this.signInManager = signInManager;   //manages signin, signout
             this.userRepo = userRepo;       //refernce of interface at class level
             this.agencyRepo = agencyRepo;
-            this.propRepo = propRepo;
+            this.propertyRepo = propertyRepo;
             this.enquiryRepo = enquiryRepo;
         }
 
         public IActionResult Index()
         {
+
+            return View("dashboard");
+        }
+
+        //------------------------------------propeties---------------------------------
+        public IActionResult ListProperties()
+        {
+            List<PropertyInfo> properties = propertyRepo.ViewAllProperties();
+
+            return View(properties);
+        }
+
+        [HttpGet]
+        public ViewResult AddProperty()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult AddProperty(PropertyInfo property, List<IFormFile> PropertyImages)
+        {
+
+            if (propertyRepo.AddProperty(property, PropertyImages))
+            {
+                Console.WriteLine("propety added");
+            }
+            else
+            {
+                Console.WriteLine("proprty not added");
+            }
+
             return View();
         }
 
-        public IActionResult ViewAllProperties()
+        [HttpGet]
+        public ViewResult PropertyDetails(int id)
         {
-            return View();
+            PropertyInfo p = propertyRepo.ViewProperty(id);
+            return View(p);
+        }
+        public void EditProperty()
+        {
+            //return View();
+        }
+        public void RemoveProperty()
+        {
+            //return View();
+        }
+
+        //------------------------------------enquiries---------------------------------
+        public IActionResult ListEnquiries()
+        {
+            List<Enquiry> enquiries = enquiryRepo.GetAllEnquiries();
+
+            return View(enquiries);
         }
     }
 }

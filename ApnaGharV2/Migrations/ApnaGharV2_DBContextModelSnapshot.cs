@@ -24,11 +24,11 @@ namespace ApnaGharV2.Migrations
 
             modelBuilder.Entity("ApnaGharV2.Models.Agency", b =>
                 {
-                    b.Property<int>("AgencyID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AgencyID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CompanyAddress")
                         .HasColumnType("nvarchar(max)");
@@ -65,18 +65,18 @@ namespace ApnaGharV2.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.HasKey("AgencyID");
+                    b.HasKey("Id");
 
                     b.ToTable("Agencies");
                 });
 
             modelBuilder.Entity("ApnaGharV2.Models.Enquiry", b =>
                 {
-                    b.Property<int>("EnquiryID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EnquiryID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
@@ -106,21 +106,24 @@ namespace ApnaGharV2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("PropertyId")
                         .HasColumnType("int");
 
-                    b.HasKey("EnquiryID");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Enquiries");
                 });
 
             modelBuilder.Entity("ApnaGharV2.Models.PropertyAmenities", b =>
                 {
-                    b.Property<int>("AmenitiesId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AmenitiesId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool?>("AirConditioning")
                         .HasColumnType("bit");
@@ -251,18 +254,18 @@ namespace ApnaGharV2.Migrations
                     b.Property<string>("View")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AmenitiesId");
+                    b.HasKey("Id");
 
                     b.ToTable("Amenities");
                 });
 
             modelBuilder.Entity("ApnaGharV2.Models.PropertyInfo", b =>
                 {
-                    b.Property<int>("PropertyID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PropertyID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -336,18 +339,18 @@ namespace ApnaGharV2.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.HasKey("PropertyID");
+                    b.HasKey("Id");
 
                     b.ToTable("Properties");
                 });
 
             modelBuilder.Entity("ApnaGharV2.User", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -409,7 +412,7 @@ namespace ApnaGharV2.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(20)");
 
-                    b.HasKey("UserID");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
