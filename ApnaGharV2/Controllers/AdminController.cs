@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ApnaGharV2.Models;
+using ApnaGharV2.Models.ViewModels;
 using ApnaGharV2.Models.Repositories;
 using ApnaGharV2.Models.Interfaces;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ApnaGharV2.Controllers
 {
@@ -36,23 +38,32 @@ namespace ApnaGharV2.Controllers
 
             return View(properties);
         }
-
         [HttpGet]
         public ViewResult AddProperty()
         {
             return View();
         }
         [HttpPost]
-        public ViewResult AddProperty(PropertyInfo property, List<IFormFile> PropertyImages)
+        public IActionResult AddProperty(Property property, List<IFormFile> PropertyImages)
         {
-
-            if (propertyRepo.AddProperty(property, PropertyImages))
+            if (ModelState.IsValid)
             {
-                Console.WriteLine("propety added");
+                if (propertyRepo.AddProperty(property, PropertyImages))
+                {
+                    Console.WriteLine("propety added");
+                }
+                else
+                {
+                    Console.WriteLine("proprty not added");
+                }
+                //return this.Ok($"Form Data received!");
             }
             else
             {
-                Console.WriteLine("proprty not added");
+                //ModelState.AddModelError("Required Fields", "Please enter required fields");
+                return BadRequest("Enter required fields");
+                Console.WriteLine("admin p add state not valid");
+                return View();
             }
 
             return View();

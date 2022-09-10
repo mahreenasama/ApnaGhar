@@ -10,8 +10,8 @@
 
 <div class="container bg-white p-4 shadow-lg">
 
-<form enctype="multipart/form-data" id="addPropertyForm" onsubmit="submitProperty()">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form enctype="multipart/form-data" id="addPropertyForm" asp-controller="Admin" asp-action="AddProperty">
+    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
 
     <h4 class="fw-bold ms-2">Add a Property</h4>
     <span style="color: red;" class="ms-2">*</span>
@@ -28,14 +28,16 @@
         </label>
         <div class="col-5 btn-group ">
             <label class="btn btn-light btn-outline-secondary">
-                <input type="radio" value="Sale" name="purpose" asp-for="MyPropInfo.Purpose" required> For Sale
+                <input type="radio" value="Sale" name="purpose" asp-for="MyPropInfo.Purpose" > For Sale
               </label>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="radio" value="Rent" name="purpose" asp-for="MyPropInfo.Purpose" required> For Rent
+                <input type="radio" value="Rent" name="purpose" asp-for="MyPropInfo.Purpose" > For Rent
               </label>
         </div>
      </div>
-        <div asp-validation-for="Purpose" class="text-danger text-center"></div>
+     <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.Purpose" class="col-3 text-danger"></span>
+     </div>
 
 
      <div class="row justify-content-center p-1">
@@ -44,20 +46,25 @@
         </label>
             <div class=" col-5 btn-group ">
               <label class="btn btn-light btn-outline-secondary">
-                <input type="radio" name="type" asp-for="MyPropInfo.Type" value="Homes" class="type" id="homes" required> Homes
+                <input type="radio" name="type" asp-for="MyPropInfo.Type" value="Homes" class="type" id="homes" > Homes
               </label>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="radio" name="type" asp-for="MyPropInfo.Type" value="Plots" class="type" id="plots" required> Plots
+                <input type="radio" name="type" asp-for="MyPropInfo.Type" value="Plots" class="type" id="plots" > Plots
               </label>
               <label class="btn btn-light btn-outline-secondary">
-                <input type="radio" name="type" asp-for="MyPropInfo.Type" value="Commercial" class="type" id="commercial" required> Commercial
+                <input type="radio" name="type" asp-for="MyPropInfo.Type" value="Commercial" class="type" id="commercial" > Commercial
               </label>
             </div>
      </div>
-        <div asp-validation-for="Type" class="text-danger text-center"></div>
+      <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.Type" class="col-3 text-danger"></span>
+     </div>
 
      @*homes subcategories (added through ajax)*@
      <div id="sub-categories" class="row"></div>
+     <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.SubType" class="col-3 text-danger"></span>
+     </div>
 
      @*cities*@
      <div class="row justify-content-center p-1">
@@ -65,21 +72,23 @@
              City: <span style="color: red;">*</span>
         </label>
             <div class="col-5">
-              <select class="form-select" id="select-city" asp-for="MyPropInfo.City" required>
+              <select class="form-select" id="select-city" asp-for="MyPropInfo.City">
               <option value="Lahore" selected>Lahore</option>
               <option value="Karachi">Karachi</option>
               <option value="Islamabad">Islamabad</option>
             </select>
             </div>
      </div>
-     <div asp-validation-for="City" class="text-danger text-center"></div>
+     <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.City" class="col-3 text-danger"></span>
+     </div>
 
      <div class="row justify-content-center p-1">
         <label asp-for="MyPropInfo.Area" class="col-2">
             Area: <span style="color: red;">*</span>
         </label>
             <div class="col-5">
-                <select id="citylocations" class="form-control" name="area" asp-for="MyPropInfo.Area" required>
+                <select id="citylocations" class="form-control" name="area" asp-for="MyPropInfo.Area" >
                     <option disabled selected>Select Area</option>
                     <option>Allama Iqbal Town</option>
                     <option>Bahria Town</option>
@@ -104,17 +113,21 @@
                 </select>
             </div>
      </div>
-     <div asp-validation-for="Area" class="text-danger text-center"></div>
+      <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.Area" class="col-3 text-danger"></span>
+     </div>
 
      <div class="row justify-content-center p-1">
         <label asp-for="MyPropInfo.Address" class="col-2">
              Address: <span style="color: red;">*</span>
         </label>
             <div class="col-5">
-            <input required placeholder="Property Address" class="form-control" asp-for="MyPropInfo.Address"/>
+            <input  placeholder="Property Address" class="form-control" asp-for="MyPropInfo.Address"/>
             </div>
      </div>
-     <div asp-validation-for="Address" class="text-danger text-center"></div>
+      <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.Address" class="col-3 text-danger"></span>
+     </div>
 
 
     @*portion 2-----------------------------------------*@
@@ -127,21 +140,26 @@
         <label asp-for="MyPropInfo.Title" class="col-2">
             Property Title: <span style="color: red;">*</span>
         </label>
-        <div class=" col-5" required>
-            <input type="text" required class="form-control" asp-for="MyPropInfo.Title"/>
+        <div class=" col-5" >
+            <input type="text"  class="form-control" asp-for="MyPropInfo.Title"/>
         </div>
      </div>
-     <div asp-validation-for="Title" class="text-danger text-center"></div>
+     <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.Title" class="col-3 text-danger"></span>
+     </div>
+
 
      <div class="row justify-content-center p-1">
         <label asp-for="MyPropInfo.Description" class="col-2">
             Description: <span style="color: red;">*</span>
         </label>
             <div class="col-5" required>
-                <textarea class="form-control" rows="3" required asp-for="MyPropInfo.Description"></textarea>
+                <textarea class="form-control" rows="3"  asp-for="MyPropInfo.Description"></textarea>
             </div>
      </div>
-     <div asp-validation-for="Description" class="text-danger text-center"></div>
+     <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.Description" class="col-3 text-danger"></span>
+     </div>
 
 
      <div class="row justify-content-center p-1">
@@ -149,17 +167,19 @@
              Price (PKR): <span style="color: red;">*</span>
         </label>
             <div class="col-2">
-              <input type="number" required class="form-control" min="1" asp-for="MyPropInfo.Price"/>
+              <input type="number"  class="form-control" min="1" asp-for="MyPropInfo.Price"/>
             </div>
             <div class=" col-3">
-            <select class="form-select" aria-label="Default select example" required asp-for="MyPropInfo.PriceUnit">
+            <select class="form-select" aria-label="Default select example"  asp-for="MyPropInfo.PriceUnit">
               <option selected value="Lakh">Lakh</option>
               <option value="Crore">Crore</option>
               <option value="Thousand">Thousand</option>
               </select>
             </div>
      </div>
-     <div asp-validation-for="Price" class="text-danger text-center"></div>
+      <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.Price" class="col-3 text-danger"></span>
+     </div>
 
 
      <div class="row justify-content-center p-1">
@@ -167,10 +187,10 @@
             Land Area: <span style="color: red;">*</span>
         </label>
             <span class=" col-2">
-                <input type="number" required class="form-control" min="1" asp-for="MyPropInfo.Size"/>
+                <input type="number"  class="form-control" min="1" asp-for="MyPropInfo.Size"/>
             </span>
         <div class=" col-3">
-            <select class="form-select" aria-label="Default select example" required asp-for="MyPropInfo.SizeUnit">
+            <select class="form-select" aria-label="Default select example"  asp-for="MyPropInfo.SizeUnit">
               <option selected value="Sqft">Square Feet</option>
               <option value="SqYd">Square Yard</option>
               <option value="SqM">Square Meters</option>
@@ -180,7 +200,9 @@
               </select>
             </div>
      </div>
-     <div asp-validation-for="Size" class="text-danger text-center"></div>
+     <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.Size" class="col-3 text-danger"></span>
+     </div>
 
 
      <div class="row justify-content-center p-1">
@@ -204,16 +226,15 @@
 @*--------- Add amenities ----------------*@
 
         <div class="row justify-content-center p-3">
-            <button type="button" class="btn btn-secondary col-3 fw-bold" ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;ADD FEATURES</button>
+            <button type="button" class="btn btn-secondary col-3 fw-bold" id="add-features-btn"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;ADD FEATURES</button>
             </div>
-    <div id="property-features" >
+    <div id="property-features-div" style="display:none;">
         <div class="text-white fw-bold p-2 m-2" style="background-color: #3b5998; border-radius: 5px;">
         Property Amenities
-    </div>
-    <div>
+        </div>
         <div class="row ps-5 pe-5">
             <div class="col">
-                <table class="">
+                <table class="w-100 justify-content-end">
                     <thead>
                         <tr>
                             <th colspan="2" class="fs-5">Main Features</th>
@@ -249,7 +270,7 @@
                                 <label asp-for="MyPropAmenities.AirConditioning">Air Conditioning</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.AirConditioning" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.AirConditioning" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                         <tr>
@@ -273,7 +294,7 @@
                                 <label asp-for="MyPropAmenities.Furnished" class="text-center">Furnished</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.Furnished" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.Furnished" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                         <tr>
@@ -286,18 +307,18 @@
                         </tr>
                         <tr>
                             <td>
-                                <label asp-for="MyPropAmenities.OtherMainFeatures">Others</label>
+                                <label asp-for="MyPropAmenities.OtherMainFeatures">Other Main Features</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.OtherMainFeatures" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.OtherMainFeatures" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table class="w-100 justify-content-end">
             </div>
-            @*second colm table of rooms---------------*@
+            @*second colm table class="w-100 justify-content-end" of rooms---------------*@
             <div class="col">
-                <table class="col">
+                <table class="w-100 justify-content-end">
                     <thead>
                         <tr>
                             <th colspan="2" class="fs-5">Rooms</th>
@@ -333,7 +354,7 @@
                                 <label asp-for="MyPropAmenities.DrawingRoom">Drawing Room</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.DrawingRoom" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.DrawingRoom" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                         <tr>
@@ -341,7 +362,7 @@
                                  <label asp-for="MyPropAmenities.DiningRoom">Dining Room</label>
                             </td>
                             <td>
-                    <input type="checkbox" class="form-checkbox" asp-for="MyPropAmenities.DiningRoom"/>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.DiningRoom"/>
                             </td>
                         </tr>
                         <tr>
@@ -357,7 +378,7 @@
                                 <label asp-for="MyPropAmenities.StudyRoom" class="text-center">Study Room</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.StudyRoom" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.StudyRoom" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                         <tr>
@@ -365,7 +386,7 @@
                                 <label asp-for="MyPropAmenities.PrayerRoom">Prayer Room</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.PrayerRoom" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.PrayerRoom" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                         <tr>
@@ -381,7 +402,7 @@
                                 <label asp-for="MyPropAmenities.LoungeOrSittingRoom">Lounge Or Sitting Room</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.LoungeOrSittingRoom" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.LoungeOrSittingRoom" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                         <tr>
@@ -389,7 +410,7 @@
                                 <label asp-for="MyPropAmenities.LaundryRoom">Laundry Room</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.LaundryRoom" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.LaundryRoom" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                         <tr>
@@ -397,17 +418,17 @@
                                 <label asp-for="MyPropAmenities.OtherRooms">Other Rooms</label>
                             </td>
                             <td>
-                    <input type="checkbox" asp-for="MyPropAmenities.OtherRooms" class="form-checkbox"/>
+                    <input type="checkbox" asp-for="MyPropAmenities.OtherRooms" class="form-check-input justify-content-end"/>
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table class="w-100 justify-content-end">
             </div>
     </div>
-       <div class="row">
-           @*3rd colm table of businesss and comm---------------*@
+       <div class="row p-5">
+           @*3rd colm table class="w-100 justify-content-end" of businesss and comm---------------*@
             <div class="col">
-                <table class="col">
+                <table class="w-100 justify-content-end" class="w-100 justify-content-end">
                     <thead>
                         <tr>
                             <th colspan="2" class="fs-5">Business and Communication</th>
@@ -419,7 +440,7 @@
                     <label asp-for="MyPropAmenities.InternetAccess">Internet Access</label>
                             </td>
                             <td>
-                    <input type="checkbox" class="form-checkbox" asp-for="MyPropAmenities.InternetAccess"/>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.InternetAccess"/>
                             </td>
                         </tr>
                         <tr>
@@ -427,7 +448,7 @@
                                 <label asp-for="MyPropAmenities.SatellitetOrCable">Satellitet Or Cable</label>
                             </td>
                             <td>
-                    <input type="checkbox" min="1" class="form-checkbox" asp-for="MyPropAmenities.SatellitetOrCable"/>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.SatellitetOrCable"/>
                             </td>
                         </tr>
                         <tr>
@@ -435,14 +456,14 @@
                                 <label asp-for="MyPropAmenities.OtherBCFacilities">Other Business Facilities</label>
                             </td>
                             <td>
-                    <input type="checkbox" min="1" class="form-checkbox" asp-for="MyPropAmenities.OtherBCFacilities"/>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.OtherBCFacilities"/>
                             </td>
                         </tr>
-                        </table>
+                        </table class="w-100 justify-content-end">
                         </div>
-       @*4th colm table of health and recreation---------------*@
-            <div class="col">
-                <table class="col">
+       @*4th colm table class="w-100 justify-content-end" of health and recreation---------------*@
+            <div class="col ">
+                <table class="w-100 justify-content-end" class="">
                     <thead>
                         <tr>
                             <th colspan="2" class="fs-5">Health and Recreational</th>
@@ -454,7 +475,7 @@
                     <label asp-for="MyPropAmenities.LawnOrGarden">Lawn Or Garden</label>
                             </td>
                             <td>
-                    <input type="checkbox" class="form-checkbox" asp-for="MyPropAmenities.LawnOrGarden"/>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.LawnOrGarden"/>
                             </td>
                         </tr>
                         <tr>
@@ -462,18 +483,130 @@
                                 <label asp-for="MyPropAmenities.SwimmingPool">Swimming Pool</label>
                             </td>
                             <td>
-                    <input type="checkbox" min="1" class="form-checkbox" asp-for="MyPropAmenities.SwimmingPool"/>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.SwimmingPool"/>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="">
+                                <label asp-for="MyPropAmenities.OtherHRFacilities">Other Health Facilities</label>
+                            </td>
+                            <td class="">
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.OtherHRFacilities"/>
+                            </td>
+                        </tr>
+                        </table class="w-100 justify-content-end">
+                        </div>
+       </div>
+       <div class="row ps-5 pe-5">
+           @*5rd colm table class="w-100 justify-content-end" of nearby facilities---------------*@
+            <div class="col">
+                <table class="w-100 justify-content-end">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="fs-5">Nearby Locations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                    <label asp-for="MyPropAmenities.NearbySchools">Schools</label>
+                            </td>
+                            <td>
+                    <input type="number" min="1" class="form-control" asp-for="MyPropAmenities.NearbySchools"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label asp-for="MyPropAmenities.OtherHRFacilities">Other Health Facilities</label>
+                                <label asp-for="MyPropAmenities.NearbyHospitals">Hospitals</label>
                             </td>
                             <td>
-                    <input type="checkbox" min="1" class="form-checkbox" asp-for="MyPropAmenities.OtherHRFacilities"/>
+                    <input type="number" min="1" class="form-control" asp-for="MyPropAmenities.NearbyHospitals"/>
                             </td>
                         </tr>
-                        </table>
+                        <tr>
+                            <td>
+                                <label asp-for="MyPropAmenities.NearbyShoppingMalls">Shopping Malls</label>
+                            </td>
+                            <td>
+                    <input type="number" min="1" class="form-control" asp-for="MyPropAmenities.NearbyShoppingMalls"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="MyPropAmenities.NearbyRestaurants">Restaurants</label>
+                            </td>
+                            <td>
+                    <input type="number" min="1" class="form-control" asp-for="MyPropAmenities.NearbyRestaurants"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="MyPropAmenities.NearbyMosques">Mosques</label>
+                            </td>
+                            <td>
+                    <input type="number" min="1" class="form-control" asp-for="MyPropAmenities.NearbyMosques"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="MyPropAmenities.NearbyPublicTransport">Public Transport</label>
+                            </td>
+                            <td>
+                    <input type="number" min="1" class="form-control" asp-for="MyPropAmenities.NearbyPublicTransport"/>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="">
+                                <label asp-for="MyPropAmenities.OtherNBFacilities">Other Nearby Facilities</label>
+                            </td>
+                            <td class=" justify-content-center">
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.OtherNBFacilities"/>
+                            </td>
+                        </tr>
+                        </table class="w-100 justify-content-end">
+                        </div>
+       @*6th colm table class="w-100 justify-content-end" of other facilities---------------*@
+            <div class="col ">
+                <table class="w-100 justify-content-end" class="">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="fs-5">Other Facilities</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td class="">
+                    <label asp-for="MyPropAmenities.MaintenanceStaff">Maintenance Staff</label>
+                            </td>
+                            <td class="">
+                    <input type="checkbox" class="form-check-input justify-content-end text-center" asp-for="MyPropAmenities.MaintenanceStaff"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="MyPropAmenities.SecurityStaff">Security Staff</label>
+                            </td>
+                            <td>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.SecurityStaff"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="MyPropAmenities.FacilitiesForDisabled">Facilities For Disabled</label>
+                            </td>
+                            <td>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.FacilitiesForDisabled"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="MyPropAmenities.OtherFacilities">OtherFacilities</label>
+                            </td>
+                            <td>
+                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="MyPropAmenities.OtherFacilities"/>
+                            </td>
+                        </tr>
+                        </table class="w-100 justify-content-end">
                         </div>
        </div>
     </div>
@@ -485,9 +618,12 @@
     </div>
     <div class="form-group row justify-content-center p-3">
         <div class="col-5">
-        <input class="form-control" type="file" multiple required asp-for="PropertyImages" id="pimgs">
+        <input class="form-control" type="file" multiple  asp-for="PropertyImages" id="pimgs">
         </div>
     </div>
+    <div class="row justify-content-center">
+        <span asp-validation-for="MyPropInfo.PropertyImages" class="col-3 text-danger"></span>
+     </div>
 
     @*submit button*@
     <div class="row justify-content-center p-3">

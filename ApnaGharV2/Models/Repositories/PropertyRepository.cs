@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using ApnaGharV2.Models.Interfaces;
+using ApnaGharV2.Models.ViewModels;
 
 namespace ApnaGharV2.Models
 {
@@ -12,34 +13,35 @@ namespace ApnaGharV2.Models
         }
         //static string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ApnaGharDB_Final;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public bool AddProperty(PropertyInfo p, List<IFormFile> PropertyImages)
+        public bool AddProperty(Property p, List<IFormFile> PropertyImages)
         {
             var context = new ApnaGharV2_DBContext();
 
-            p.CreatedBy = 1;
-            p.CreatedDate = System.DateTime.Now;                //adding additive information
-            p.ModifiedBy = 1;
-            p.ModifiedDate = System.DateTime.Now;
+            p.MyPropInfo.CreatedBy = 1;
+            p.MyPropInfo.CreatedDate = System.DateTime.Now;                //adding additive information
+            p.MyPropInfo.ModifiedBy = 1;
+            p.MyPropInfo.ModifiedDate = System.DateTime.Now;
 
             //---------save images-----------
             string wwwPath = this.Environment.WebRootPath;
             string path = Path.Combine(wwwPath, "images");
             //-----------Type-----------
-            if (p.Type == "Homes")
+            if (p.MyPropInfo.Type == "Homes")
             {
                 path = Path.Combine(path, "properties/homes");    //properties folder
             }
-            else if (p.Type == "Plots")
+            else if (p.MyPropInfo.Type == "Plots")
             {
                 path = Path.Combine(path, "properties/plots");    //properties folder
             }
-            else if (p.Type == "Commercial")
+            else if (p.MyPropInfo.Type == "Commercial")
             {
                 path = Path.Combine(path, "properties/commercial");    //properties folder
             }
-            p.ImagesPath = path;        //set path
+            p.MyPropInfo.ImagesPath = path;        //set path
             //----------------------add in DB--------------
-            context.Properties.Add(p);
+            context.Properties.Add(p.MyPropInfo);
+            context.Amenities.Add(p.MyPropAmenities);
             int n = context.SaveChanges();
 
             if (n > 0)
@@ -49,7 +51,8 @@ namespace ApnaGharV2.Models
                 {
                     Directory.CreateDirectory(path);
                 }
-                var pId = (int)context.Properties.Max(p => p.Id);  //maximum id , lastest property added
+                var pp = p.MyPropInfo;
+                var pId = (int)context.Properties.Max(pp => pp.Id);  //maximum id , lastest property added
 
                 Console.WriteLine("pid : " + pId);
                 Console.WriteLine("list size : " + PropertyImages.Count);
@@ -70,6 +73,7 @@ namespace ApnaGharV2.Models
             }
             else
             {
+                Console.WriteLine("else came");
                 return false;
             }
         }

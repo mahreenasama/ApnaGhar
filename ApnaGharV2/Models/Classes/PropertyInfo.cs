@@ -77,6 +77,7 @@ namespace ApnaGharV2.Models
         //[Keyless]
        // @Transient
             [NotMapped]
+        [Required(ErrorMessage = "This field is required")]
         public List<IFormFile> PropertyImages { get; set; }
 
 

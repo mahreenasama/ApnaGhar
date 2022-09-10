@@ -39,6 +39,12 @@ $(document).ready(function () {
 			$('#citylocations').html(str);
 		});
 	});
+
+	//---------------------------add features btn----------------
+	$('#add-features-btn').click(function () {
+		//alert('f click')
+		document.getElementById('property-features-div').style.setProperty("Display", "block");
+    })
 });
 
 

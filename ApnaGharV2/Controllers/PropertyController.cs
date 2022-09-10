@@ -34,7 +34,7 @@ namespace ApnaGharV2.Controllers
         }
 
         [HttpPost]
-        public ViewResult AddProperty(PropertyInfo property, List<IFormFile> PropertyImages)
+        public ViewResult AddProperty(Property property, List<IFormFile> PropertyImages)
         {
             
             if (propertyRepo.AddProperty(property, PropertyImages))
