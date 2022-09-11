@@ -97,7 +97,7 @@ namespace ApnaGharV2.Models.Repositories
                 a.CompanyAddress = agency.CompanyAddress;
                 a.CompanyEmail = agency.CompanyEmail;
                 a.LogoPath = agency.LogoPath;
-                a.UserID = agency.UserID;
+                //a.UserID = agency.UserID;
 
                 agencies.Add(a);
             }
@@ -106,7 +106,7 @@ namespace ApnaGharV2.Models.Repositories
 
         public Agency SearchAgencyByUserId(int uId)
         {
-            var context = new AccountsDbContext();
+            /*var context = new AccountsDbContext();
 
             var query = context.Agencies.Where(a => a.UserID == uId);  //getting the agency
 
@@ -125,7 +125,7 @@ namespace ApnaGharV2.Models.Repositories
                     a.UserID = agency.UserID;
                 }
                 return a;  //returning by converting into agency
-            }
+            }*/
             return null;
         }
     }

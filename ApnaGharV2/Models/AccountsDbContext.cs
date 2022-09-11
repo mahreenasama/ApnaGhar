@@ -12,6 +12,7 @@ namespace ApnaGharV2.Models
         public DbSet<Amenities> Amenities { get; set; }
         public DbSet<Enquiry> Enquiries { get; set; }
         public DbSet<Agency> Agencies { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
 
         //constructors
@@ -23,6 +24,16 @@ namespace ApnaGharV2.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+            .HasOne(a => a.Agency)
+            .WithOne(u => u.User)
+            .HasForeignKey<Agency>(u => u.UserId);      //User, agency fk
+
+            modelBuilder.Entity<Property>()
+            .HasOne(a => a.Amenities)
+            .WithOne(u => u.Property)
+            .HasForeignKey<Amenities>(a => a.Id);      // prop, amenity fk
 
             modelBuilder.Entity<ApplicationUser>()
                .Property(e => e.Role)

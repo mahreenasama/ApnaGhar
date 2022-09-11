@@ -4,6 +4,7 @@ using ApnaGharV2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApnaGharV2.Migrations.AccountsDb
 {
     [DbContext(typeof(AccountsDbContext))]
-    partial class AccountsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220911131158_UserPropertiesRelation")]
+    partial class UserPropertiesRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,13 +152,7 @@ namespace ApnaGharV2.Migrations.AccountsDb
                     b.Property<string>("ServicesDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("Agencies");
                 });
@@ -164,7 +160,10 @@ namespace ApnaGharV2.Migrations.AccountsDb
             modelBuilder.Entity("ApnaGharV2.Models.Classes.Amenities", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool?>("AirConditioning")
                         .HasColumnType("bit");
@@ -339,12 +338,7 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PropertyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PropertyId");
 
                     b.ToTable("Enquiries");
                 });
@@ -445,6 +439,9 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("AgencyID")
+                        .HasColumnType("int");
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -617,37 +614,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Agency", b =>
-                {
-                    b.HasOne("ApnaGharV2.Models.Classes.User", "User")
-                        .WithOne("Agency")
-                        .HasForeignKey("ApnaGharV2.Models.Classes.Agency", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Amenities", b =>
-                {
-                    b.HasOne("ApnaGharV2.Models.Classes.Property", "Property")
-                        .WithOne("Amenities")
-                        .HasForeignKey("ApnaGharV2.Models.Classes.Amenities", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Property");
-                });
-
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Enquiry", b =>
-                {
-                    b.HasOne("ApnaGharV2.Models.Classes.Property", "Property")
-                        .WithMany("Enquiries")
-                        .HasForeignKey("PropertyId");
-
-                    b.Navigation("Property");
-                });
-
             modelBuilder.Entity("ApnaGharV2.Models.Classes.Property", b =>
                 {
                     b.HasOne("ApnaGharV2.Models.Classes.User", "user")
@@ -708,19 +674,8 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Property", b =>
-                {
-                    b.Navigation("Amenities")
-                        .IsRequired();
-
-                    b.Navigation("Enquiries");
-                });
-
             modelBuilder.Entity("ApnaGharV2.Models.Classes.User", b =>
                 {
-                    b.Navigation("Agency")
-                        .IsRequired();
-
                     b.Navigation("Properties");
                 });
 #pragma warning restore 612, 618

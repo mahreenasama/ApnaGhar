@@ -14,6 +14,7 @@ namespace ApnaGharV2.Models.Classes
         public string Message { get; set; }
 
         //------------foreign key relations------------
-        //public virtual
+        public int? PropertyId { get; set; }
+        public virtual Property Property { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ApnaGharV2.Models.Classes;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -63,6 +64,6 @@ namespace ApnaGharV2.Models.Classes
 
 
         //----------------foriegn key properties------------
-        //public virtual PropertyInfo Property { get; set; }
+        public virtual Property Property { get; set; }   //we made its upper id as fk
     }
 }

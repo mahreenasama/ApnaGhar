@@ -82,14 +82,14 @@ namespace ApnaGharV2.Models.Classes
 
 
         //-------------------- Relation ships-----------------
-        //public virtual PropertyAmenities Amenities { get; set; }
+        //--- for amenities
+        public virtual Amenities Amenities { get; set; }
 
         //--- for users
-        //[ForeignKey("UserId")]
-        //public string? UserId { get; set; }
-        //public virtual User user { get; set; }
+        public int? UserId { get; set; }
+        public virtual User user { get; set; }
 
         //--- for equiries
-        //public virtual List<Enquiry> Enquiries { get; set; } = new List<Enquiry>();
+        public virtual List<Enquiry> Enquiries { get; set; } = new List<Enquiry>();
     }
 }

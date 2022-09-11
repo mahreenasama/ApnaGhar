@@ -1,5 +1,6 @@
 ﻿using ApnaGharV2.Models.Classes;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApnaGharV2.Models.Classes
 {
@@ -13,6 +14,11 @@ namespace ApnaGharV2.Models.Classes
         public string? CompanyAddress { get; set; }
         public string? CompanyEmail { get; set; }
         public string LogoPath { get; set; }    //path of logo will save
-        public int UserID { get; set; }    //UserID who registered as agent
+
+        //--------- relations------------
+        //--- with user---
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
+
     }
 }

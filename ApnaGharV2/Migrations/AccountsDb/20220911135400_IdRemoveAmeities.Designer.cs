@@ -4,6 +4,7 @@ using ApnaGharV2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApnaGharV2.Migrations.AccountsDb
 {
     [DbContext(typeof(AccountsDbContext))]
-    partial class AccountsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220911135400_IdRemoveAmeities")]
+    partial class IdRemoveAmeities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,9 +165,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
 
             modelBuilder.Entity("ApnaGharV2.Models.Classes.Amenities", b =>
                 {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<bool?>("AirConditioning")
                         .HasColumnType("bit");
 
@@ -294,8 +293,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
 
                     b.Property<string>("View")
                         .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
 
                     b.ToTable("Amenities");
                 });
@@ -628,17 +625,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Amenities", b =>
-                {
-                    b.HasOne("ApnaGharV2.Models.Classes.Property", "Property")
-                        .WithOne("Amenities")
-                        .HasForeignKey("ApnaGharV2.Models.Classes.Amenities", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Property");
-                });
-
             modelBuilder.Entity("ApnaGharV2.Models.Classes.Enquiry", b =>
                 {
                     b.HasOne("ApnaGharV2.Models.Classes.Property", "Property")
@@ -710,9 +696,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
 
             modelBuilder.Entity("ApnaGharV2.Models.Classes.Property", b =>
                 {
-                    b.Navigation("Amenities")
-                        .IsRequired();
-
                     b.Navigation("Enquiries");
                 });
 

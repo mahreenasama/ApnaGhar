@@ -31,9 +31,12 @@ namespace ApnaGharV2.Models.Classes
         [Required(ErrorMessage = "City is Required")]
         public string City { get; set; }
 
-        public int? AgencyID { get; set; }
 
         //------------- for relations -------------
+        //--- for agency
+        public virtual Agency Agency { get; set; }
 
+        //-- for properties
+        public virtual List<Property> Properties { get; set; } = new List<Property>();
     }
 }
