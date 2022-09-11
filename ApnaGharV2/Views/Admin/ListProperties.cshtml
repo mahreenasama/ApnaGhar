@@ -5,7 +5,7 @@
     Layout = "_LayoutAdmin";
 }
 
-@model List<ApnaGharV2.Models.PropertyInfo>
+@model List<ApnaGharV2.Models.Classes.Property>
 
     <div class="text-center">
     <table class="table">
@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(ApnaGharV2.Models.PropertyInfo p in Model)
+            @foreach(ApnaGharV2.Models.Classes.Property p in Model)
             {
                 <tr>
                     <th scope="row">@p.Id</th>

@@ -16,7 +16,7 @@ namespace ApnaGharV2.ViewCompnents
             this.agencyRepo = agencyRepo;
         }
 
-        public IViewComponentResult Invoke(int userId)
+        public IViewComponentResult Invoke(int? userId)
         {
             /*//check if this user(who added this property) is agent or not
 

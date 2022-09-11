@@ -3,7 +3,9 @@ using ApnaGharV2.Models;
 using ApnaGharV2.Models.ViewModels;
 using ApnaGharV2.Models.Repositories;
 using ApnaGharV2.Models.Interfaces;
+using ApnaGharV2.Models.Classes;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Diagnostics;
 
 namespace ApnaGharV2.Controllers
 {
@@ -34,45 +36,51 @@ namespace ApnaGharV2.Controllers
         //------------------------------------propeties---------------------------------
         public IActionResult ListProperties()
         {
-            List<PropertyInfo> properties = propertyRepo.ViewAllProperties();
+            List<Property> properties = propertyRepo.ViewAllProperties();
 
             return View(properties);
         }
         [HttpGet]
         public ViewResult AddProperty()
         {
+            System.Diagnostics.Debug.WriteLine("outside");
+
             return View();
         }
         [HttpPost]
-        public IActionResult AddProperty(Property property, List<IFormFile> PropertyImages)
+        public IActionResult AddProperty(Models.ViewModels.PropertyViewModel property, List<IFormFile> PropertyImages)
         {
+            System.Diagnostics.Debug.WriteLine("outside");
+
             if (ModelState.IsValid)
             {
                 if (propertyRepo.AddProperty(property, PropertyImages))
                 {
-                    Console.WriteLine("propety added");
+                    Debug.WriteLine("propety added");
                 }
                 else
                 {
-                    Console.WriteLine("proprty not added");
+                    Debug.WriteLine("proprty not added");
                 }
+                return RedirectToAction("Admin", "Dashboard");
                 //return this.Ok($"Form Data received!");
             }
             else
             {
-                //ModelState.AddModelError("Required Fields", "Please enter required fields");
-                return BadRequest("Enter required fields");
-                Console.WriteLine("admin p add state not valid");
+                ModelState.AddModelError(String.Empty, "Please enter required fields");
+                //return BadRequest("Enter required fields");
+                Debug.WriteLine("admin p add state not valid");
+                Debug.WriteLine(ModelState.ErrorCount);
                 return View();
             }
-
-            return View();
+            Debug.WriteLine("outside");
+            //return View();
         }
 
         [HttpGet]
         public ViewResult PropertyDetails(int id)
         {
-            PropertyInfo p = propertyRepo.ViewProperty(id);
+            Property p = propertyRepo.ViewProperty(id);
             return View(p);
         }
         public void EditProperty()

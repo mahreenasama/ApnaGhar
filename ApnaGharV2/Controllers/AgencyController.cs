@@ -1,5 +1,6 @@
 ﻿using ApnaGharV2.Models.Interfaces;
 using ApnaGharV2.Models.Repositories;
+using ApnaGharV2.Models.Classes;
 
 using Microsoft.AspNetCore.Mvc;
 

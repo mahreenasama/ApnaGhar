@@ -4,6 +4,7 @@ using ApnaGharV2.Models;
 using ApnaGharV2.Models.ViewModels;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using ApnaGharV2.Models.Classes;
 
 using ApnaGharV2.Models.Interfaces;
 using ApnaGharV2.Models.Repositories;
@@ -28,13 +29,14 @@ namespace ApnaGharV2.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ViewResult AddProperty()
         {
             return View();
         }
 
         [HttpPost]
-        public ViewResult AddProperty(Property property, List<IFormFile> PropertyImages)
+        public ViewResult AddProperty(Models.ViewModels.PropertyViewModel property, List<IFormFile> PropertyImages)
         {
             
             if (propertyRepo.AddProperty(property, PropertyImages))
@@ -52,16 +54,16 @@ namespace ApnaGharV2.Controllers
         [HttpGet]
         public ViewResult ViewProperty(int id)
         {
-            PropertyInfo p = propertyRepo.ViewProperty(id);
+            Property p = propertyRepo.ViewProperty(id);
             return View(p);
         }
 
         [HttpGet]
         public ViewResult ViewAllProperties()
         {
-            List<PropertyInfo> properties = propertyRepo.ViewAllProperties();
+            List<Property> properties = propertyRepo.ViewAllProperties();
 
-            /*PropertyInfo obj1 = new PropertyInfo();
+            /*Property obj1 = new Property();
             obj1.Title = "5 Marla House";
             obj1.Description = "Five marla house located in shahdara town lahore.";
             //obj1.Image = "/images/zahida.jpg";

@@ -4,7 +4,7 @@
 @{
 }
 
-@model ApnaGharV2.Models.PropertyInfo
+@model ApnaGharV2.Models.Classes.Property
 
 @section NavBar2{
     <partial name="NavBar2" />
@@ -81,8 +81,7 @@
         </label>
             <div class=" col-5">
                 <select id="citylocations" class="form-control" required name="area" asp-for="Area">
-                    <option disabled selected>Select Area</option>
-                    <option>Allama Iqbal Town</option>
+                    <option selected>Allama Iqbal Town</option>
                     <option>Bahria Town</option>
                     <option>DHA</option>
                     <option>DHA Phase 1</option>

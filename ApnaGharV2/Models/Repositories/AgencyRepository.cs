@@ -1,4 +1,5 @@
 ﻿using ApnaGharV2.Models.Interfaces;
+using ApnaGharV2.Models.Classes;
 
 namespace ApnaGharV2.Models.Repositories
 {
@@ -7,10 +8,10 @@ namespace ApnaGharV2.Models.Repositories
 
         public bool AddAgency(Agency agency)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
-            agency.CreatedBy = 1;
-            agency.CreatedDate = System.DateTime.Now;
+            /*agency.CreatedBy = 1;
+            agency.CreatedDate = System.DateTime.Now;*/
 
             context.Agencies.Add(agency);
             int n = context.SaveChanges();
@@ -25,7 +26,7 @@ namespace ApnaGharV2.Models.Repositories
         }
         public bool UpdateAgency(int id, Agency newData)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var agency = (Agency)context.Agencies.Where(a => a.Id == id);  //getting the agency
             
@@ -36,8 +37,8 @@ namespace ApnaGharV2.Models.Repositories
             agency.CompanyEmail = newData.CompanyEmail;
             agency.LogoPath = newData.LogoPath;
 
-            agency.ModifiedBy = 1;
-            agency.ModifiedDate = System.DateTime.Now;
+            /*agency.ModifiedBy = 1;
+            agency.ModifiedDate = System.DateTime.Now;*/
 
             int n = context.SaveChanges();
             if (n > 0)
@@ -51,7 +52,7 @@ namespace ApnaGharV2.Models.Repositories
         }
         public bool DeleteAgency(int id)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var agency = context.Agencies.Where(a => a.Id == id);  //getting the agency
 
@@ -69,7 +70,7 @@ namespace ApnaGharV2.Models.Repositories
         }
         public Agency SearchAgency(int id)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var agency = context.Agencies.Where(a => a.Id == id);  //getting the agency
 
@@ -83,7 +84,7 @@ namespace ApnaGharV2.Models.Repositories
         {
             List<Agency> agencies= new List<Agency>();
 
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var query = context.Agencies;      //get all
             foreach(var agency in query)
@@ -105,7 +106,7 @@ namespace ApnaGharV2.Models.Repositories
 
         public Agency SearchAgencyByUserId(int uId)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var query = context.Agencies.Where(a => a.UserID == uId);  //getting the agency
 

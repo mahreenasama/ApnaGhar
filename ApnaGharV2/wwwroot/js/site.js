@@ -30,10 +30,10 @@ $(document).ready(function () {
 		var cityy = $(this).val();
 		//alert(cityy);
 		$.get('/Property/GetCityLocations', { city: cityy }, function (result) {
-			let str = "<option disabled selected>Select Area</option>";
-			for (let i = 0; i < result.length; i++) {
+			let str = '<option selected value="' + result[0] + '">' + result[0] + '</option>';
+			for (let i = 1; i < result.length; i++) {
 				//str += `<option value="${result[i]}">`
-				str += "<option>" + result[i] + "</option>";
+				str += '<option value="' + result[i] + '">' + result[0] + '</option>';
 			}
 			//alert(str);
 			$('#citylocations').html(str);

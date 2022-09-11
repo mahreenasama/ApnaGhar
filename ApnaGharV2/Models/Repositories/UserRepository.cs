@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using ApnaGharV2.Models.Interfaces;
+using ApnaGharV2.Models.Classes;
 
-namespace ApnaGharV2.Models
+namespace ApnaGharV2.Models.Repositories
 {
     public class UserRepository:IUserRepository
     {
@@ -16,10 +17,10 @@ namespace ApnaGharV2.Models
 
         public bool AddUser(User user)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
-            user.CreatedBy = 1;
-            user.CreatedDate = System.DateTime.Now;
+            /*user.CreatedBy = 1;
+            user.CreatedDate = System.DateTime.Now;*/
 
             context.Users.Add(user);
             int n = context.SaveChanges();
@@ -34,7 +35,7 @@ namespace ApnaGharV2.Models
         }
         public bool UpdateUser(int id, User newData)
         {
-            var context = new ApnaGharV2_DBContext();
+            /*var context = new AccountsDbContext();
 
             var user = (User)context.Users.Where(u => u.Id == id);  //getting the user
 
@@ -47,8 +48,8 @@ namespace ApnaGharV2.Models
             user.City = newData.City;
             user.Role = newData.Role;
 
-            user.ModifiedBy = 1;
-            user.ModifiedDate = System.DateTime.Now;
+            *//*user.ModifiedBy = 1;
+            user.ModifiedDate = System.DateTime.Now;*//*
 
             int n = context.SaveChanges();
             if (n > 0)
@@ -58,11 +59,12 @@ namespace ApnaGharV2.Models
             else
             {
                 return false;
-            }
+            }*/
+            return false;
         }
         public bool DeleteUser(int id)
         {
-            var context = new ApnaGharV2_DBContext();
+            /*var context = new AccountsDbContext();
 
             var user = context.Users.Where(u => u.Id == id);  //getting the agency
 
@@ -76,11 +78,12 @@ namespace ApnaGharV2.Models
             else
             {
                 return false;
-            }
+            }*/
+            return false;
         }
         public User SearchUser(int id)
         {
-            var context = new ApnaGharV2_DBContext();
+            /*var context = new AccountsDbContext();
 
             var query = context.Users.Where(u => u.Id == id);  //getting the agency
 
@@ -100,29 +103,29 @@ namespace ApnaGharV2.Models
                     u.Role = user.Role;
                 }
                     return u;  //returning by converting into agency
-            }
+            }*/
             return null;
         }
         public List<User> GetAllUsers()
         {
             users = new List<User>();
 
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var query = context.Users;      //get all
             foreach (var user in query)
             {
                 User u = new User();
 
-                u.Id = user.Id;
-                u.Email = user.Email;
+                //u.Id = user.Id;
+                /*u.Email = user.Email;
                 u.Password = user.Password;
                 u.ConfirmPassword = user.ConfirmPassword;
                 u.Name = user.Name;
                 u.PhoneNumber = user.PhoneNumber;
                 u.Country = user.Country;
                 u.City = user.City;
-                u.Role = user.Role;
+                u.Role = user.Role;*/
 
                 users.Add(u);
             }
@@ -130,7 +133,7 @@ namespace ApnaGharV2.Models
         }
         public bool LoginUser(User user)
         {
-            var context = new ApnaGharV2_DBContext();
+            /*var context = new AccountsDbContext();
 
             Func<User,bool> func=(u) =>{
                 if(u.Email==user.Email && u.Password == user.Password)
@@ -148,11 +151,12 @@ namespace ApnaGharV2.Models
             else
             {
                 return false;
-            }
+            }*/
+            return false;
         }
         public bool UserAlreadyExist(User user)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var query = context.Users.Where(u => u.Email == user.Email);
 

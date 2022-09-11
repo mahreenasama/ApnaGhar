@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ApnaGharV2.Models.Classes;
+using System.ComponentModel.DataAnnotations;
 
-namespace ApnaGharV2.Models
+namespace ApnaGharV2.Models.Classes
 {
-    public class Agency:AdditiveInformation
+    public class Agency: FullAuditModel
     {
         [Key]
         public int Id { get; set; }

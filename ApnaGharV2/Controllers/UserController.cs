@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ApnaGharV2.Models;
 using ApnaGharV2.Models.Repositories;
 using ApnaGharV2.Models.Interfaces;
+using ApnaGharV2.Models.Classes;
 using Microsoft.AspNetCore.Identity;
 
 namespace ApnaGharV2.Controllers

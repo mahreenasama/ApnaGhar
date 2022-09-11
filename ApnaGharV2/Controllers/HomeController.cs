@@ -17,6 +17,36 @@ namespace ApnaGharV2.Controllers
         [HttpPost]
         public IActionResult Index()
         {
+            string data = String.Empty;
+            if (HttpContext.Session.Keys.Contains("first_request"))
+            {
+                string firstVisitedDateTime = HttpContext.Session.GetString("first_request");
+                data = "Welcome back " + firstVisitedDateTime;
+
+            }
+            else
+            {
+
+                data = "you visited first time";
+                HttpContext.Session.SetString("first_request", System.DateTime.Now.ToString());
+            }
+            return View("index", data);
+
+            /*if (!HttpContext.Request.Cookies.ContainsKey("lastVisit"))
+            {
+                HttpContext.Response.Cookies.Append("lastVisit", DateTime.Now.ToString());
+            }
+            else
+            {
+                DateTime lastVisitDateTime = DateTime.Parse(HttpContext.Request.Cookies["lastVisit"]);
+                object data = "Your Last Visit was on: " + lastVisitDateTime;
+                return View(data);
+            }
+            return View();*/
+
+
+
+
             /*List<CardHome> cards1=new List<CardHome>();
 
             CardHome c = new CardHome();
@@ -35,7 +65,7 @@ namespace ApnaGharV2.Controllers
             c.Description = "Karachi";
             cards1.Add(c2);*/
 
-            List<String> vs = new List<String>();
+            /*List<String> vs = new List<String>();
             vs.Add("Houses for sale in Shahdara");
             vs.Add("Rent Areas in Shahdara");
             vs.Add("Commercial Areas in Shahdara");
@@ -71,9 +101,9 @@ namespace ApnaGharV2.Controllers
             vs22.Add(vs3);
             vs22.Add(vs4);
             vs22.Add(vs5);
-            vs22.Add(vs6);
+            vs22.Add(vs6);*/
 
-            return View(vs22);
+            //return View(vs22);
         }
 
         public IActionResult PlotFinder()

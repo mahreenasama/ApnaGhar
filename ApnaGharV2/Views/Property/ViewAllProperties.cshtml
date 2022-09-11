@@ -5,7 +5,7 @@
     ViewData["Title"] = "View All Properties";
 }
 
-@model List<ApnaGharV2.Models.PropertyInfo>
+@model List<ApnaGharV2.Models.Classes.Property>
 
 @section NavBar2{
     <partial name="NavBar2" />
@@ -13,7 +13,7 @@
 
 
 <div class="container" id="container-addproperty"> 
-    @foreach(ApnaGharV2.Models.PropertyInfo property in Model)
+    @foreach(ApnaGharV2.Models.Classes.Property property in Model)
             {
                 <partial name="_MakeProductCards" model="property" />
             }

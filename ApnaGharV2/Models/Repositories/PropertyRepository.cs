@@ -1,8 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
 using ApnaGharV2.Models.Interfaces;
 using ApnaGharV2.Models.ViewModels;
+using ApnaGharV2.Models.Classes;
 
-namespace ApnaGharV2.Models
+namespace ApnaGharV2.Models.Repositories
 {
     public class PropertyRepository:IPropertyRepository
     {
@@ -13,35 +14,35 @@ namespace ApnaGharV2.Models
         }
         //static string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ApnaGharDB_Final;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public bool AddProperty(Property p, List<IFormFile> PropertyImages)
+        public bool AddProperty(PropertyViewModel p, List<IFormFile> PropertyImages)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
-            p.MyPropInfo.CreatedBy = 1;
-            p.MyPropInfo.CreatedDate = System.DateTime.Now;                //adding additive information
-            p.MyPropInfo.ModifiedBy = 1;
-            p.MyPropInfo.ModifiedDate = System.DateTime.Now;
+            /*p.Prop.CreatedBy = 1;
+            p.Prop.CreatedDate = System.DateTime.Now;                //adding additive information
+            p.Prop.ModifiedBy = 1;
+            p.Prop.ModifiedDate = System.DateTime.Now;*/
 
             //---------save images-----------
             string wwwPath = this.Environment.WebRootPath;
             string path = Path.Combine(wwwPath, "images");
             //-----------Type-----------
-            if (p.MyPropInfo.Type == "Homes")
+            if (p.Prop.Type == "Homes")
             {
                 path = Path.Combine(path, "properties/homes");    //properties folder
             }
-            else if (p.MyPropInfo.Type == "Plots")
+            else if (p.Prop.Type == "Plots")
             {
                 path = Path.Combine(path, "properties/plots");    //properties folder
             }
-            else if (p.MyPropInfo.Type == "Commercial")
+            else if (p.Prop.Type == "Commercial")
             {
                 path = Path.Combine(path, "properties/commercial");    //properties folder
             }
-            p.MyPropInfo.ImagesPath = path;        //set path
+            p.Prop.ImagesPath = path;        //set path
             //----------------------add in DB--------------
-            context.Properties.Add(p.MyPropInfo);
-            context.Amenities.Add(p.MyPropAmenities);
+            context.Properties.Add(p.Prop);
+            context.Amenities.Add(p.Amen);
             int n = context.SaveChanges();
 
             if (n > 0)
@@ -51,7 +52,7 @@ namespace ApnaGharV2.Models
                 {
                     Directory.CreateDirectory(path);
                 }
-                var pp = p.MyPropInfo;
+                var pp = p.Prop;
                 var pId = (int)context.Properties.Max(pp => pp.Id);  //maximum id , lastest property added
 
                 Console.WriteLine("pid : " + pId);
@@ -77,11 +78,11 @@ namespace ApnaGharV2.Models
                 return false;
             }
         }
-        public bool UpdateProperty(int id, PropertyInfo newData)
+        public bool UpdateProperty(int id, Property newData)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
-            var property = (PropertyInfo)context.Properties.Where(p => p.Id == id);
+            var property = (Property)context.Properties.Where(p => p.Id == id);
 
             property.Id = newData.Id;
             property.Purpose = newData.Purpose;
@@ -100,8 +101,8 @@ namespace ApnaGharV2.Models
             property.Bathrooms = newData.Bathrooms;
             property.ImagesPath = newData.ImagesPath;
 
-            property.ModifiedBy = 1;
-            property.ModifiedDate = System.DateTime.Now;
+            /*property.ModifiedBy = 1;
+            property.ModifiedDate = System.DateTime.Now;*/
 
             int n = context.SaveChanges();
             if (n > 0)
@@ -115,11 +116,11 @@ namespace ApnaGharV2.Models
         }
         public bool DeleteProperty(int id)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var property = context.Properties.Where(p => p.Id == id);  //getting the property
 
-            context.Properties.Remove((PropertyInfo)property);
+            context.Properties.Remove((Property)property);
 
             int n = context.SaveChanges();
             if (n > 0)
@@ -131,15 +132,15 @@ namespace ApnaGharV2.Models
                 return false;
             }
         }
-        public PropertyInfo ViewProperty(int id)
+        public Property ViewProperty(int id)
         {
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var query = context.Properties.Where(p => p.Id == id);  //getting the property
 
             if (query.Count() > 0)     //means property found
             {
-                PropertyInfo p = new PropertyInfo();
+                Property p = new Property();
 
                 foreach (var property in query)
                 {
@@ -159,22 +160,22 @@ namespace ApnaGharV2.Models
                     p.Bedrooms = property.Bedrooms;
                     p.Bathrooms = property.Bathrooms;
                     p.ImagesPath = property.ImagesPath;
-                    p.UserId = property.UserId;
+                    //p.UserId = property.UserId;
                 }
                 return p;  //returning by converting into property
             }
             return null;
         }
-        public List<PropertyInfo> ViewAllProperties()
+        public List<Property> ViewAllProperties()
         {
-            List<PropertyInfo> propList = new List<PropertyInfo>();
+            List<Property> propList = new List<Property>();
 
-            var context = new ApnaGharV2_DBContext();
+            var context = new AccountsDbContext();
 
             var query = context.Properties;      //get all
             foreach (var property in query)
             {
-                PropertyInfo p = new PropertyInfo();
+                Property p = new Property();
 
                 p.Id = property.Id;
                 p.Purpose = property.Purpose;
@@ -192,7 +193,7 @@ namespace ApnaGharV2.Models
                 p.Bedrooms = property.Bedrooms;
                 p.Bathrooms = property.Bathrooms;
                 p.ImagesPath = property.ImagesPath;
-                p.UserId = property.UserId;
+                //p.UserId = property.UserId;
 
                 propList.Add(p);
             }

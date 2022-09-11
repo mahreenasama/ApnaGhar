@@ -5,7 +5,7 @@
     Layout = "_LayoutAdmin";
 }
 
-@model ApnaGharV2.Models.PropertyInfo
+@model ApnaGharV2.Models.Classes.Property
 
 <div class="container">
         <div class="row">
@@ -109,7 +109,7 @@
 
                         @*---------------------amenities VC will be rendered here---------*@
                         <div id="amenities-vc-div">
-                            <vc:amenities-component property-id=@Model.Id ></vc:amenities-component>
+                            <vc:amenities-component property-id=@Model.Id></vc:amenities-component>
                         </div> 
                       </div>
 
@@ -136,9 +136,9 @@
 
                         @*---------------------agent VC will be rendered here---------*@
                
-                        <div id="agency-vc-div">
+                        @*<div id="agency-vc-div">
                             <vc:agency-component user-id=@Model.UserId></vc:agency-component>
-                        </div>
+                        </div>*@
                     
                 </div>
             </div>
