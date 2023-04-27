@@ -1,0 +1,172 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+div, p, span {
+    /*text-align: justify;
+    text-justify: inter-word;*/
+}
+
+/*pilicy image*/
+#policy-img {
+    border-radius: 50%;
+    transition: transform .2s;
+}
+#policy-img:hover {
+    transform: scale(1.5);
+}
+
+/*navigation bar upper*/
+
+nav {
+    font-weight: bold;
+    font-size: small;
+    background-color: #3b5998;
+}
+
+    nav li a {
+        color: white;
+    }
+
+    nav form input {
+        background-color: transparent;
+    }
+
+a {
+    text-decoration: none;
+}
+
+#home-partners img {
+    height: 100px;
+    width: 150px;
+}
+
+
+/*add property page*/
+.add-property-legend {
+    color: white;
+    background-color: #3b5998;
+    font-weight: bold;
+    padding: 5px 15px 5px 15px;
+    margin: 10px 0px 10px 0px;
+    border-radius: 5px;
+}
+
+.addpthings {
+    width: 50%;
+    display: inline-block;
+}
+
+#container-addproperty {
+    width: 98%;
+    margin: auto;
+   /* background-color: white;
+    padding-top: 20px;
+    position: relative;
+    top: 10px;*/
+}
+
+#add-images-btn {
+    color: white;
+    background-color: #3b5998;
+}
+
+
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+#map {
+    height: 100%;
+}
+
+/* 
+ * Optional: Makes the sample page fill the window. 
+ */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.anchor-zameen-tools {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+}
+
+
+
+/*general body*/
+body {
+    background-color: gainsboro;
+}
+/*a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}*/
+
+/* Provide sufficient contrast against white background */
+/*a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}*/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+/*html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}*/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+/*html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {*/
+/* Margin bottom by footer height */
+/*margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;*/ /* Vertically center the text there */
+/*}*/

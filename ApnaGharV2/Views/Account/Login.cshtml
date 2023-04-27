@@ -6,24 +6,45 @@
 
 @model ApnaGharV2.Models.ViewModels.LoginViewModel
 
-<h2>User Sign In</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-6 p-5" style="">
+          @*<h4 style="color: #3b5998;" class="fw-bold mb-4" style="margin-top:500px;">Welcome to ApnaGhar.com</h4>*@
+          <h6 class="fw-bold mb-4 text-center" style="margin-top:120px;">Enter your details to login now:</h6>
 
-<div asp-validation-summary="All" class="text-danger"></div>
+          <div asp-validation-summary="All" class="text-danger text-start"></div>
+            <form class="m-5 w-75 mx-auto" method="post" asp-action="login" asp-controller="account">
+              
+                <div class="mb-3 form-group">
+                    <input type="text" asp-for="Username" class="form-control p-3 bg-light shadow-sm" id="exampleFormControlInput1" placeholder="Username*">
+                    <span asp-validation-for="Username" class="text-danger text-start"></span>  
+                </div>
+                  <div class="mb-3 form-group">
+                    <input type="password" asp-for="Password" class="form-control p-3 bg-light shadow-sm" id="" placeholder="Passsword*">
+                    <span asp-validation-for="Password" class="text-danger text-start"></span>  
+                </div>
+                <div class="mb-3 mt-5 text-center">
+                    <button class="btn btn-success w-25 p-2 shadow-sm" type="submit">Log In</button>
+                    <a class="btn btn-outline-secondary w-25 p-2 shadow-sm" style="text-decoration:none;" asp-controller="home" asp-action="index">Cancel</a>
+                </div>
+            </form>
+            <h6 class="text-center">Don't have an account yet? <a class="fw-bold text-dark" style="text-decoration:none ;" asp-controller="account" asp-action="register">Sign Up!</a></h6>
+        </div>
+        <div class="col-12 col-lg-6  text-center text-white position-relative" style=" height:100% ;
+        background-color:#3b5998;
+            background-image: linear-gradient(to top, cornflowerblue, #041d52); height: 800px;">
 
-<form method="post" style="padding-left:200px ;padding-right:200px;" class="mt-5 container">
-    <div class="mb-3 form-group">
-        <label asp-for="Username" class="form-label"></label>
-        <input asp-for="Username" type="text" placeholder="Username" class="form-control" id="username">
-        <span asp-validation-for="Username" class="text-danger"></span>
+<div class="position-absolute top-50 start-50 translate-middle" style="">
+    <div class="p-2 bd-highlight">
+        <img src="~/images/general/hk.png" class="img-fluid" style="height:100px; width: 150px;"/>
     </div>
+    <!-- <div class="fw-bold fs-3 text-white">Apna Ghar Hay Jannat</div> -->
+    <div class="fw-bold fs-2 text-white mt-3 p-2 bd-highlight">اپنا گھر جنت ھے</div>
+    <div class="fw-bold p-2 bd-highlight">&copy; 2022 apnaghar.com</div>
+</div>
 
-    <div class="mb-3 form-group">
-        <label asp-for="Password" class="form-label"></label>
-        <input asp-for="Password" type="password" placeholder="Password" class="form-control" id="exampleInputPassword1">
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]">Log In</button>
-</form>
-<a asp-controller="Account" asp-action="Register">Create an account</a>
+</div>
 
-<p>@ViewBag.url</p>
+</div>
+
+</div>

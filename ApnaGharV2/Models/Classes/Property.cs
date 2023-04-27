@@ -28,9 +28,9 @@ namespace ApnaGharV2.Models.Classes
         public string? Type { get; set; } //house, plot, commercial
 
 
-        [Column(TypeName = "varchar(20)")]
-        [Required(ErrorMessage = "This field is required")]
-        public string? SubType { get; set; } //from each type there is a sub type
+        //[Column(TypeName = "varchar(20)")]
+        //[Required(ErrorMessage = "This field is required")]
+        //public string? SubType { get; set; } //from each type there is a sub type
 
 
         [Column(TypeName = "varchar(10)")]
@@ -70,8 +70,8 @@ namespace ApnaGharV2.Models.Classes
         public int? Bathrooms { get; set; } //full address
 
 
-        public string? ImagesPath { get; set; }
-
+        //public string? ImagesPath { get; set; }
+        public int? ImagesCount { get; set; }            //number of images of this property
         //[Keyless]
        // @Transient
         [NotMapped]
@@ -82,14 +82,15 @@ namespace ApnaGharV2.Models.Classes
 
 
         //-------------------- Relation ships-----------------
-        //--- for amenities
-        public virtual Amenities Amenities { get; set; }
 
         //--- for users
         public int? UserId { get; set; }
-        public virtual User user { get; set; }
+        //public virtual User user { get; set; }
 
         //--- for equiries
         public virtual List<Enquiry> Enquiries { get; set; } = new List<Enquiry>();
+
+        //--- for favourites
+        public virtual List<User> FavouriteForUsers { get; set; } = new List<User>();
     }
 }

@@ -7,7 +7,13 @@
 
 @model List<ApnaGharV2.Models.Classes.Enquiry>
 
-<div class="text-center">
+<div id="after-header-div" class="text-white text-center" style="background-color: var(--site-color); height:150px;">
+    <h4 class="pt-3">Enquiries</h4>
+    <p class="">Welcome to ApnaGhar</p>
+</div>
+
+<div class="container bg-white p-4 shadow-lg border rounded" style="margin-top:-50px; width:90%;">
+
     <table class="table">
         <thead>
             <tr>
@@ -15,6 +21,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
+                <th scope="col">Property Id</th>
                 <th scope="col">Message</th>
             </tr>
         </thead>
@@ -24,8 +31,21 @@
                 <tr>
                     <th scope="row">@e.Id</th>
                     <td>@e.Name</td>
-                    <td>@e.Email</td>
-                    <td>@e.PhoneNumber</td>
+                    <td>
+                        <a href="mailto: @e.Email?Subject=Mail Check From ApnaGhar&body=Assalam o Alaikum! @e.Name" style="text-decoration:none;" class="text-dark">
+                            @e.Email
+                        </a>
+                    </td>
+                    <td>
+                        <a href="tel:+92 @e.PhoneNumber" style="text-decoration:none;" class="text-dark">
+                        +92 @e.PhoneNumber
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Admin" asp-action="PropertyDetails" asp-route-id="@e.PropertyId" style="text-decoration:none;" class="text-dark">
+                            @e.PropertyId
+                        </a>
+                    </td>
                     <td>@e.Message</td>
                     <td>
                         <a class="btn btn-info" href="mailto:@e.Email&Subject=">Reply</a>
@@ -36,4 +56,5 @@
         </tbody>
     </table>
 </div>
+
 

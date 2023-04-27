@@ -7,7 +7,7 @@ namespace ApnaGharV2.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string Role { get; set; }
+        public string? Role { get; set; }
 
         //----- audit info added here manually (bcz we cant have multiple base classes)--------
         public string? CreatedByUserId { get; set; }
@@ -18,6 +18,7 @@ namespace ApnaGharV2.Models
 
 
         //------------adding foreign key relation ships-----------
+        public int? UserId { get; set; }
         //public virtual List<PropertyInfo>? Properties { get; set; } = new List<PropertyInfo>();
     }
 }

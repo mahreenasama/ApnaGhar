@@ -6,6 +6,8 @@ C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\ApnaG
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\ApnaGharV2.runtimeconfig.json
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\ApnaGharV2.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\ApnaGharV2.pdb
+C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Humanizer.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll

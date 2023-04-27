@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Mahreen Asama\source\repos\ApnaGharV2\ApnaGharV2
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -27,8 +31,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkUHJvcGVydHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/AddUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/EditProperty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFByb3BlcnR5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/ListContacts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTGlzdENvbnRhY3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/ListEnquiries.cshtml]
@@ -39,12 +59,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTGlzdFByb3BlcnRpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/PropertyDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvcGVydHlEZXRhaWxzLmNzaHRtbA==
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/ListUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTGlzdFVzZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Agency/ViewAgency.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmN5XFZpZXdBZ2VuY3kuY3NodG1s
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/ProfilePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZmlsZVBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Admin/PropertyDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvcGVydHlEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Home/About.cshtml]
@@ -55,6 +79,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Home/FoF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGb0YuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Home/HelpSupport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIZWxwU3VwcG9ydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -63,20 +91,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Home/PlotFinder.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQbG90RmluZGVyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Home/TermsOfUse.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc09mVXNlLmNzaHRtbA==
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Home/Team.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZWFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Property/AddProperty.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydHlcQWRkUHJvcGVydHkuY3NodG1s
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Home/TermsOfUse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc09mVXNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Property/ViewAllProperties.cshtml]
@@ -87,64 +111,52 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydHlcVmlld1Byb3BlcnR5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/Components/AgencyComponent/Default.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWdlbmN5Q29tcG9uZW50XERlZmF1bHQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/Components/AmenitiesComponent/Default.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW1lbml0aWVzQ29tcG9uZW50XERlZmF1bHQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/Components/EnquiryForm/Default.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRW5xdWlyeUZvcm1cRGVmYXVsdC5jc2h0bWw=
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/Components/PropertiesComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUHJvcGVydGllc0NvbXBvbmVudFxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/HomePageShared.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEhvbWVQYWdlU2hhcmVkLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/HomePropertyRows.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEhvbWVQcm9wZXJ0eVJvd3MuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/NavBar2.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5hdkJhcjIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_AdminNavBarSide.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbk5hdkJhclNpZGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_AdminNavBarUpper.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbk5hdkJhclVwcGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_FilterProperties.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GaWx0ZXJQcm9wZXJ0aWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_MakeProductCards.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NYWtlUHJvZHVjdENhcmRzLmNzaHRtbA==
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_PropertyCardsGrid.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9wZXJ0eUNhcmRzR3JpZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_PropertySubCategories.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9wZXJ0eVN1YkNhdGVnb3JpZXMuY3NodG1s
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_PropertyCardsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9wZXJ0eUNhcmRzTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/User/UserDashboard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyRGFzaGJvYXJkLmNzaHRtbA==
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/User/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/User/ViewAllUsers.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxWaWV3QWxsVXNlcnMuY3NodG1s
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/User/FavouriteListings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxGYXZvdXJpdGVMaXN0aW5ncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/User/UpdateProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGVQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahreen Asama/source/repos/ApnaGharV2/ApnaGharV2/Views/_ViewImports.cshtml]

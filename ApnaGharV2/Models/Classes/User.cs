@@ -32,11 +32,19 @@ namespace ApnaGharV2.Models.Classes
         public string City { get; set; }
 
 
+        [Column(TypeName ="nvarchar(10)")]
+        public string? Role { get; set; }
+
+        [NotMapped]
+        public IFormFile? ProfileImage { get; set; }
+
+
         //------------- for relations -------------
-        //--- for agency
-        public virtual Agency Agency { get; set; }
 
         //-- for properties
-        public virtual List<Property> Properties { get; set; } = new List<Property>();
+        //public virtual List<Property>? Properties { get; set; } = new List<Property>();
+
+        //-- for favourites
+        public virtual List<Property>? UserFavouriteProperties { get; set; } = new List<Property>();
     }
 }

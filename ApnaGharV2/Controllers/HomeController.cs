@@ -1,4 +1,6 @@
 ﻿using ApnaGharV2.Models;
+using ApnaGharV2.Models.Interfaces;
+using ApnaGharV2.Models.Classes;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,164 +9,112 @@ namespace ApnaGharV2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        //private readonly IPropertyRepository propertyRepo;    //reference of interface at class level
+        private static int loggedinAdminId;
+        private static string loggedinAdminUname, loggedinAdminRole;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IPropertyRepository propertyRepo)
         {
             _logger = logger;
+            //this.propertyRepo = propertyRepo;
+
         }
 
-        [HttpGet]
-        [HttpPost]
+        /*public IActionResult SearchBar(string city, string size)
+        {
+            List<Property> props = propertyRepo.SearchBar(city, size);
+            return RedirectToAction("ViewAllProperties", "Property");
+        }*/
+
+       
         public IActionResult Index()
         {
             string data = String.Empty;
             if (HttpContext.Session.Keys.Contains("first_request"))
             {
                 string firstVisitedDateTime = HttpContext.Session.GetString("first_request");
-                data = "Welcome back " + firstVisitedDateTime;
-
+                data = "Last Visit: " + firstVisitedDateTime;
             }
             else
             {
-
                 data = "you visited first time";
                 HttpContext.Session.SetString("first_request", System.DateTime.Now.ToString());
             }
+            //------------------------
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+
+                loggedinAdminId = int.Parse(ViewBag.loggedinUserId);
+                loggedinAdminUname = ViewBag.loggedinUserUname;
+                loggedinAdminRole = ViewBag.loggedinUserRole;
+
+            }
             return View("index", data);
-
-            /*if (!HttpContext.Request.Cookies.ContainsKey("lastVisit"))
-            {
-                HttpContext.Response.Cookies.Append("lastVisit", DateTime.Now.ToString());
-            }
-            else
-            {
-                DateTime lastVisitDateTime = DateTime.Parse(HttpContext.Request.Cookies["lastVisit"]);
-                object data = "Your Last Visit was on: " + lastVisitDateTime;
-                return View(data);
-            }
-            return View();*/
-
-
-
-
-            /*List<CardHome> cards1=new List<CardHome>();
-
-            CardHome c = new CardHome();
-            c.Image = "~/images/karachi.jpeg";
-            c.Title = "City Comfort";
-            c.Description = "Karachi";
-            cards1.Add(c);
-            CardHome c1 = new CardHome();
-            c.Image = "~/images/emiratesmall.jpg";
-            c.Title = "City Comfort";
-            c.Description = "Karachi";
-            cards1.Add(c1);
-            CardHome c2 = new CardHome();
-            c.Image = "~/images/zahida.jpeg";
-            c.Title = "City Comfort";
-            c.Description = "Karachi";
-            cards1.Add(c2);*/
-
-            /*List<String> vs = new List<String>();
-            vs.Add("Houses for sale in Shahdara");
-            vs.Add("Rent Areas in Shahdara");
-            vs.Add("Commercial Areas in Shahdara");
-
-            List<String> vs2 = new List<String>();
-            vs2.Add("Houses for sale in Gulberg");
-            vs2.Add("Rent Areas in Gulberg");
-            vs2.Add("Commercial Areas in Gulberg");
-
-            List<String> vs3 = new List<String>();
-            vs3.Add("Houses for sale in DHA");
-            vs3.Add("Rent Areas in DHA");
-            vs3.Add("Commercial Areas in DHA");
-
-            List<String> vs4 = new List<String>();
-            vs4.Add("Houses for sale in Shahdara");
-            vs4.Add("Rent Areas in Shahdara");
-            vs4.Add("Commercial Areas in Shahdara");
-
-            List<String> vs5 = new List<String>();
-            vs5.Add("Houses for sale in Shahdara");
-            vs5.Add("Rent Areas in Shahdara");
-            vs5.Add("Commercial Areas in Shahdara");
-
-            List<String> vs6 = new List<String>();
-            vs6.Add("Houses for sale in Shahdara");
-            vs6.Add("Rent Areas in Shahdara");
-            vs6.Add("Commercial Areas in Shahdara");
-
-            List<List<String>> vs22 = new List<List<String>>();
-            vs22.Add(vs);
-            vs22.Add(vs2);
-            vs22.Add(vs3);
-            vs22.Add(vs4);
-            vs22.Add(vs5);
-            vs22.Add(vs6);*/
-
-            //return View(vs22);
-        }
-
-        public IActionResult PlotFinder()
-        {
-            return View();
         }
 
         public IActionResult Privacy()
         {
-            List<String> vs = new List<String>();
-            vs.Add("/images/active.png");
-            vs.Add("Rent Areas in Shahdara");
-            vs.Add("/images/about-us-block.png");
-
-            List<String> vs2 = new List<String>();
-            vs2.Add("Houses for sale in Gulberg");
-            vs2.Add("Rent Areas in Gulberg");
-            vs2.Add("Commercial Areas in Gulberg");
-
-            List<String> vs3 = new List<String>();
-            vs3.Add("Houses for sale in DHA");
-            vs3.Add("Rent Areas in DHA");
-            vs3.Add("Commercial Areas in DHA");
-
-            List<String> vs4 = new List<String>();
-            vs4.Add("Houses for sale in Shahdara");
-            vs4.Add("Rent Areas in Shahdara");
-            vs4.Add("Commercial Areas in Shahdara");
-
-            List<String> vs5 = new List<String>();
-            vs5.Add("Houses for sale in Shahdara");
-            vs5.Add("Rent Areas in Shahdara");
-            vs5.Add("Commercial Areas in Shahdara");
-
-            List<String> vs6 = new List<String>();
-            vs6.Add("Houses for sale in Shahdara");
-            vs6.Add("Rent Areas in Shahdara");
-            vs6.Add("Commercial Areas in Shahdara");
-
-            List<List<String>> vs22 = new List<List<String>>();
-            vs22.Add(vs);
-            vs22.Add(vs2);
-            vs22.Add(vs3);
-            vs22.Add(vs4);
-            vs22.Add(vs5);
-            vs22.Add(vs6);
-
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+            }
+            return View();
+        }
+        public IActionResult Team()
+        {
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+            }
+            return View();
+        }
+        public IActionResult TermsOfUse()
+        {
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+            }
             return View();
         }
         public IActionResult About()
         {
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+            }
             return View();
         }
 
         public IActionResult Contact()
         {
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+            }
             return View();
         }
 
         public IActionResult HelpSupport()
         {
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+            }
             return View();
         }
 
@@ -172,6 +122,16 @@ namespace ApnaGharV2.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult FoF()
+        {
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+            }
+            return View();
         }
     }
 }

@@ -14,8 +14,48 @@ namespace ApnaGharV2.Models.Repositories
         }
         //static string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ApnaGharDB_Final;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public bool AddProperty(PropertyViewModel p, List<IFormFile> PropertyImages)
+
+        public List<Property> SearchBar(string city, string size)
         {
+            var context = new AccountsDbContext();
+            List<Property> propList = new List<Property>();
+
+            int sizee = int.Parse(size);
+
+            var query = context.Properties.Where(p => p.City == city).Where(p => p.Size == sizee);
+
+                     //get all
+            foreach (var property in query)
+            {
+                Property p = new Property();
+
+                p.Id = property.Id;
+                p.Purpose = property.Purpose;
+                p.Type = property.Type;
+                //p.SubType = property.SubType;
+                p.City = property.City;
+                p.Area = property.Area;
+                p.Address = property.Address;
+                p.Title = property.Title;
+                p.Description = property.Description;
+                p.Price = property.Price;
+                p.PriceUnit = property.PriceUnit;
+                p.Size = property.Size;
+                p.SizeUnit = property.SizeUnit;
+                p.Bedrooms = property.Bedrooms;
+                p.Bathrooms = property.Bathrooms;
+                //p.UserId = property.UserId;
+
+                propList.Add(p);
+            }
+            return propList;
+        }
+        public bool AddProperty(AddPropertyViewModel p, List<IFormFile> PropertyImages, int adderId)
+        {
+            p.Prop.Purpose = p.Purpose;
+            p.Prop.Type = p.Type;
+            p.Prop.ImagesCount = PropertyImages.Count();
+
             var context = new AccountsDbContext();
 
             /*p.Prop.CreatedBy = 1;
@@ -27,84 +67,135 @@ namespace ApnaGharV2.Models.Repositories
             string wwwPath = this.Environment.WebRootPath;
             string path = Path.Combine(wwwPath, "images");
             //-----------Type-----------
-            if (p.Prop.Type == "Homes")
+            if (p.Prop.Type == "Home")
             {
-                path = Path.Combine(path, "properties/homes");    //properties folder
+                path = Path.Combine(path, "properties/Home");    //properties folder
             }
-            else if (p.Prop.Type == "Plots")
+            else if (p.Prop.Type == "Plot")
             {
-                path = Path.Combine(path, "properties/plots");    //properties folder
+                path = Path.Combine(path, "properties/Plot");    //properties folder
             }
             else if (p.Prop.Type == "Commercial")
             {
-                path = Path.Combine(path, "properties/commercial");    //properties folder
+                path = Path.Combine(path, "properties/Commercial");    //properties folder
             }
-            p.Prop.ImagesPath = path;        //set path
             //----------------------add in DB--------------
+            
+
+            Console.WriteLine("---------------img count: " + p.Prop.ImagesCount);
             context.Properties.Add(p.Prop);
-            context.Amenities.Add(p.Amen);
-            int n = context.SaveChanges();
+
+            int n = context.SaveChanges2(adderId);
 
             if (n > 0)
             {
+                //--- now save amenities ----
+                var pId = (int)context.Properties.Max(pp => pp.Id);  //maximum id , lastest property added
+
+                /*p.Amen.Id = pId;        //asigning fereign key
+                context.Amenities.Add(p.Amen);
+                int nn = context.SaveChanges2(adderId);*/
+
+                //if (nn > 0)
+                //{
+                    //-----------check existance-----------
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    Console.WriteLine("pid : " + pId);
+                    Console.WriteLine("list size : " + PropertyImages.Count);
+
+                    int c = 1;
+                    foreach (IFormFile file in PropertyImages)
+                    {
+                        using (FileStream stream = new FileStream(
+                            Path.Combine(path, $"{pId}_{c}.jpg"), FileMode.CreateNew))
+                        {
+                            Console.WriteLine("file name : " + $"{pId}_{c}.jpg");
+
+                            file.CopyTo(stream);
+                        }
+                        c += 1;
+                    }
+                    return true;
+                //}
+                /*else
+                {
+                    Console.WriteLine("amenities not save");
+                    return false;
+                }*/
+            }
+            else
+            {
+                Console.WriteLine("property not save");
+                return false;
+            }
+        }
+        public bool UpdateProperty(Property newData, List<IFormFile> PropertyImages, int id, int changerId)
+        {
+            var context = new AccountsDbContext();
+
+            Property p = ViewProperty(id);
+
+            p.Purpose = newData.Purpose;
+            p.Address = newData.Address;
+            p.Title = newData.Title;
+            p.Description = newData.Description;
+            p.Price = newData.Price;
+            p.PriceUnit = newData.PriceUnit;
+            p.Size = newData.Size;
+            p.SizeUnit = newData.SizeUnit;
+            p.Bedrooms = newData.Bedrooms;
+            p.Bathrooms = newData.Bathrooms;
+
+            //----update images if entered new---
+
+            if (PropertyImages != null)
+            {
+                p.ImagesCount = PropertyImages.Count();
+                //---------save images-----------
+                string wwwPath = this.Environment.WebRootPath;
+                string path = Path.Combine(wwwPath, "images");
+                //-----------Type-----------
+                if (p.Type == "Home")
+                {
+                    path = Path.Combine(path, "properties/Home");    //properties folder
+                }
+                else if (p.Type == "Plot")
+                {
+                    path = Path.Combine(path, "properties/Plot");    //properties folder
+                }
+                else if (p.Type == "Commercial")
+                {
+                    path = Path.Combine(path, "properties/Commercial");    //properties folder
+                }
                 //-----------check existance-----------
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
-                var pp = p.Prop;
-                var pId = (int)context.Properties.Max(pp => pp.Id);  //maximum id , lastest property added
 
-                Console.WriteLine("pid : " + pId);
+                Console.WriteLine("pid : " + id);
                 Console.WriteLine("list size : " + PropertyImages.Count);
 
-                int c = 0;
+                int c = 1;
                 foreach (IFormFile file in PropertyImages)
                 {
                     using (FileStream stream = new FileStream(
-                        Path.Combine(path, $"{pId}_{c}.jpg"), FileMode.CreateNew))
+                        Path.Combine(path, $"{id}_{c}.jpg"), FileMode.CreateNew))
                     {
-                        Console.WriteLine("file name : " + $"{pId}_{c}.jpg");
+                        Console.WriteLine("file name : " + $"{id}_{c}.jpg");
 
                         file.CopyTo(stream);
                     }
                     c += 1;
                 }
-                return true;
             }
-            else
-            {
-                Console.WriteLine("else came");
-                return false;
-            }
-        }
-        public bool UpdateProperty(int id, Property newData)
-        {
-            var context = new AccountsDbContext();
+                context.Properties.Update(p);
 
-            var property = (Property)context.Properties.Where(p => p.Id == id);
-
-            property.Id = newData.Id;
-            property.Purpose = newData.Purpose;
-            property.Type = newData.Type;
-            property.SubType = newData.SubType;
-            property.City = newData.City;
-            property.Area = newData.Area;
-            property.Address = newData.Address;
-            property.Title = newData.Title;
-            property.Description = newData.Description;
-            property.Price = newData.Price;
-            property.PriceUnit = newData.PriceUnit;
-            property.Size = newData.Size;
-            property.SizeUnit = newData.SizeUnit;
-            property.Bedrooms = newData.Bedrooms;
-            property.Bathrooms = newData.Bathrooms;
-            property.ImagesPath = newData.ImagesPath;
-
-            /*property.ModifiedBy = 1;
-            property.ModifiedDate = System.DateTime.Now;*/
-
-            int n = context.SaveChanges();
+            int n = context.SaveChanges2(changerId);
             if (n > 0)
             {
                 return true;
@@ -122,7 +213,7 @@ namespace ApnaGharV2.Models.Repositories
 
             context.Properties.Remove((Property)property);
 
-            int n = context.SaveChanges();
+            int n = context.SaveChanges2(0);
             if (n > 0)
             {
                 return true;
@@ -147,7 +238,6 @@ namespace ApnaGharV2.Models.Repositories
                     p.Id = property.Id;
                     p.Purpose = property.Purpose;
                     p.Type = property.Type;
-                    p.SubType = property.SubType;
                     p.City = property.City;
                     p.Area = property.Area;
                     p.Address = property.Address;
@@ -159,46 +249,228 @@ namespace ApnaGharV2.Models.Repositories
                     p.SizeUnit = property.SizeUnit;
                     p.Bedrooms = property.Bedrooms;
                     p.Bathrooms = property.Bathrooms;
-                    p.ImagesPath = property.ImagesPath;
-                    //p.UserId = property.UserId;
+                    p.ImagesCount = property.ImagesCount;
+                    p.UserId = property.UserId;
+
                 }
                 return p;  //returning by converting into property
             }
             return null;
         }
-        public List<Property> ViewAllProperties()
+
+        public List<Property> FilterProperties(string city, string purpose, string type)
+        {
+            
+            List<Property> propList = new List<Property>();
+
+            var context = new AccountsDbContext();
+
+            var query = context.Properties.Where(p => p.Type == "type").ToList();
+
+            List<Property> pls= context.Properties.Where(p => p.IsActive == true).ToList();
+
+            Console.WriteLine("count: " + pls.Count());
+
+            List<Property> pls2 = new List<Property>();
+
+            if (city == null && purpose == null && type == null)
+            {
+                foreach (Property pp in pls)
+                {
+                        pls2.Add(pp);
+                }
+            }
+            else if (city != null && purpose != null && type != null)
+            {
+                foreach (Property pp in pls)
+                {
+                    if (pp.City == city && pp.Purpose == purpose && pp.Type == type)
+                    {
+                        pls2.Add(pp);
+                    }
+                }
+            }
+            else if (city != null && purpose == null && type == null)
+            {
+                foreach (Property pp in pls)
+                {
+                    if (pp.City == city)
+                    {
+                        pls2.Add(pp);
+                    }
+                }
+            }
+            else if (city == null && purpose != null && type == null)
+            {
+                foreach (Property pp in pls)
+                {
+                    if (pp.Purpose == purpose)
+                    {
+                        pls2.Add(pp);
+                    }
+                }
+            }
+            else if (city == null && purpose == null && type != null)
+            {
+                foreach (Property pp in pls)
+                {
+                    if (pp.Type == type)
+                    {
+                        pls2.Add(pp);
+                    }
+                }
+            }
+            else if (city != null && purpose != null && type == null)
+            {
+                foreach (Property pp in pls)
+                {
+                    if (pp.City == city && pp.Purpose == purpose)
+                    {
+                        pls2.Add(pp);
+                    }
+                }
+            }
+            else if (city != null && purpose == null && type != null)
+            {
+                foreach (Property pp in pls)
+                {
+                    if (pp.City == city && pp.Type == type)
+                    {
+                        pls2.Add(pp);
+                    }
+                }
+            }
+            else if (city == null && purpose != null && type != null)
+            {
+                foreach (Property pp in pls)
+                {
+                    if (pp.Purpose == purpose && pp.Type==type)
+                    {
+                        pls2.Add(pp);
+                    }
+                }
+            }
+
+
+
+            return pls2;
+        }
+        public List<Property> ViewAllProperties(int num)
         {
             List<Property> propList = new List<Property>();
 
             var context = new AccountsDbContext();
 
-            var query = context.Properties;      //get all
-            foreach (var property in query)
+            if (num == 0)
             {
-                Property p = new Property();
+                var query = context.Properties;      //get all
+                foreach (var property in query)
+                {
+                    Property p = new Property();
 
-                p.Id = property.Id;
-                p.Purpose = property.Purpose;
-                p.Type = property.Type;
-                p.SubType = property.SubType;
-                p.City = property.City;
-                p.Area = property.Area;
-                p.Address = property.Address;
-                p.Title = property.Title;
-                p.Description = property.Description;
-                p.Price = property.Price;
-                p.PriceUnit = property.PriceUnit;
-                p.Size = property.Size;
-                p.SizeUnit = property.SizeUnit;
-                p.Bedrooms = property.Bedrooms;
-                p.Bathrooms = property.Bathrooms;
-                p.ImagesPath = property.ImagesPath;
-                //p.UserId = property.UserId;
+                    p.Id = property.Id;
+                    p.Purpose = property.Purpose;
+                    p.Type = property.Type;
+                    p.City = property.City;
+                    p.Area = property.Area;
+                    p.Address = property.Address;
+                    p.Title = property.Title;
+                    p.Description = property.Description;
+                    p.Price = property.Price;
+                    p.PriceUnit = property.PriceUnit;
+                    p.Size = property.Size;
+                    p.SizeUnit = property.SizeUnit;
+                    p.Bedrooms = property.Bedrooms;
+                    p.Bathrooms = property.Bathrooms;
+                    p.UserId = property.UserId;
+                    p.ImagesCount = property.ImagesCount;
 
-                propList.Add(p);
+                    propList.Add(p);
+                }
+            }
+            if (num == -1)
+            {
+                var query = context.Properties.Where(p => p.Type == "Home");      //get all
+                foreach (var property in query)
+                {
+                    Property p = new Property();
+
+                    p.Id = property.Id;
+                    p.Purpose = property.Purpose;
+                    p.Type = property.Type;
+                    p.City = property.City;
+                    p.Area = property.Area;
+                    p.Address = property.Address;
+                    p.Title = property.Title;
+                    p.Description = property.Description;
+                    p.Price = property.Price;
+                    p.PriceUnit = property.PriceUnit;
+                    p.Size = property.Size;
+                    p.SizeUnit = property.SizeUnit;
+                    p.Bedrooms = property.Bedrooms;
+                    p.Bathrooms = property.Bathrooms;
+                    p.UserId = property.UserId;
+                    p.ImagesCount = property.ImagesCount;
+
+                    propList.Add(p);
+                }
+            }
+            if (num == -2)
+            {
+                var query = context.Properties.Where(p => p.Type == "Plot");      //get all
+                foreach (var property in query)
+                {
+                    Property p = new Property();
+
+                    p.Id = property.Id;
+                    p.Purpose = property.Purpose;
+                    p.Type = property.Type;
+                    p.City = property.City;
+                    p.Area = property.Area;
+                    p.Address = property.Address;
+                    p.Title = property.Title;
+                    p.Description = property.Description;
+                    p.Price = property.Price;
+                    p.PriceUnit = property.PriceUnit;
+                    p.Size = property.Size;
+                    p.SizeUnit = property.SizeUnit;
+                    p.Bedrooms = property.Bedrooms;
+                    p.Bathrooms = property.Bathrooms;
+                    p.UserId = property.UserId;
+                    p.ImagesCount = property.ImagesCount;
+
+                    propList.Add(p);
+                }
+            }
+            if (num == -3)
+            {
+                var query = context.Properties.Where(p => p.Type == "Commercial");      //get all
+                foreach (var property in query)
+                {
+                    Property p = new Property();
+
+                    p.Id = property.Id;
+                    p.Purpose = property.Purpose;
+                    p.Type = property.Type;
+                    p.City = property.City;
+                    p.Area = property.Area;
+                    p.Address = property.Address;
+                    p.Title = property.Title;
+                    p.Description = property.Description;
+                    p.Price = property.Price;
+                    p.PriceUnit = property.PriceUnit;
+                    p.Size = property.Size;
+                    p.SizeUnit = property.SizeUnit;
+                    p.Bedrooms = property.Bedrooms;
+                    p.Bathrooms = property.Bathrooms;
+                    p.UserId = property.UserId;
+                    p.ImagesCount = property.ImagesCount;
+
+                    propList.Add(p);
+                }
             }
             return propList;
         }
-
+        
     }
 }

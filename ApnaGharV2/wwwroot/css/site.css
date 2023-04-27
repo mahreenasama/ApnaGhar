@@ -1,9 +1,28 @@
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+:root {
+    --site-color: #3b5998;
+}
+
+/*------- adminside -------------*/
+#admin-navs-link:hover{
+    background-color:white;
+    color:black;
+}
+#admin-side-nav li a{
+    text-decoration:none;
+}
+
+#admin-nav-lists li{
+    padding:10px;
+}
+a{
+    text-decoration: none;
+}
 
 div, p, span {
-    /*text-align: justify;
+        /*text-align: justify;
     text-justify: inter-word;*/
 }
 

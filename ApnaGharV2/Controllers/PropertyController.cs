@@ -16,99 +16,69 @@ namespace ApnaGharV2.Controllers
         private IWebHostEnvironment Environment;
         private readonly IPropertyRepository propertyRepo;    //reference of interface at class level
 
+        private static int loggedinAdminId;
+        private static string loggedinAdminUname, loggedinAdminRole;
+
         public PropertyController(IWebHostEnvironment _e, IPropertyRepository propertyRepo)
         {
             Environment = _e;       //inject service using constructor
             this.propertyRepo = propertyRepo;
         }
 
-        //--------------------------methods---------------
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        [Authorize]
-        public ViewResult AddProperty()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ViewResult AddProperty(Models.ViewModels.PropertyViewModel property, List<IFormFile> PropertyImages)
-        {
-            
-            if (propertyRepo.AddProperty(property, PropertyImages))
-            {
-                Console.WriteLine("propety added");
-            }
-            else
-            {
-                Console.WriteLine("proprty not added");
-            }
-
-            return View();
-        }
-
         [HttpGet]
         public ViewResult ViewProperty(int id)
         {
             Property p = propertyRepo.ViewProperty(id);
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+            }
             return View(p);
         }
 
         [HttpGet]
-        public ViewResult ViewAllProperties()
+        public ViewResult ViewAllProperties(int num)
         {
-            List<Property> properties = propertyRepo.ViewAllProperties();
+            List<Property> properties = propertyRepo.ViewAllProperties(num);
 
-            /*Property obj1 = new Property();
-            obj1.Title = "5 Marla House";
-            obj1.Description = "Five marla house located in shahdara town lahore.";
-            //obj1.Image = "/images/zahida.jpg";
-            obj1.Price = 4000;
-            obj1.Bedrooms = 3;
-            obj1.Bathrooms = 2;
+            //------------------------
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+            {
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
 
-            properties.Add(obj1);
-            properties.Add(obj1);
-            properties.Add(obj1);
-            properties.Add(obj1);
-            properties.Add(obj1);
-            properties.Add(obj1);
-            properties.Add(obj1);
-            properties.Add(obj1);*/
+                loggedinAdminId = int.Parse(ViewBag.loggedinUserId);
+                loggedinAdminUname = ViewBag.loggedinUserUname;
+                loggedinAdminRole = ViewBag.loggedinUserRole;
+            }
 
             return View(properties);
         }
-
-        
-
-        //partial view return for ajax
-
-        //[HttpGet]
-        public PartialViewResult GetSubCategories(string id)
+        public PartialViewResult FilterProperties(string city, string purpose, string type)
         {
-            string[]? subCategories = null;
-            if (id.Equals("homes"))
+            List<Property> properties = propertyRepo.FilterProperties(city,purpose,type);
+            Console.WriteLine("fitkered props: " + properties.Count());
+            //------------------------
+            if (HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
             {
-                subCategories = new string[] { "House", "Flat", "Room", "Upper Portion", "Lower Portion", "Farm House", "Pent House" };
+                ViewBag.loggedinUserRole = HttpContext.Request.Cookies["loggedinUserRole"].ToString();
+                ViewBag.loggedinUserUname = HttpContext.Request.Cookies["loggedinUserUname"].ToString();
+                ViewBag.loggedinUserId = HttpContext.Request.Cookies["loggedinUserId"].ToString();
+
+                loggedinAdminId = int.Parse(ViewBag.loggedinUserId);
+                loggedinAdminUname = ViewBag.loggedinUserUname;
+                loggedinAdminRole = ViewBag.loggedinUserRole;
             }
-            else if (id.Equals("plots"))
-            {
-                subCategories = new string[] { "Residential Plot", "Commercial Plot", "Agricultural Land", "Industrial Land", "Plot File", "Plot Form" };
-            }
-            else if (id.Equals("commercial"))
-            {
-                subCategories = new string[] { "Office", "Shop", "Warehouse", "Factory", "Building", "Other" };
-            }
-            return PartialView("_PropertySubCategories", subCategories);
+
+            return PartialView("_FilterProperties",properties);
         }
+
 
         //locations of a particular city
 
-        //[HttpGet]
         public List<string> GetCityLocations(string city)
         {
             List<string>? locations = new List<string>();

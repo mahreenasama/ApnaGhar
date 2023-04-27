@@ -15,7 +15,7 @@ namespace ApnaGharV2.Models.Repositories
             enquiry.CreatedDate = System.DateTime.Now;
 
             context.Enquiries.Add(enquiry);
-            int n = context.SaveChanges();
+            int n = context.SaveChanges2(0);
             if (n > 0)
             {
                 return true;
@@ -42,7 +42,7 @@ namespace ApnaGharV2.Models.Repositories
                 e.Email = enquiry.Email;
                 e.PhoneNumber = enquiry.PhoneNumber;
                 e.Message = enquiry.Message;
-                //e.PropertyId = enquiry.PropertyId;
+                e.PropertyId = enquiry.PropertyId;
 
                 enquiries.Add(e);
             }

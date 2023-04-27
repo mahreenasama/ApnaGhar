@@ -1,0 +1,109 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutAdmin";
+}
+
+@model ApnaGharV2.Models.Classes.User
+
+<div id="after-header-div" class="text-white text-center" style="background-color: var(--site-color); height:150px;">
+    <h4 class="pt-3">Users</h4>
+    <p class="">Welcome to ApnaGhar</p>
+</div>
+
+<div class="container bg-white p-4 shadow-lg w-75 border rounded" style="margin-top:-50px;">
+    <h2 class="text-center" style="color:var(--site-color)">Edit User</h2>
+<div class="" style="">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+
+    @*form here*@
+    <form enctype="multipart/form-data" id="" asp-controller="admin" asp-action="EditUser" asp-route-uid="@Model.Id">
+
+    @*<div class="mb-3 form-group">
+        <input asp-for="Username"  placeholder="Username*" 
+               class="form-control" id="username">
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>*@
+
+    <div class="mb-3 form-group">
+                    Email:&nbsp;&nbsp;&nbsp;
+        <input asp-for="Email"  placeholder="Email*" class="form-control" 
+                                                    id="email" value="@Model.Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    
+    @*<div class="mb-3 form-group">
+        <input asp-for="Password" type="password" placeholder="Change Password*" value="@Model.Password"
+             class="form-control" id="exampleInputPassword1">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 form-group">
+        <input asp-for="ConfirmPassword" type="password" 
+               placeholder="Confirm New Password*" class="form-control" value="@Model.ConfirmPassword"
+               id="exampleInputPassword2">
+        <span asp-validation-for="ConfirmPassword"  
+                             class="text-danger"></span>
+    </div>*@
+
+    <div class="form-group mb-3">
+                    Name:&nbsp;&nbsp;&nbsp;
+                    <input asp-for="Name" class="form-control" placeholder="Name" maxlength="15" value="@Model.Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    Phone Number:&nbsp;&nbsp;&nbsp;
+                    <div class="input-group">
+                        <span class="input-group-text">
+                        <img src="~/images/pak.png" style="display:inline; height:15px; width:20px;"/>
+                        &ensp;+92
+                    </span>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="3xxxxxxxxx" maxlength=10 value="@Model.PhoneNumber">
+                    </div>
+                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    City:&nbsp;&nbsp;&nbsp;
+                    <input asp-for="City" class="form-control" placeholder="City" value="@Model.City">
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                
+                @*<div class="mb-3 form-group">
+                    @if (@Model.Role == "Admin")
+                    {
+                        <label asp-for="Role" class="form-label">Change Role: &nbsp;&nbsp;&nbsp;</label>
+                         <input type="radio" asp-for="Role" value="Admin" id="Admin" class="form-check-input" checked/>
+                         <label asp-for="Role" class="form-label">Admin &nbsp;</label>
+                          <input type="radio" asp-for="Role" value="User" id="User" class="form-check-input"/>
+                         <label asp-for="Role" class="form-label">User &nbsp;</label>
+                       
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    }
+                    else if(@Model.Role == "User")
+                    {
+                        <label asp-for="Role" class="form-label">Change Role: &nbsp;&nbsp;&nbsp;</label>
+                         <input type="radio" asp-for="Role" value="Admin" id="Admin" class="form-check-input"/>
+                         <label asp-for="Role" class="form-label">Admin &nbsp;</label>
+                          <input type="radio" asp-for="Role" value="User" id="User" class="form-check-input" checked/>
+                         <label asp-for="Role" class="form-label">User &nbsp;</label>
+                       
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    }
+                </div>*@
+                    
+    <div class="mb-3 text-center">
+        <img src="~/images/profiles/@(Model.Role)/@(Model.Id).jpg" class="img-fluid rounded-pill shadow border border-secondary border-2" height="100" width="100"/>
+    </div>
+     <div class="mb-3 form-group">
+        <label asp-for="ProfileImage" class="form-label" style="">Update Profile: &nbsp;&nbsp;&nbsp;</label>
+        <input class="form-control" type="file" asp-for="ProfileImage" style="">
+    </div>
+
+    <button type="submit" class="btn btn-secondary fw-bold" style="">Save Changes</button>
+</form>
+
+</div>

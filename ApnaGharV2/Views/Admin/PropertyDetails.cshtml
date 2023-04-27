@@ -7,17 +7,21 @@
 
 @model ApnaGharV2.Models.Classes.Property
 
-<div class="container">
+<div id="after-header-div" class="text-white text-center" style="background-color: var(--site-color); height:150px;">
+    <h4 class="pt-3">Properties</h4>
+    <p class="">Welcome to ApnaGhar</p>
+</div>
+<div class="container bg-white p-4 shadow-lg border rounded" style="margin-top:-50px; width:98%;">
         <div class="row">
             <!-- upper bar -->
             <div class="col-9">
                 <h3>@Model.Title</h3>
-                <p>DHA Phase 5, DHA Defence, Lahore, Punjab</p>
+                <p>@Model.Area, @Model.City</p>
             </div>
             <div class="col-3">
                 <i class="fa fa-share"></i>
-                <i class="fa fa-favourite"></i>
-                //share icon //favourites icon
+                <i class="fa fa-heart"></i>
+                @*//share icon //favourites icon*@
             </div>
 
             <!-- rest whole page -->
@@ -26,18 +30,18 @@
                     <!-- home whole details here -->
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            @{
-                                
+                        @{
+                            var imgCount=@Model.ImagesCount;
+                            Console.WriteLine("---------- Iamges count: " + imgCount);
+                            <div class="carousel-item active">
+                            <img src="~/images/properties/@(Model.Type)/@(Model.Id)_1.jpg" class="d-block w-100" alt="...">
+                          </div>
+                            for(int i=2; i <= imgCount; i++){
+                                <div class="carousel-item">
+                            <img src="~/images/properties/@(Model.Type)/@(Model.Id)_@(i).jpg" class="d-block w-100" alt="...">
+                          </div>
                             }
-                          <div class="carousel-item active">
-                            <img src="~/images/properties/sale/homes/3032_0.jpg" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="~/images/properties/sale/homes/3032_1.jpg" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="~/images/properties/sale/homes/3032_2.jpg" class="d-block w-100" alt="...">
-                          </div>
+                        }
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -80,7 +80,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasColumnType("bit");
 
                     b.Property<string>("Role")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -89,6 +88,9 @@ namespace ApnaGharV2.Migrations.AccountsDb
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -107,7 +109,7 @@ namespace ApnaGharV2.Migrations.AccountsDb
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Agency", b =>
+            modelBuilder.Entity("ApnaGharV2.Models.Classes.Contact", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -115,31 +117,26 @@ namespace ApnaGharV2.Migrations.AccountsDb
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CompanyAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyPhone")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CreatedByUserId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("LastModifiedUserId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LogoPath")
+                    b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -147,157 +144,17 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ServicesDescription")
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Agencies");
-                });
-
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Amenities", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("AirConditioning")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("Bathrooms")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Bedrooms")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BuiltYear")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreatedByUserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool?>("DiningRoom")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("DrawingRoom")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ElectricityBackup")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("FacilitiesForDisabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Flooring")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Floors")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Furnished")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("InternetAccess")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("Kitchens")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LastModifiedUserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("LaundryRoom")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("LawnOrGarden")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("LoungeOrSittingRoom")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("MaintenanceStaff")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("NearbyHospitals")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NearbyMosques")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NearbyPublicTransport")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NearbyRestaurants")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NearbySchools")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NearbyShoppingMalls")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("OtherBCFacilities")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("OtherFacilities")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("OtherHRFacilities")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("OtherMainFeatures")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("OtherNBFacilities")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("OtherRooms")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ParkingSpaces")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("PrayerRoom")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("SatellitetOrCable")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("SecurityStaff")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ServantQuarters")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StoreRooms")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("StudyRoom")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("SwimmingPool")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("View")
+                    b.Property<string>("Subject")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Amenities");
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("ApnaGharV2.Models.Classes.Enquiry", b =>
@@ -312,7 +169,7 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -322,7 +179,7 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("LastModifiedUserId")
                         .HasColumnType("nvarchar(max)");
@@ -379,20 +236,20 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagesPath")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("ImagesCount")
+                        .HasColumnType("int");
 
                     b.Property<bool?>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("LastModifiedUserId")
                         .HasColumnType("nvarchar(max)");
@@ -415,10 +272,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
                     b.Property<string>("SizeUnit")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SubType")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -432,8 +285,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Properties");
                 });
@@ -454,7 +305,7 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -464,7 +315,7 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("LastModifiedUserId")
                         .HasColumnType("nvarchar(max)");
@@ -477,6 +328,9 @@ namespace ApnaGharV2.Migrations.AccountsDb
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Role")
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("Id");
@@ -617,26 +471,19 @@ namespace ApnaGharV2.Migrations.AccountsDb
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Agency", b =>
+            modelBuilder.Entity("PropertyUser", b =>
                 {
-                    b.HasOne("ApnaGharV2.Models.Classes.User", "User")
-                        .WithOne("Agency")
-                        .HasForeignKey("ApnaGharV2.Models.Classes.Agency", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("FavouriteForUsersId")
+                        .HasColumnType("int");
 
-                    b.Navigation("User");
-                });
+                    b.Property<int>("UserFavouritePropertiesId")
+                        .HasColumnType("int");
 
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Amenities", b =>
-                {
-                    b.HasOne("ApnaGharV2.Models.Classes.Property", "Property")
-                        .WithOne("Amenities")
-                        .HasForeignKey("ApnaGharV2.Models.Classes.Amenities", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasKey("FavouriteForUsersId", "UserFavouritePropertiesId");
 
-                    b.Navigation("Property");
+                    b.HasIndex("UserFavouritePropertiesId");
+
+                    b.ToTable("PropertyUser");
                 });
 
             modelBuilder.Entity("ApnaGharV2.Models.Classes.Enquiry", b =>
@@ -646,15 +493,6 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .HasForeignKey("PropertyId");
 
                     b.Navigation("Property");
-                });
-
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Property", b =>
-                {
-                    b.HasOne("ApnaGharV2.Models.Classes.User", "user")
-                        .WithMany("Properties")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -708,20 +546,24 @@ namespace ApnaGharV2.Migrations.AccountsDb
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.Property", b =>
+            modelBuilder.Entity("PropertyUser", b =>
                 {
-                    b.Navigation("Amenities")
+                    b.HasOne("ApnaGharV2.Models.Classes.User", null)
+                        .WithMany()
+                        .HasForeignKey("FavouriteForUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Enquiries");
+                    b.HasOne("ApnaGharV2.Models.Classes.Property", null)
+                        .WithMany()
+                        .HasForeignKey("UserFavouritePropertiesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("ApnaGharV2.Models.Classes.User", b =>
+            modelBuilder.Entity("ApnaGharV2.Models.Classes.Property", b =>
                 {
-                    b.Navigation("Agency")
-                        .IsRequired();
-
-                    b.Navigation("Properties");
+                    b.Navigation("Enquiries");
                 });
 #pragma warning restore 612, 618
         }

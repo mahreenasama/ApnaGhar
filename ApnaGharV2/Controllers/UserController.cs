@@ -26,41 +26,12 @@ namespace ApnaGharV2.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Index()
         {
-            return View();
+            return View("Dashboard");
         }
 
-        [HttpPost]
-        public IActionResult Register(User u)
-        {
-            Console.WriteLine("in method");
-            if (ModelState.IsValid)   //if all input is correct
-            {
-                Console.WriteLine("model state valid");
-
-                if (userRepo.UserAlreadyExist(u))
-                {
-                    Console.WriteLine("user already exist");
-
-                    TempData["duplicate_email"] = "This email already exists";
-                    return View("Register");
-                }
-                else
-                {
-                    Console.WriteLine("user adding");
-
-                    TempData["duplicate_email"] = string.Empty;
-                    userRepo.AddUser(u);
-                    return RedirectToAction("Index", "Home");
-                }
-            }
-            else
-            {
-                Console.WriteLine("model state not valid");
-                return View();
-            }
-        }
+        
 
 
 
@@ -68,11 +39,9 @@ namespace ApnaGharV2.Controllers
 
         //---------------------- view users ------------------------
 
-        [HttpGet]
-        public IActionResult ViewAllUsers()
+        public IActionResult FavouriteListings()
         {
-            userRepo.GetAllUsers();
-            return View(UserRepository.users);
+            return View();
         }
 
     }

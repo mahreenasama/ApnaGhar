@@ -6,14 +6,19 @@
 }
 
 @*---------------------add property page starts----------------------- *@
-@model ApnaGharV2.Models.ViewModels.PropertyViewModel
+@model ApnaGharV2.Models.ViewModels.AddPropertyViewModel
 
-<div class="container bg-white p-4 shadow-lg">
+<div id="after-header-div" class="text-white text-center" style="background-color: var(--site-color); height:150px;">
+    <h4 class="pt-3">Properties</h4>
+    <p class="">Welcome to ApnaGhar</p>
+</div>
+
+<div class="container bg-white p-4 shadow-lg border rounded" style="margin-top:-50px; width:90%;">
 
 <form enctype="multipart/form-data" id="addPropertyForm" asp-controller="Admin" asp-action="AddProperty">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <h4 class="fw-bold ms-2">Add a Property</h4>
+    <h2 class="fw-bold ms-2">Add a Property</h2>
     <span style="color: red;" class="ms-2">*</span>
     <span> = Required Fields</span>
 
@@ -26,13 +31,13 @@
         <label class="col-2" asp-for="Prop.Purpose">
             Purpose: <span style="color: red;">*</span>
         </label>
-        <div class="col-5 btn-group ">
+        <div class="col-6 btn-group ">
+            @foreach (var purpose in Model.Purposes)
+        {
             <label class="btn btn-light btn-outline-secondary">
-                <input type="radio" value="Sale" name="purpose" asp-for="Prop.Purpose" required> For Sale
+                <input type="radio" value="@purpose" name="purpose" asp-for="Purpose" id="@(purpose)" required> @purpose
               </label>
-              <label class="btn btn-light btn-outline-secondary">
-                <input type="radio" value="Rent" name="purpose" asp-for="Prop.Purpose" required> For Rent
-              </label>
+        }
         </div>
      </div>
      <div class="row justify-content-center">
@@ -44,8 +49,14 @@
         <label asp-for="Prop.Type" class="col-2">
             Property Type: <span style="color: red;">*</span>
         </label>
-            <div class=" col-5 btn-group ">
-              <label class="btn btn-light btn-outline-secondary">
+            <div class=" col-6 btn-group ">
+                @foreach (var type in Model.Types)
+        {
+            <label class="btn btn-light btn-outline-secondary">
+                <input type="radio" value="@type" name="type" asp-for="Type" id="@(type)" required> @type
+              </label>
+        }
+             @* <label class="btn btn-light btn-outline-secondary">
                 <input type="radio" name="type" asp-for="Prop.Type" value="Homes" class="type" id="homes" required> Homes
               </label>
               <label class="btn btn-light btn-outline-secondary">
@@ -53,25 +64,20 @@
               </label>
               <label class="btn btn-light btn-outline-secondary">
                 <input type="radio" name="type" asp-for="Prop.Type" value="Commercial" class="type" id="commercial" required> Commercial
-              </label>
+              </label>*@
             </div>
      </div>
       <div class="row justify-content-center">
         <span asp-validation-for="Prop.Type" class="col-3 text-danger"></span>
      </div>
 
-     @*homes subcategories (added through ajax)*@
-     <div id="sub-categories" class="row"></div>
-     <div class="row justify-content-center">
-        <span asp-validation-for="Prop.SubType" class="col-3 text-danger"></span>
-     </div>
-
+    
      @*cities*@
      <div class="row justify-content-center p-1">
         <label asp-for="Prop.City" class="col-2">
              City: <span style="color: red;">*</span>
         </label>
-            <div class="col-5">
+            <div class="col-6">
               <select class="form-select" id="select-city" asp-for="Prop.City" required>
               <option value="Lahore" selected>Lahore</option>
               <option value="Karachi">Karachi</option>
@@ -87,7 +93,7 @@
         <label asp-for="Prop.Area" class="col-2">
             Area: <span style="color: red;">*</span>
         </label>
-            <div class="col-5">
+            <div class="col-6">
                 <select id="citylocations" class="form-control" asp-for="Prop.Area" required>
                     <option selected value="Allama Iqbal Town">Allama Iqbal Town</option>
                     <option value="Bahria Town">Bahria Town</option>
@@ -120,7 +126,7 @@
         <label asp-for="Prop.Address" class="col-2">
              Address: <span style="color: red;">*</span>
         </label>
-            <div class="col-5">
+            <div class="col-6">
             <input placeholder="Property Address" class="form-control" asp-for="Prop.Address" required/>
             </div>
      </div>
@@ -139,8 +145,8 @@
         <label asp-for="Prop.Title" class="col-2">
             Property Title: <span style="color: red;">*</span>
         </label>
-        <div class=" col-5" >
-            <input type="text"  class="form-control" asp-for="Prop.Title" required/>
+        <div class=" col-6" >
+            <input type="text"  class="form-control" asp-for="Prop.Title" required maxlength="100"/>
         </div>
      </div>
      <div class="row justify-content-center">
@@ -152,8 +158,8 @@
         <label asp-for="Prop.Description" class="col-2">
             Description: <span style="color: red;">*</span>
         </label>
-            <div class="col-5" required>
-                <textarea class="form-control" rows="3" required asp-for="Prop.Description"></textarea>
+            <div class="col-6" required>
+                <textarea class="form-control" rows="7" required asp-for="Prop.Description"></textarea>
             </div>
      </div>
      <div class="row justify-content-center">
@@ -165,7 +171,7 @@
         <label asp-for="Prop.Price" class="col-2">
              Price (PKR): <span style="color: red;">*</span>
         </label>
-            <div class="col-2">
+            <div class="col-3">
               <input type="number" required class="form-control" min="1" asp-for="Prop.Price"/>
             </div>
             <div class=" col-3">
@@ -185,7 +191,7 @@
         <label asp-for="Prop.Size" class="col-2">
             Land Area: <span style="color: red;">*</span>
         </label>
-            <span class=" col-2">
+            <span class=" col-3">
                 <input type="number" required class="form-control" min="1" asp-for="Prop.Size"/>
             </span>
         <div class=" col-3">
@@ -208,7 +214,7 @@
           <label asp-for="Prop.Bedrooms" class="col-2">
             Bedrooms: <span style="color: red;"></span>
         </label>
-        <div class=" col-5">
+        <div class=" col-6">
             <input type="number" class="form-control" min="1" asp-for="Prop.Bedrooms"/>
             </div>
      </div>
@@ -217,398 +223,10 @@
              <label asp-for="Prop.Bathrooms" class="col-2">
             Bathrooms: <span style="color: red;"></span>
             </label>
-            <div class="col-5">
+            <div class="col-6">
             <input type="number" class="form-control" min="1" asp-for="Prop.Bathrooms"/>
             </div>
      </div>
-
-@*--------- Add amenities ----------------*@
-
-        <div class="row justify-content-center p-3">
-            <button type="button" class="btn btn-secondary col-3 fw-bold" id="add-features-btn"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;ADD FEATURES</button>
-            </div>
-    <div id="property-features-div" style="display:none;">
-        <div class="text-white fw-bold p-2 m-2" style="background-color: #3b5998; border-radius: 5px;">
-        Property Amenities
-        </div>
-        <div class="row ps-5 pe-5">
-            <div class="col">
-                <table class="w-100 justify-content-end">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="fs-5">Main Features</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                    <label asp-for="Amen.BuiltYear">Built in Year</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.BuiltYear"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.View">View</label>
-                            </td>
-                            <td>
-                    <input type="text" class="form-control" asp-for="Amen.View"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.ParkingSpaces">Parking Sapces</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.ParkingSpaces"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.AirConditioning">Air Conditioning</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.AirConditioning" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                 <label asp-for="Amen.Flooring">Flooring</label>
-                            </td>
-                            <td>
-                    <input type="text" class="form-control" asp-for="Amen.Flooring"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.ElectricityBackup">Electricity Backup</label>
-                            </td>
-                            <td>
-                    <input type="text" class="form-control" asp-for="Amen.ElectricityBackup"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.Furnished" class="text-center">Furnished</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.Furnished" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.Floors">Floors</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.Floors"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.OtherMainFeatures">Other Main Features</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.OtherMainFeatures" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table class="w-100 justify-content-end">
-            </div>
-            @*second colm table class="w-100 justify-content-end" of rooms---------------*@
-            <div class="col">
-                <table class="w-100 justify-content-end">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="fs-5">Rooms</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                    <label asp-for="Amen.Bedrooms">Bedrooms</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.Bedrooms"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.Bathrooms">Bathrooms</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.Bathrooms"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.ServantQuarters">Servant Quarters</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.ServantQuarters"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.DrawingRoom">Drawing Room</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.DrawingRoom" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 
-                                 <label asp-for="Amen.DiningRoom">Dining Room</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.DiningRoom"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.Kitchens">Kitchens</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.Kitchens"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.StudyRoom" class="text-center">Study Room</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.StudyRoom" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.PrayerRoom">Prayer Room</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.PrayerRoom" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.StoreRooms">Store Rooms</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" asp-for="Amen.StoreRooms" class="form-control"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.LoungeOrSittingRoom">Lounge Or Sitting Room</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.LoungeOrSittingRoom" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.LaundryRoom">Laundry Room</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.LaundryRoom" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.OtherRooms">Other Rooms</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" asp-for="Amen.OtherRooms" class="form-check-input justify-content-end"/>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table class="w-100 justify-content-end">
-            </div>
-    </div>
-       <div class="row p-5">
-           @*3rd colm table class="w-100 justify-content-end" of businesss and comm---------------*@
-            <div class="col">
-                <table class="w-100 justify-content-end" class="w-100 justify-content-end">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="fs-5">Business and Communication</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                    <label asp-for="Amen.InternetAccess">Internet Access</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.InternetAccess"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.SatellitetOrCable">Satellitet Or Cable</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.SatellitetOrCable"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.OtherBCFacilities">Other Business Facilities</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.OtherBCFacilities"/>
-                            </td>
-                        </tr>
-                        </table class="w-100 justify-content-end">
-                        </div>
-       @*4th colm table class="w-100 justify-content-end" of health and recreation---------------*@
-            <div class="col ">
-                <table class="w-100 justify-content-end" class="">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="fs-5">Health and Recreational</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                    <label asp-for="Amen.LawnOrGarden">Lawn Or Garden</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.LawnOrGarden"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.SwimmingPool">Swimming Pool</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.SwimmingPool"/>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td class="">
-                                <label asp-for="Amen.OtherHRFacilities">Other Health Facilities</label>
-                            </td>
-                            <td class="">
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.OtherHRFacilities"/>
-                            </td>
-                        </tr>
-                        </table class="w-100 justify-content-end">
-                        </div>
-       </div>
-       <div class="row ps-5 pe-5">
-           @*5rd colm table class="w-100 justify-content-end" of nearby facilities---------------*@
-            <div class="col">
-                <table class="w-100 justify-content-end">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="fs-5">Nearby Locations</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                    <label asp-for="Amen.NearbySchools">Schools</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.NearbySchools"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.NearbyHospitals">Hospitals</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.NearbyHospitals"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.NearbyShoppingMalls">Shopping Malls</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.NearbyShoppingMalls"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.NearbyRestaurants">Restaurants</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.NearbyRestaurants"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.NearbyMosques">Mosques</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.NearbyMosques"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.NearbyPublicTransport">Public Transport</label>
-                            </td>
-                            <td>
-                    <input type="number" min="1" class="form-control" asp-for="Amen.NearbyPublicTransport"/>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td class="">
-                                <label asp-for="Amen.OtherNBFacilities">Other Nearby Facilities</label>
-                            </td>
-                            <td class=" justify-content-center">
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.OtherNBFacilities"/>
-                            </td>
-                        </tr>
-                        </table class="w-100 justify-content-end">
-                        </div>
-       @*6th colm table class="w-100 justify-content-end" of other facilities---------------*@
-            <div class="col ">
-                <table class="w-100 justify-content-end" class="">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="fs-5">Other Facilities</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="">
-                            <td class="">
-                    <label asp-for="Amen.MaintenanceStaff">Maintenance Staff</label>
-                            </td>
-                            <td class="">
-                    <input type="checkbox" class="form-check-input justify-content-end text-center" asp-for="Amen.MaintenanceStaff"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.SecurityStaff">Security Staff</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.SecurityStaff"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.FacilitiesForDisabled">Facilities For Disabled</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.FacilitiesForDisabled"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="Amen.OtherFacilities">OtherFacilities</label>
-                            </td>
-                            <td>
-                    <input type="checkbox" class="form-check-input justify-content-end" asp-for="Amen.OtherFacilities"/>
-                            </td>
-                        </tr>
-                        </table class="w-100 justify-content-end">
-                        </div>
-       </div>
-    </div>
 
 
     @*portion 3*@
@@ -616,7 +234,7 @@
         ADD IMAGES
     </div>
     <div class="form-group row justify-content-center p-3">
-        <div class="col-5">
+        <div class="col-6">
         <input class="form-control" type="file" multiple required asp-for="PropertyImages" id="pimgs">
         </div>
     </div>

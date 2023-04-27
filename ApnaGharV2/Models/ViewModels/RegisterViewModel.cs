@@ -7,6 +7,16 @@ namespace ApnaGharV2.Models.ViewModels
 {
     public class RegisterViewModel
     {
+        public List<string> Roles { get; set; }
+
+        public RegisterViewModel()
+        {
+            Roles = new List<string>() { "Admin", "User" };
+        }
+    
+        [Required(ErrorMessage = "Choose the Role")]
+        public string Role { get; set; }
+
 
         [Required(ErrorMessage = "Username is Required")]
         [StringLength(20, ErrorMessage = "Username should not exceed 20 characters")]
@@ -24,10 +34,9 @@ namespace ApnaGharV2.Models.ViewModels
         public string ConfirmPassword { get; set; }
 
 
-        [Required(ErrorMessage = "Choose your Role")]
-        public string Role { get; set; }
+        public User User { get; set; } = new User();            //all data of user also
 
-        public User User { get; set; }            //all data of user also
+        public IFormFile? ProfileImage { get; set; }
 
     }
 }

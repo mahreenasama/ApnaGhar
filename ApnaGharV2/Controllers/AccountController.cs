@@ -33,26 +33,58 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Register()
     {
-        //RegisterViewModel vm = new RegisterViewModel();
-        return View();
+        RegisterViewModel vm = new RegisterViewModel();
+        return View(vm);
     }
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
         if (ModelState.IsValid)
         {
+            //--- first adding account ---
             var user = new ApplicationUser
             {
                 UserName = model.Username,
                 EmailConfirmed = true,
                 LockoutEnabled = false,
-                Role = model.Role,
+                Role = "User",
             };
             var result = await userManager.CreateAsync(user,
                                                      model.Password);
 
             if (result.Succeeded)
             {
+                //how to save its login credentials ????
+                var loggedinUser = await userManager.FindByNameAsync(model.Username);
+
+                var loggedinUserRole = loggedinUser.Role;
+                var loggedinUserUname = loggedinUser.UserName;
+                var loggedinUserId = loggedinUser.UserId;
+
+                Console.WriteLine("role " + loggedinUserRole);
+                Console.WriteLine("loggedinUserUname " + loggedinUserUname);
+                Console.WriteLine("logged in id " + loggedinUserId);
+
+                //go to admin dashboard, + sending loggid in used id via cookies(saving in cookies)
+
+                CookieOptions options = new CookieOptions();
+                options.Expires = DateTime.Now.AddDays(1);      //expire after one day
+                if (!HttpContext.Request.Cookies.ContainsKey("loggedinUserRole"))
+                {
+                    HttpContext.Response.Cookies.Append("loggedinUserRole", loggedinUserRole.ToString(), options);
+                }
+                if (!HttpContext.Request.Cookies.ContainsKey("loggedinUserUname"))
+                {
+                    HttpContext.Response.Cookies.Append("loggedinUserUname", loggedinUserUname.ToString(), options);
+                }
+                if (!HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+                {
+                    HttpContext.Response.Cookies.Append("loggedinUserId", loggedinUserId.ToString(), options);
+                }
+                ViewBag.loggedinUserRole = loggedinUserRole;
+                ViewBag.loggedinUserUname = loggedinUserUname;
+                ViewBag.loggedinUserId = loggedinUserId;                    //to access in view
+
                 if (signInManager.IsSignedIn(User))
                 {
                     return RedirectToAction("index", "home");
@@ -76,8 +108,7 @@ public class AccountController : Controller
         return View();
     }
     [HttpPost]
-    [AllowAnonymous]
-    public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+    public async Task<IActionResult> Login(LoginViewModel model)
     {
         if (ModelState.IsValid)
         {
@@ -86,29 +117,74 @@ public class AccountController : Controller
                                           model.Password, false, false);
             if (result.Succeeded)
             {
-                return RedirectToAction("addproperty", "property");
-                /*if (!string.IsNullOrEmpty(returnUrl))
+                //how to save its login credentials ????
+                var loggedinUser = await userManager.FindByNameAsync(model.Username);
+
+                var loggedinUserRole = loggedinUser.Role;
+                var loggedinUserUname = loggedinUser.UserName;
+                var loggedinUserId = loggedinUser.UserId;
+
+                Console.WriteLine("role "+ loggedinUserRole);
+                Console.WriteLine("loggedinUserUname " + loggedinUserUname);
+                Console.WriteLine("logged in id " + loggedinUserId);
+
+                //go to admin dashboard, + sending loggid in used id via cookies(saving in cookies)
+
+                CookieOptions options = new CookieOptions();
+                options.Expires = DateTime.Now.AddDays(1);      //expire after one day
+                if (!HttpContext.Request.Cookies.ContainsKey("loggedinUserRole"))
                 {
-                    
+                    HttpContext.Response.Cookies.Append("loggedinUserRole", loggedinUserRole.ToString(),options);
                 }
-                else
+                if (!HttpContext.Request.Cookies.ContainsKey("loggedinUserUname"))
                 {
-                    return RedirectToAction("Home", "index");
-                }*/
+                    HttpContext.Response.Cookies.Append("loggedinUserUname", loggedinUserUname.ToString(), options);
+                }
+                if (!HttpContext.Request.Cookies.ContainsKey("loggedinUserId"))
+                {
+                    HttpContext.Response.Cookies.Append("loggedinUserId", loggedinUserId.ToString(), options);
+                }
+                ViewBag.loggedinUserRole = loggedinUserRole;
+                ViewBag.loggedinUserUname = loggedinUserUname;
+                ViewBag.loggedinUserId = loggedinUserId;                    //to access in view
+
+                if (loggedinUserRole=="Admin")
+                {
+                    Console.WriteLine("admin");
+
+                    return RedirectToAction("index", "admin");
+                }
+                else if(loggedinUserRole == "User")
+                {
+                    return RedirectToAction("index", "home");   //go to user dashboard
+                }
             }
             ModelState.AddModelError(string.Empty, "Invalid Username or Password");
-
         }
 
         return View(model);
     }
 
-
-
     [HttpGet]
     public async Task<IActionResult> Logout()
     {
         await signInManager.SignOutAsync();
-        return RedirectToAction("index", "home");
+
+        HttpContext.Response.Cookies.Delete("loggedinUserUname");   //deleting all cookies when logout
+        HttpContext.Response.Cookies.Delete("loggedinUserId");
+
+        if (HttpContext.Request.Cookies["loggedinUserRole"].ToString() == "Admin")
+        {
+            HttpContext.Response.Cookies.Delete("loggedinUserRole");
+            return RedirectToAction("login", "account");
+        }
+        else if (HttpContext.Request.Cookies["loggedinUserRole"].ToString() == "User")
+        {
+            HttpContext.Response.Cookies.Delete("loggedinUserRole");
+            return RedirectToAction("index", "home");
+        }
+        return RedirectToAction("FoF", "home");
     }
+
+    
 }

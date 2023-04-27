@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model ApnaGharV2.Models.Classes.Property
+
+<!-- card 1 -->
+                <div class=" col-md-6 col-xl-4 col-xxl-3">
+                    <div class="card shadow-lg" style="">
+                        <div style="pointer-events: none;">
+                            <img src="~/images/properties/@(Model.Type)/@(Model.Id)_1.jpg" class="img-fluid rounded-top card-img-top" alt="..." style="height: 100%; width: 100%;">
+                            <div class="card-img-overlay">
+                                <p class="btn btn-secondary btn-sm"><i class="fa fa-camera"></i>&nbsp;@Model.ImagesCount</p>
+                                @*<p class="btn btn-secondary btn-sm"><i class="fa fa-check"></i>&nbsp;</p>*@
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <span class="float-end">
+                                <button type="button" class="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#signinfirst">
+                                    <i class="fa fa-heart" style=""></i>
+                                </button>
+                            </span>
+                            <h5 class="card-title fs-4 fw-bold">PKR @Model.Price @Model.PriceUnit</h5>
+                            <p class="card-text">@Model.Area, @Model.City </p>
+                            <div class="card-text row mb-3">
+                                <div class="col-4">
+                                    <i class="fa fa-ruler-vertical"></i>&nbsp;@Model.Size @Model.SizeUnit
+                                </div>
+                                <div class="col-4">
+                    @if (@Model.Bedrooms > 0)
+                    {
+                        <i class="fa fa-bed"></i> @Model.Bedrooms
+                    }
+                                </div>
+                                <div class="col-4">
+                                    @if (@Model.Bathrooms > 0)
+                    {
+                        <i class="fa fa-bed"></i> @Model.Bathrooms
+                    }
+                                </div>
+                            </div>
+                                <p class="card-text fs-6 fw-bold">
+                                    <a class="text-dark" style="text-decoration: none;" href="#" title="View Details">
+                                        @Model.Size @Model.SizeUnit @Model.Type for @Model.Purpose in @Model.Area, @Model.City
+                                        <i class="fa fa-arrow-up-right-from-square text-secondary"></i>
+                                    </a>
+                                </p>
+                            <div class="row">
+                                <div class="col">
+                                    <a href="mailto: apnaghar196@gmail.com">
+                                        <button class="btn text-light fw-bold w-100" style="background-color:#3b5998;"><i
+                                                class="fa fa-envelope"></i>&nbsp;&nbsp;EMAIL</button>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="tel:+923160442336">
+                                        <button class="btn btn-success fw-bold w-100"><i
+                                                class="fa fa-phone"></i>&nbsp;&nbsp;CALL</button>
+                                    </a>
+                                </div>
+                            </div>
+                        
+                        </div>
+                      </div>
+                      
+                </div>

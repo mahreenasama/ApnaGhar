@@ -4,189 +4,103 @@
 @{
 }
 
-<div class="container-fluid text-center">
-    <h1>Contact Us</h1>
-    <div id="map">
-@*
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54355.76826312654!2d74.24978495877946!3d31.62740135579493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39191c3e856cb2df%3A0x6f793efe1c295a46!2sShahdara%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1654083901564!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        *@
-
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.1613169613543!2d74.
-        29821401443638!3d31.62943324891473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!
-        1s0x39191d2da3ec509b%3A0x656463bff2734480!2sIttehad%20Park!5e0!3m2!1sen!2sus!4v1654082166729!5m2!
-        1sen!2sus" height="600" style="border:0; width:100%;" allowfullscreen loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-        
-    </div>
-
-    <!-- Contact Form start-->
-    <section id="SendEmail" class="email">
-        <div class="email_response" id="email_response"></div>
-            <div class="contact-msg">
-                <p class="mt20">
-                    Do you know anybody, any single person who gets excited at the thought of helping others? 
-                </p>
-                <p class="mt40">
-                    Well, we do… that’s us! While others get bummed when asked for help, we get pumped to serve you! Team Zameen is ever ready to help you every step of the way. We’ve deployed dedicated resources to assist, guide, attend and answer your queries throughout the week.                 
-                </p>
-                <p class="mt40 mb80">
-                    Zameen.com is head-quartered in Lahore but we have offices in Karachi and Islamabad as well. You can reach us via phone, email or walk right into any of our offices and we would be more than glad to help you.
-                </p>
-                <div class="heading">ASK US ANYTHING</div>
-            </div>
-            <form class="frm" method="post" action="javascript:sendmail()" id="cu_map_frm">
-                <div class="left column input-box">
-                    <label class="lbl">NAME*
-                    </label>
-                    <input type="text" name="sender_name" id="sender_name" required/>
-                </div>
-                <div class="left column input-box">
-                    <label class="lbl">EMAIL*
-                    </label>
-                    <input type="text" name="sender_email" id="sender_email" required/>
-                </div> 
-                <div class="left column input-box ">
-                    <label class="lbl">PHONE*
-                    </label>
-                    <input type="tel" name="sender_phone" id="sender_phone" class="inteltel_cell" required>
-                </div> 
-                <div class="left column input-box">
-                    <label class="lbl">SUBJECT*
-                    </label>
-                    <input type="text" name="sender_subject" id="sender_subject" required/>
-                </div>
-                <div class="left column input-box">
-                    <label class="lbl">MESSAGE*
-                    </label>
-                   <textarea name="sender_message" id="sender_message" required></textarea>
-                </div>   
-                
-                <button id="btnContactUs" class="primary-btn form-btn mb20" type="submit" data-role="popup" data-width="400">Send Email</button>
-        </form>
-        
-        
-    </section>
-    <!-- Contact form end-->
-
-    <!-- Contact Information Start-->
-<section class="postal">
-    <div class="heading mt40">Telephone</div>
-    <div class="decription mt30 mb40 ">
-        <p class="mb60">
-            Support is also available via phone, but to get the fastest response please use the email form above. Please do not forget to leave your contact details and email address if using voicemail.
-        </p>
-        <div class="country contact">
-            <div class="country-name">Pakistan</div>
-            <div class="country-phone">0800-ZAMEEN (92633)</div>
-            <div class="country-phone">(+92) 42 3256 0445 (9 AM To 2 AM)</div>
-            <div class="clearfix"></div><br/>
-
-            <div class="country-name">United Arab Emirates</div>
-            <div class="country-phone">+971 4 4378010</div>
-            <div class="clearfix"></div><br/>
-
-
-            <div class="country-name">Saudi Arabia</div>
-            <div class="country-phone">+966 11 217 8718</div>
-            <div class="clearfix"></div>
+<!--------------------------- main code -------------------------->
+    <!-- <div style="background-image: url('co6.jpg'); background-size: 100%; background-repeat: no-repeat;" class="align-middle">
+        <div class="">
+            <h1 class="text-white" style="padding: 100px;">&nbsp;&nbsp;Get in Touch With Us</h1>
         </div>
+    </div> -->
+    <div class="text-center shadow-lg" style="">
+        <img src="co3-removebg-preview.png" class="img-fluid "/>
+        <!-- <img src="co2.jpg" class=" img-fluid" style="height: 200px; width: 200px;"/> -->
+  </div>
+    <div class="container text-center">
+        
+        <!-- upper -->
+        <div class="row mt-5 mb-5">
+            <div class="mb-4 text-start">
+                    <h3 style="color: #3b5998;">Always Happy To Answer Your Questions</h3>
+                </div>
+            <div class="col-lg-7 col-sm-12">
+                
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control p-3" placeholder="Your Name *" aria-label="Name" aria-describedby="addon-wrapping"  required>
+                              </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control p-3" placeholder="Your Email *" aria-label="Email" aria-describedby="addon-wrapping" required>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-phone"></i></span>
+                                <input type="text" class="form-control p-3" placeholder="Cell Number *" aria-label="Cell Number" aria-describedby="addon-wrapping" required>
+                              </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-check"></i></span>
+                                <input type="text" class="form-control p-3" placeholder="Subject *" aria-label="Subject" aria-describedby="addon-wrapping" required>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                            <div class="col">
+                                <textarea rows="5" placeholder="Your Message *" class="form-control p-3" required></textarea>
+                              </div>
+                    </div>
+                    <div class="row text-center mb-3">
+                        <div class="col align-self-center">
+                            <input type="submit" value="Send" class="btn btn-primary fw-bold fs-5 ps-5 pe-5" style="color:#3b5998; background-color:lightsteelblue;"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 col-sm-12 text-center">
+                <img src="coo.png" class="img-fluid"/>
+            </div>
+        </div>
+
+        <!-- lower cards -->
+        <div class="row mt-3 mb-3 p-2 justify-content-between">
+            <div class="col-sm-12 col-md-4 border border-1 rounded-3 p-3 shadow">
+                <div class="mb-3"><i class="fa fa-globe" style="font-size:48; color:#3b5998;"></i></div>
+                <h4>Pakistan Office</h4>
+                <p>Ilam Deen Street#1, Itehaad Park, Paracha Colony, Shahdara Town Lahore, Pakistan.</p>
+            </div>
+            <div class="col-sm-12 col-md-4 border border-1 rounded-3 p-3 shadow">
+                <div class="mb-3"><i class="fa fa-headset" style="font-size:48; color:#3b5998;"></i></div>
+                <h4>Contact Us</h4>
+                <p>Call: <a href="#!" class="text-decoration-none">+92 316 0442336</a> <br>
+                Email: <a href="#!" class="text-decoration-none">apnaghar196@gmail.com</a></p>
+            </div>
+            <div class="col-sm-12 col-md-4 border border-1 rounded-3 p-3 shadow">
+                <div class="mb-3"><i class="fa fa-briefcase" style="font-size:48; color:#3b5998;"></i></div>
+                <h4>Working Schedule</h4>
+                <p>Working days: Mon-Sat <br>
+                Time: 9:00 AM-6:00 PM </p>
+            </div>
+        </div>
+
+        <!-- map -->
+        <div id="map" class="mt-5 mb-5 border border-2 rounded-3 p-1">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.1613169613543!2d74.
+          29821401443638!3d31.62943324891473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!
+          1s0x39191d2da3ec509b%3A0x656463bff2734480!2sIttehad%20Park!5e0!3m2!1sen!2sus!4v1654082166729!5m2!
+          1sen!2sus" height="400" style="width:100%;" allowfullscreen loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
-</section>
-<!-- Contact Information End-->
 
-<!-- Contact Information Start-->
-<div class="contact-us mt20">    
-    <section class="offices postal">
-        <div class="heading mt40">Offices</div>
-        <div class="post-info">
-            <span>If you need to mail any advertising literature then please use any of the following addresses:</span>
-                            <div class="offices-wrp">
-                    <div class="offices-heading mt40">
-                        <h3>Lahore - Head Office</h3>
-                    </div>
-                    <div class="offices-addres left">
-                        <p>
-                            Pearl One,<br /> 94-B/I, MM Alam Road,<br /> Gulberg III, Lahore,<br /> Pakistan
-                        </p>
-                        <a href="javascript:void(0);" data-prop_id="123" data-latitude="31.515439" data-longitude="74.351896" data-title="Lahore - Head Office" data-title-direction="ltr" data-loc="ltr" data-is_actual_latlong="1" data-dev_logo="" data-role="popup" title="Map" data-width="800" data-height="300">Get Directions</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                            <div class="offices-wrp">
-                    <div class="offices-heading mt40">
-                        <h3>Europe - Office</h3>
-                    </div>
-                    <div class="offices-addres left">
-                        <p>
-                            Suite 271<br /> 22 Notting Hill Gate London<br /> W11 3JE <br />UK
-                        </p>
-                        <a href="javascript:void(0);" data-prop_id="123" data-latitude="51.5097631" data-longitude="-0.1958666" data-title="Europe - Office" data-title-direction="ltr" data-loc="ltr" data-is_actual_latlong="1" data-dev_logo="" data-role="popup" title="Map" data-width="800" data-height="300">Get Directions</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                            <div class="offices-wrp">
-                    <div class="offices-heading mt40">
-                        <h3>Lahore (Operations Team) </h3>
-                    </div>
-                    <div class="offices-addres left">
-                        <p>
-                            4th Floor, Lahore Center,<br /> 77-D/1 Main Boulevard,<br /> Gulberg III, Lahore,<br />Pakistan
-                        </p>
-                        <a href="javascript:void(0);" data-prop_id="123" data-latitude="31.512203" data-longitude="74.3425395" data-title="Lahore (Operations Team) " data-title-direction="ltr" data-loc="ltr" data-is_actual_latlong="1" data-dev_logo="" data-role="popup" title="Map" data-width="800" data-height="300">Get Directions</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                            <div class="offices-wrp">
-                    <div class="offices-heading mt40">
-                        <h3>Islamabad Office (BD - CPML - And ISB Retail Team)</h3>
-                    </div>
-                    <div class="offices-addres left">
-                        <p>
-                            Din Pavilion Center,<br /> 3rd Floor,<br /> Jinnah Avenue,<br /> Blue Area, Islamabad,<br />Pakistan
-                        </p>
-                        <a href="javascript:void(0);" data-prop_id="123" data-latitude="33.7087875" data-longitude="73.0536909" data-title="Islamabad Office (BD - CPML - And ISB Retail Team)" data-title-direction="ltr" data-loc="ltr" data-is_actual_latlong="1" data-dev_logo="" data-role="popup" title="Map" data-width="800" data-height="300">Get Directions</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                            <div class="offices-wrp">
-                    <div class="offices-heading mt40">
-                        <h3>Karachi - Office</h3>
-                    </div>
-                    <div class="offices-addres left">
-                        <p>
-                            4th Floor, Nice Trade Orbit (NTO Building),<br /> Razi Road, PECHS,<br /> Shahrah-e-Faisal Karachi,<br />Pakistan
-                        </p>
-                        <a href="javascript:void(0);" data-prop_id="123" data-latitude="24.8615378" data-longitude="67.0636007" data-title="Karachi - Office" data-title-direction="ltr" data-loc="ltr" data-is_actual_latlong="1" data-dev_logo="" data-role="popup" title="Map" data-width="800" data-height="300">Get Directions</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                            <div class="offices-wrp">
-                    <div class="offices-heading mt40">
-                        <h3>United Arab Emirates</h3>
-                    </div>
-                    <div class="offices-addres left">
-                        <p>
-                            Office 206 & 207, Building 07,<br/> Bay Square, Business Bay,<br/> Dubai, UAE.
-                        </p>
-                        <a href="javascript:void(0);" data-prop_id="123" data-latitude="25.185383" data-longitude="55.277455" data-title="United Arab Emirates" data-title-direction="ltr" data-loc="ltr" data-is_actual_latlong="1" data-dev_logo="" data-role="popup" title="Map" data-width="800" data-height="300">Get Directions</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                            <div class="offices-wrp">
-                    <div class="offices-heading mt40">
-                        <h3>Saudi Arabia</h3>
-                    </div>
-                    <div class="offices-addres left">
-                        <p>
-                            Mezzanine Floor, Tamkeen Tower,<br/> Al Yasmin District 2573, Riyadh,<br/> Saudi Arabia
-                        </p>
-                        <a href="javascript:void(0);" data-prop_id="123" data-latitude="24.821444" data-longitude="46.619861" data-title="Saudi Arabia" data-title-direction="ltr" data-loc="ltr" data-is_actual_latlong="1" data-dev_logo="" data-role="popup" title="Map" data-width="800" data-height="300">Get Directions</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                    </div>
-    </section>
-</div>
-<!-- Contact Information End-->
-
-</div>
+    
+        @section footer{
+            <partial name="_Footer" />
+        }

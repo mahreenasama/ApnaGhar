@@ -6,6 +6,24 @@
     <title>@ViewData["Title"] - ApnaGharV2</title>
     <link rel="stylesheet" href="~/css/site.css" />
 
+    @*icon*@
+    <link rel="apple-touch-icon" sizes="57x57" href="~/images/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="~/images/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="~/images/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="~/images/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="~/images/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="~/images/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="~/images/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="~/images/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="~/images/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="~/images/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="~/images/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="~/images/icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="~/images/icon/favicon-16x16.png">
+<link rel="manifest" href="~/images/icon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="~/images/icon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS only -->
@@ -19,120 +37,206 @@
 </head>
 <body>
     @*<header>*@
-    <div class="container-fluid">
-    <div class="row">
+    <div class="container-fluid" id="admin-side-nav">
+    <div class="row bg-dark" style="height:1200px;">
 
-      <div class="col-2">
+      <div class="col-2 bg-dark" style="height:100%;">
 <!-- nav bar side -------------->
-        <nav class="nav nav-pills flex-column">
-          <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-          
-          <!-- property -->
-          <div class="accordion accordion-flush" id="accordionProperty">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingProperty">
-                <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProperty" aria-expanded="false" aria-controls="collapseProperty">
-                  Property
+        <nav class="nav nav-pills flex-column bg-dark">
+            <div class="text-center mt-4">
+                <span class="fw-bold text-light rounded-pill p-2 m-1" style="background-color:var(--site-color);" >
+                    <i class="fa fa-home"></i> ApnaGhar&nbsp;&nbsp; </span>
+                <span class="fw-bold text-light rounded-pill p-2 m-1" style="background-color:var(--site-color);">
+                    <i class="fa fa-user"></i> &nbsp; @ViewBag.loggedinUserRole </span>
+            </div>
+          <div class="text-center">
+                        @{
+                            Console.WriteLine("in view"+ @ViewBag.loggedinUserId);
+                        }
+              <img src="~/images/profiles/@(ViewBag.loggedinUserRole)/@(ViewBag.loggedinUserId).jpg" 
+              class="rounded-circle mt-4 shadow-lg"
+              style="width: 100px; height: 100px; border:2px solid black;"/>
+              <div class="text-light p-2 fs-5" style="">
+                @ViewBag.loggedinUserUname
+              </div>
+              <p class="text-light">@ViewBag.loggedinUserRole</p>
+              <div>
+                  <a class="text-light p-2" style="text-decoration:none;" href="https://www.facebook.com/arhammian.arhammian.9"><i class="fa fa-facebook"></i></a>
+                  <a class="text-light p-2" style="text-decoration:none;" href="https://twitter.com/AsamaMahreen"><i class="fa fa-twitter"></i></a>
+                  <a class="text-light p-2" style="text-decoration:none;" href="https://www.linkedin.com/in/mahreen-asama-2996971b9/"><i class="fa fa-linkedin"></i></a>
+              </div>
+          <hr class="text-light"/>
+          </div>
+          <!-- Dashbaord -->
+          <div class="accordion accordion-flush bg-dark" id="accordionDashboard">
+            <div class="accordion-item bg-dark">
+              <h2 class="accordion-header" id="headingDashboard">
+                <a class="accordion-button collapsed bg-dark text-light" type="button" style="text-decoration:none;"
+                data-bs-toggle="collapse" data-bs-target="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
+                  Dashboard
                 </a>
               </h2>
-              <div id="collapseProperty" class="accordion-collapse collapse" aria-labelledby="headingProperty" data-bs-parent="#accordionProperty">
+              <div id="collapseDashboard" class="accordion-collapse collapse bg-dark" aria-labelledby="headingDashboard" data-bs-parent="#accordionDashboard">
                 <div class="accordion-body">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a asp-controller="Admin" asp-action="ListProperties" class="text-dark">List Properties</a></li>
-                    <li class="list-group-item"><a asp-controller="Admin" asp-action="AddProperty" class="text-dark">Add Property</a></li>
-                    <li class="list-group-item"><a asp-controller="Admin" asp-action="ListEnquiries" class="text-dark">Property Enquiries</a></li>
+                  <ul class="text-light" style="list-style-type:circle;" id="admin-nav-lists">
+                    <li class="bg-dark">
+                        <a asp-controller="Admin" asp-action="index" class="text-light" asp-route-id="@TempData["loggedinUserId"]" style="text-decoration:none;">Dashboard</a>
+                    </li>
+                    <li class="bg-dark">
+                        <a asp-controller="Admin" asp-action="ProfilePage" class="text-light" style="text-decoration:none;">Edit Profile</a>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
             </div>
+          <!-- property -->
+          <div class="accordion accordion-flush bg-dark" id="accordionProperty">
+            <div class="accordion-item bg-dark">
+              <h2 class="accordion-header" id="headingProperty">
+                <a class="accordion-button collapsed bg-dark text-light" type="button" style="text-decoration:none;"
+                data-bs-toggle="collapse" data-bs-target="#collapseProperty" aria-expanded="false" aria-controls="collapseProperty">
+                  Properties
+                </a>
+              </h2>
+              <div id="collapseProperty" class="accordion-collapse collapse bg-dark" aria-labelledby="headingProperty" data-bs-parent="#accordionProperty">
+                <div class="accordion-body">
+                  <ul class="text-light" style="list-style-type:circle;" id="admin-nav-lists">
+                    <li class="bg-dark">
+                        <a asp-controller="Admin" asp-action="ListProperties" class="text-light" style="text-decoration:none;">List Properties</a>
+                    </li>
+                    <li class="bg-dark">
+                        <a asp-controller="Admin" asp-action="AddProperty" class="text-light" style="text-decoration:none;">Add Property</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            </div>
+             <!-- Admins -->
+          @*<div class="accordion accordion-flush bg-dark" id="accordionAdmins">
+            <div class="accordion-item bg-dark">
+              <h2 class="accordion-header" id="headingAdmins">
+                <a class="accordion-button collapsed bg-dark text-light" type="button" id="admin-navs" style="text-decoration:none;"
+                data-bs-toggle="collapse" data-bs-target="#collapseAdmins" aria-expanded="false" aria-controls="collapseAdmins">
+                  Admins
+                </a>
+              </h2>
+              <div id="collapseAdmins" class="accordion-collapse collapse" aria-labelledby="headingAdmins" data-bs-parent="#accordionAdmins">
+                <div class="accordion-body bg-dark">
+                  <ul class="text-light" style="list-style-type:circle;" id="admin-nav-lists">
+                    <li class="bg-dark">
+                        <a asp-controller="Admin" asp-action="ListUsers" class="text-light" style="text-decoration:none;">List Admins</a>
+                    </li>
+                    <li class="bg-dark">
+                        <a asp-controller="Admin" asp-action="AddUser" class="text-light" style="text-decoration:none;">Add Admin</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            </div>*@
           <!-- Users -->
-          <div class="accordion accordion-flush" id="accordionUsers">
-            <div class="accordion-item">
+          <div class="accordion accordion-flush bg-dark" id="accordionUsers">
+            <div class="accordion-item bg-dark">
               <h2 class="accordion-header" id="headingUsers">
-                <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
+                <a class="accordion-button collapsed bg-dark text-light" type="button" id="admin-navs" style="text-decoration:none;"
+                data-bs-toggle="collapse" data-bs-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
                   Users
                 </a>
               </h2>
-              <div id="collapseUsers" class="accordion-collapse collapse" aria-labelledby="headingUsers" data-bs-parent="#accordionUsers">
-                <div class="accordion-body">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" class="text-dark">List Users</a></li>
-                    <li class="list-group-item"><a href="#" class="text-dark">Add User</a></li>
+              <div id="collapseUsers" class="accordion-collapse collapse bg-dark" aria-labelledby="headingUsers" data-bs-parent="#accordionUsers">
+                <div class="accordion-body bg-dark">
+                  <ul class="text-light" style="list-style-type:circle;" id="admin-nav-lists">
+                    <li class="bg-dark"><a asp-controller="Admin" asp-action="ListUsers" class="text-light" style="text-decoration:none;">List Users</a></li>
+                    <li class="bg-dark"><a asp-controller="Admin" asp-action="AddUser" class="text-light" style="text-decoration:none;">Register User</a></li>
                   </ul>
                 </div>
               </div>
             </div>
             </div>
-          <!-- agents -->
-          <div class="accordion accordion-flush" id="accordionAgents">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingAgents">
-                <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAgents" aria-expanded="false" aria-controls="collapseAgents">
-                  Agents
+            
+           <!-- Enquiries -->
+           <div class="accordion accordion-flush bg-dark" id="accordionEnquiries">
+            <div class="accordion-item bg-dark">
+              <h2 class="accordion-header" id="headingEnquiries">
+                <a class="accordion-button collapsed bg-dark text-light" type="button" id="admin-navs" style="text-decoration:none;"
+                data-bs-toggle="collapse" data-bs-target="#collapseEnquiries" aria-expanded="false" aria-controls="collapseEnquiries">
+                  Enquiries
                 </a>
               </h2>
-              <div id="collapseAgents" class="accordion-collapse collapse" aria-labelledby="headingAgents" data-bs-parent="#accordionAgents">
-                <div class="accordion-body">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" class="text-dark">List Agents</a></li>
-                    <li class="list-group-item"><a href="#" class="text-dark">Add Agent</a></li>
+              <div id="collapseEnquiries" class="accordion-collapse collapse bg-dark" aria-labelledby="headingEnquiries" data-bs-parent="#accordionEnquiries">
+                <div class="accordion-body bg-dark">
+                  <ul class="text-light" style="list-style-type:circle;" id="admin-nav-lists">
+                    <li><a asp-controller="Admin" asp-action="ListEnquiries" class="text-light" style="text-decoration:none;">List Enquiries</a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
            <!-- Contacts -->
-           <a class="nav-link" href="#">Contacts</a>
+           @*<div class="accordion accordion-flush bg-dark" id="accordionContacts">
+            <div class="accordion-item bg-dark">
+              <h2 class="accordion-header" id="headingContacts">
+                <a class="accordion-button collapsed bg-dark text-light" type="button" id="admin-navs" style="text-decoration:none;"
+                data-bs-toggle="collapse" data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts">
+                  Contacts
+                </a>
+              </h2>
+              <div id="collapseContacts" class="accordion-collapse collapse bg-dark" aria-labelledby="headingContacts" data-bs-parent="#accordionContacts">
+                <div class="accordion-body bg-dark">
+                  <ul class="text-light" style="list-style-type:circle;" id="admin-nav-lists">
+                    <li><a asp-controller="Admin" asp-action="ListContacts" class="text-light" style="text-decoration:none;">List Contacts</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>*@
+
         </nav>
           </div>
 
-     <div class="col">
+     <div class="col" style="">
          <!-- nav bar page-------------->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg shadow-lg" style="background-color: #3b5998; color:white;">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            <a class="navbar-brand text-light float-start" asp-controller="Admin" asp-action="Index">
+                <img src="~/images/general/logo.png" height="30px" width="30px"/>
+                ApnaGhar.com
+            </a>
+            
+            <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+              <span class="navbar-toggler-icon text-light"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse float-end" id="navbarSupportedContent">
+                <form class="d-flex" asp-controller="Admin" asp-action="PropertyDetails">
+                    <div class="input-group">
+                    <input class="form-control rounded-pill rounded-end" placeholder="Property ID" required name="pid" min="1">
+                        <span class="input-group-text rounded-pill rounded-start">
+                            <button class="border border-0 bg-transparent" type="submit"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+              </form>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
+                  <a class="nav-link active text-light" aria-current="page" asp-controller="Home" asp-action="Index" title="Go to Home Page">
+                      <i class="fa fa-home" style="font-size:24px;"></i>
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  <a class="nav-link active text-light" aria-current="page" asp-controller="Account" asp-action="Logout" title="Log Out">
+                      <i class="fa fa-power-off" style="font-size:24px;"></i>
+                  </a>
                 </li>
               </ul>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
             </div>
           </div>
         </nav>
 
          @*body-----------------*@
-          <main role="main" class="p-5 bg-light" >
+          <main role="main" class="bg-light pb-5" >
         @RenderBody()
     </main>
 

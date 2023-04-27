@@ -1,0 +1,32 @@
+version: '3.4'
+
+networks:
+  apnagharv2network:      #whatever 'network name' you want, by default 'bridge' driver will be used 
+
+services:
+  apnagharv2db:
+    container_name: apnagharv2-db
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - 8002:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password@12345#
+    networks:
+      - apnagharv2network
+  apnagharv2:
+    container_name: apnagharv2-app
+    image: ${DOCKER_REGISTRY-}apnagharv2
+    build:
+      context: .
+      dockerfile: ApnaGharV2/Dockerfile
+    ports:
+      - 8001:80
+    depends_on:
+      - apnagharv2db
+    environment:
+      - DB_HOST=apnagharv2db
+      - DB_NAME=ApnaGharDockerDB             #create new DB of this name
+      - DB_SA_PASSWORD=password@12345#
+    networks:
+      - apnagharv2network

@@ -4,5 +4,6 @@ namespace ApnaGharV2.Models.Interfaces
 {
     public interface IContactRepository
     {
+        public List<Contact> GetAllContacts();
     }
 }

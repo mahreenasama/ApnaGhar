@@ -4,10 +4,15 @@
 @{
     Layout = "_LayoutAdmin";
 }
+@model List<ApnaGharV2.Models.ViewModels.PropertyViewModel>
 
-@model List<ApnaGharV2.Models.Classes.Property>
+<div id="after-header-div" class="text-white text-center" style="background-color: var(--site-color); height:150px;">
+    <h4 class="pt-3">Properties</h4>
+    <p class="">Welcome to ApnaGhar</p>
+</div>
 
-    <div class="text-center">
+<div class="container bg-white p-4 shadow-lg border rounded" style="margin-top:-50px; width:98%;">
+
     <table class="table">
         <thead>
             <tr>
@@ -17,13 +22,15 @@
                 <th scope="col">Price</th>
                 <th scope="col">City</th>
                 <th scope="col">Area</th>
+                <th scope="col">Purpose</th>
                 @*<th scope="col">Address</th>*@
-                <th scope="col">Category</th>
-                <th scope="col">Subcategory</th>
+                <th scope="col">Type</th>
+                <th scope="col">ImagesCount</th>
+
             </tr>
         </thead>
         <tbody>
-            @foreach(ApnaGharV2.Models.Classes.Property p in Model)
+            @foreach(ApnaGharV2.Models.ViewModels.PropertyViewModel p in Model)
             {
                 <tr>
                     <th scope="row">@p.Id</th>
@@ -32,9 +39,11 @@
                     <td>@p.Price @p.PriceUnit</td>
                     <td>@p.City</td>
                     <td>@p.Area</td>
+                    <td>@p.Purpose</td>
                     @*<td>@p.Address</td>*@
                     <td>@p.Type</td>
-                    <td>@p.SubType</td>
+                    <td>@p.ImagesCount</td>
+
                     <td class="btn-group" role="group">
                         <a class="btn btn-info" asp-controller="Admin" asp-action="PropertyDetails" asp-route-id="@p.Id">Details</a>
                         <a class="btn btn-warning" asp-controller="Admin" asp-action="EditProperty" asp-route-id="@p.Id">Edit</a>
