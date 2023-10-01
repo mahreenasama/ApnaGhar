@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/all.min.css">
+    
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/regular.min.css"> -->
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg border-bottom box-shadow" style="background-color: #3b5998; color:white">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item" style="font-size:x-large;">
+                            <i class="fa fa-home"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">PROPERTIES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="PlotFinder">PLOT FINDER</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">AREA GUIDES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">BLOG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">PARTNERS</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                               asp-area="" asp-controller="" asp-action="">
+                                TOOLS
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Home Loan Calculator</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Area Unit Converter</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Land Record Pages</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                               asp-area="" asp-controller="" asp-action="">
+                                MORE
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Maps</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Forum</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Index</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Trends</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" asp-area="" asp-controller="" asp-action="">
+                        <input class="form-control" type="search" placeholder="Property ID" required>
+                        <button class="btn btn-transparent text-white" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                    <!-- add prop btn -->
+                    <a asp-controller="Property" asp-action="AddProperty">
+                        <button class="btn btn-light"><i class="fa fa-plus"></i> Add Property</button>
+                    </a>
+
+                    <!-- country drop menu -->
+                    <li class="nav-item dropdown text-white" style="list-style-type: none;">
+                        <a class="nav-link dropdown-toggle text-white" asp-area="" asp-controller="" asp-action="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="~/images/pak.png" alt="pak flag" height="20px" width="25px">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">
+                                    <img src="~/images/uae.png" alt="uae flag" height="20px" width="25px"> UAE
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">
+                                    <img src="~/images/saudia.png" alt="saudia flag" height="20px" width="25px"> Saudi Arabia
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">
+                                    <img src="~/images/bangla.png" alt="bangla flag" height="20px" width="25px"> Bangladesh
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- last 2 btns -->
+                    <button class="btn btn-transparent text-white"><i class="fa fa-gear"></i></button>
+                    <!-- Button trigger modal -->
+                    <button class="btn btn-transparent text-white" data-bs-toggle="modal" data-bs-target="#login">
+                        <i class="fa fa-user"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- another navigation bar -->
+       
+    </header>
+
+
+    <!--------------------------- main code -------------------------->
+    <!-- <div style="background-image: url('co6.jpg'); background-size: 100%; background-repeat: no-repeat;" class="align-middle">
+        <div class="">
+            <h1 class="text-white" style="padding: 100px;">&nbsp;&nbsp;Get in Touch With Us</h1>
+        </div>
+    </div> -->
+    <div class="text-center shadow-lg" style="">
+        <img src="co3-removebg-preview.png" class="img-fluid "/>
+        <!-- <img src="co2.jpg" class=" img-fluid" style="height: 200px; width: 200px;"/> -->
+  </div>
+    <div class="container text-center">
+        
+        <!-- upper -->
+        <div class="row mt-5 mb-5">
+            <div class="mb-4 text-start">
+                    <h3 style="color: #3b5998;">Always Happy To Answer Your Questions</h3>
+                </div>
+            <div class="col-lg-7 col-sm-12">
+                
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control p-3" placeholder="Your Name *" aria-label="Name" aria-describedby="addon-wrapping"  required>
+                              </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control p-3" placeholder="Your Email *" aria-label="Email" aria-describedby="addon-wrapping" required>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-phone"></i></span>
+                                <input type="text" class="form-control p-3" placeholder="Cell Number *" aria-label="Cell Number" aria-describedby="addon-wrapping" required>
+                              </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-check"></i></span>
+                                <input type="text" class="form-control p-3" placeholder="Subject *" aria-label="Subject" aria-describedby="addon-wrapping" required>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                            <div class="col">
+                                <textarea rows="5" placeholder="Your Message *" class="form-control p-3" required></textarea>
+                              </div>
+                    </div>
+                    <div class="row text-center mb-3">
+                        <div class="col align-self-center">
+                            <input type="submit" value="Send" class="btn btn-primary fw-bold fs-5 ps-5 pe-5" style="color:#3b5998; background-color:lightsteelblue;"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 col-sm-12 text-center">
+                <img src="coo.png" class="img-fluid"/>
+            </div>
+        </div>
+
+        <!-- lower cards -->
+        <div class="row mt-3 mb-3 p-2 justify-content-between">
+            <div class="col-sm-12 col-md-4 border border-1 rounded-3 p-3 shadow">
+                <div class="mb-3"><i class="fa fa-globe" style="font-size:48; color:#3b5998;"></i></div>
+                <h4>Pakistan Office</h4>
+                <p>Ilam Deen Street#1, Itehaad Park, Paracha Colony, Shahdara Town Lahore, Pakistan.</p>
+            </div>
+            <div class="col-sm-12 col-md-4 border border-1 rounded-3 p-3 shadow">
+                <div class="mb-3"><i class="fa fa-headset" style="font-size:48; color:#3b5998;"></i></div>
+                <h4>Contact Us</h4>
+                <p>Call: <a href="#!" class="text-decoration-none">+92 316 0442336</a> <br>
+                Email: <a href="#!" class="text-decoration-none">apnaghar196@gmail.com</a></p>
+            </div>
+            <div class="col-sm-12 col-md-4 border border-1 rounded-3 p-3 shadow">
+                <div class="mb-3"><i class="fa fa-briefcase" style="font-size:48; color:#3b5998;"></i></div>
+                <h4>Working Schedule</h4>
+                <p>Working days: Mon-Sat <br>
+                Time: 9:00 AM-6:00 PM </p>
+            </div>
+        </div>
+
+        <!-- map -->
+        <div id="map" class="mt-5 mb-5 border border-2 rounded-3 p-1">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.1613169613543!2d74.
+          29821401443638!3d31.62943324891473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!
+          1s0x39191d2da3ec509b%3A0x656463bff2734480!2sIttehad%20Park!5e0!3m2!1sen!2sus!4v1654082166729!5m2!
+          1sen!2sus" height="400" style="width:100%;" allowfullscreen loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Footer -->
+<footer class="bg-dark text-light">
+    <div class="container p-4">
+  
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-bold mb-3">Company</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a asp-action="About" asp-controller="Home" class="text-white-50 text-decoration-none">About Us</a>
+              </li>
+              <li>
+                <a asp-action="Contact" asp-controller="Home" class="text-white-50 text-decoration-none">Contact US</a>
+              </li>
+              <li>
+                <a asp-action="HelpSupport" asp-controller="Home" class="text-white-50 text-decoration-none">Help & Support</a>
+              </li>
+               <li>
+                <a href="#!" class="text-white-50 text-decoration-none">Terms of Use</a>
+              </li>
+              <li>
+                <a asp-action="Privacy" asp-controller="Home" class="text-white-50 text-decoration-none">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-bold mb-3">Connect</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white-50 text-decoration-none">Advertise on ApnaGhar</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white-50 text-decoration-none">Real Estate Agents</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white-50 text-decoration-none">Add Property</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-bold mb-3">Head Office</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                  <i class="fa fa-map-marker"></i>
+                <a href="#!" class="text-white-50 text-decoration-none m-2">Ilam Deen Street#1, Itehaad Park, Paracha Colony, Shahdara Town Lahore, Pakistan.</a>
+              </li>
+              <li class="mb-2">
+                  <i class="fa fa-phone"></i>
+                <a href="#!" class="text-white-50 text-decoration-none m-2">+92 316 0442336</a>
+              </li>
+              <li class="mb-2">
+                  <i class="fa fa-envelope"></i>
+                <a href="#!" class="text-white-50 text-decoration-none m-2">Email Us</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+  
+            <h5 class="text-bold mb-3">Roshan Digital user</h5>
+            <img src="~/images/RAD_Logo1.png" height="50px" width="150px" style="color:white;">
+  
+            <h5 class="text-bold mb-3 mt-3">Get Connected</h5>
+              <!-- Section: Social media -->
+              <section class="mb-4">
+            
+                  <!-- Facebook -->
+                <a
+                  class="btn text-white rounded-circle"
+                  style="background-color: #3b5998;"
+                  href="#!"
+                  role="button"
+                  ><i class="fa fa-facebook" style="font-size:large"></i>
+                </a>
+              
+                  <!-- Twitter -->
+                <a
+                  class="btn text-white rounded-circle"
+                  style="background-color: #55acee;"
+                  href="#!"
+                  role="button"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+             
+                <!-- youtube -->
+                <a
+                  class="btn text-white rounded-circle"
+                  style="background-color: #dd4b39;"
+                  href="#!"
+                  role="button"
+                  ><i class="fa fa-youtube"></i
+                ></a>
+             
+                <!-- Instagram -->
+                <a
+                  class="btn text-white rounded-circle"
+                  style="background-color: #ac2bac;"
+                  href="#!"
+                  role="button"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+             
+               <!-- Linkedin -->
+                <a
+                  class="btn text-white rounded-circle"
+                  style="background-color: #0082ca;"
+                  href="#!"
+                  role="button"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+             
+            </section>
+          </div>
+          <!--Grid column-->
+  
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3 text-white-50" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright: ApnaGharV2. All Rights Reserved
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
+
+</body>
+</html>
