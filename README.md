@@ -31,10 +31,44 @@
   </th>
   <tr>
     <td>
-      <img src="https://github.com/user-attachments/assets/f7372abe-6d18-41c9-b392-a4535782a48d" />
+      <img src="https://github.com/user-attachments/assets/0b7a1a47-5ce6-47b8-a63f-f709188e6663" />
     </td>
     <td>
       <img src="https://github.com/user-attachments/assets/21d1755e-9728-4d7b-8b65-d01f00cbb3bb" />
+    </td>
+  </tr>
+</table>
+
+<table>
+  <th>
+    <tr>
+      <td>Property Details</td>
+      <td>Privacy</td>
+    </tr>
+  </th>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/51df4fd2-0c86-47ff-ad04-b8a1e9fabcc7" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/be74c4f1-f073-4bad-8263-861730381b43" />
+    </td>
+  </tr>
+</table>
+
+<table>
+  <th>
+    <tr>
+      <td>About</td>
+      <td>Contact</td>
+    </tr>
+  </th>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/139e664e-1c2e-4c16-85cf-3afb8b40b70a" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/38bcc1d3-87eb-4529-9e11-eb6026a0b276" />
     </td>
   </tr>
 </table>
