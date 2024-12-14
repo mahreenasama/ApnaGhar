@@ -31,7 +31,7 @@
   </th>
   <tr>
     <td>
-      <img src="https://github.com/user-attachments/assets/35c188bb-5865-4b97-81d3-1fd31d524758" />
+      <img src="https://github.com/user-attachments/assets/f7372abe-6d18-41c9-b392-a4535782a48d" />
     </td>
     <td>
       <img src="https://github.com/user-attachments/assets/21d1755e-9728-4d7b-8b65-d01f00cbb3bb" />
