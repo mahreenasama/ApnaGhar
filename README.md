@@ -43,7 +43,7 @@
   <th>
     <tr>
       <td>Property Details</td>
-      <td>Privacy</td>
+      <td>Contact</td>
     </tr>
   </th>
   <tr>
@@ -51,7 +51,7 @@
       <img src="https://github.com/user-attachments/assets/51df4fd2-0c86-47ff-ad04-b8a1e9fabcc7" />
     </td>
     <td>
-      <img src="https://github.com/user-attachments/assets/be74c4f1-f073-4bad-8263-861730381b43" />
+      <img src="https://github.com/user-attachments/assets/38bcc1d3-87eb-4529-9e11-eb6026a0b276" />
     </td>
   </tr>
 </table>
@@ -59,16 +59,16 @@
 <table>
   <th>
     <tr>
+      <td>Privacy</td>
       <td>About</td>
-      <td>Contact</td>
     </tr>
   </th>
   <tr>
     <td>
-      <img src="https://github.com/user-attachments/assets/139e664e-1c2e-4c16-85cf-3afb8b40b70a" />
+      <img src="https://github.com/user-attachments/assets/be74c4f1-f073-4bad-8263-861730381b43" />
     </td>
     <td>
-      <img src="https://github.com/user-attachments/assets/38bcc1d3-87eb-4529-9e11-eb6026a0b276" />
+      <img src="https://github.com/user-attachments/assets/139e664e-1c2e-4c16-85cf-3afb8b40b70a" />
     </td>
   </tr>
 </table>
